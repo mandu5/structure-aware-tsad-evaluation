@@ -3,555 +3,339 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>When Point Metrics Mislead</title>
+    <title>When Point Metrics Mislead: Structure-Aware Evaluation</title>
     <style>
       :root {
-        --bg-0: #f7f9fc;
-        --bg-1: #f3f5fb;
-        --ink-0: #0f172a;
-        --ink-1: #334155;
-        --ink-2: #64748b;
-        --line: #dbe3ef;
-        --card: #ffffff;
-        --accent: #2563eb;
-        --accent-soft: #dbeafe;
-        --success: #047857;
-        --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-        --radius: 16px;
+        --bg: #fafafa;
+        --paper: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --accent: #1f4e79;
       }
+
       * {
         box-sizing: border-box;
       }
-      html {
-        scroll-behavior: smooth;
-      }
+
       body {
         margin: 0;
-        color: var(--ink-0);
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
-        background:
-          radial-gradient(1200px 500px at 10% -10%, #e0e7ff 0%, transparent 70%),
-          radial-gradient(900px 500px at 100% 10%, #dbeafe 0%, transparent 60%),
-          linear-gradient(180deg, var(--bg-0), var(--bg-1));
-      }
-      .container {
-        width: min(1120px, 92vw);
-        margin: 0 auto;
-      }
-      .top-nav {
-        position: sticky;
-        top: 0;
-        z-index: 30;
-        backdrop-filter: blur(8px);
-        background: rgba(247, 249, 252, 0.88);
-        border-bottom: 1px solid var(--line);
-      }
-      .top-nav-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 0;
-      }
-      .brand {
-        font-weight: 700;
-        letter-spacing: 0.01em;
-      }
-      .nav-links {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-      .nav-links a {
-        text-decoration: none;
-        color: var(--ink-1);
-        font-size: 14px;
-      }
-      .hero {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 22px;
-        align-items: stretch;
-        padding: 44px 0 26px;
-        min-height: min(78vh, 760px);
-      }
-      .hero-copy {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 28px;
-        box-shadow: var(--shadow);
-      }
-      .eyebrow {
-        display: inline-block;
-        padding: 6px 10px;
-        border-radius: 999px;
-        font-size: 12px;
-        font-weight: 600;
-        color: #1d4ed8;
-        background: var(--accent-soft);
-        border: 1px solid #bfdbfe;
-      }
-      h1 {
-        margin: 14px 0 10px;
-        line-height: 1.08;
-        font-size: clamp(2rem, 4vw, 3rem);
-      }
-      .subtitle {
-        margin: 0;
-        color: var(--ink-1);
-        font-size: clamp(1rem, 1.6vw, 1.16rem);
-      }
-      .author {
-        margin: 14px 0 0;
-        color: var(--ink-2);
-        font-size: 14px;
-      }
-      .summary {
-        margin: 18px 0 0;
-        color: var(--ink-1);
-        line-height: 1.66;
-      }
-      .hero-actions {
-        margin-top: 22px;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-      .btn {
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 10px;
-        border: 1px solid var(--line);
-        padding: 10px 14px;
-        color: #1e293b;
-        background: #ffffff;
-        font-weight: 600;
-        font-size: 14px;
-        transition: transform 0.12s ease, box-shadow 0.12s ease;
-      }
-      .btn:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
-      }
-      .btn.primary {
-        color: #fff;
-        background: linear-gradient(180deg, #2563eb, #1d4ed8);
-        border-color: #1d4ed8;
-      }
-      .btn:not(.primary) {
-        border-color: #cbd5e1;
-      }
-      .hero-metrics {
-        position: relative;
-        border-radius: var(--radius);
-        border: 1px solid rgba(191, 219, 254, 0.7);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9));
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow);
-        padding: 18px;
-      }
-      .hero-metrics h3 {
-        margin: 4px 4px 14px;
-        font-size: 15px;
-        color: var(--ink-1);
-      }
-      .metric-list {
-        display: grid;
-        gap: 10px;
-      }
-      .metric-item {
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        background: #fff;
-        padding: 12px;
-      }
-      .metric-item strong {
-        display: block;
-        font-size: 1.25rem;
-        margin-bottom: 3px;
-      }
-      .metric-item span {
-        color: var(--ink-2);
-        font-size: 13px;
-      }
-      section {
-        margin: 22px 0;
-      }
-      .panel {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 24px;
-      }
-      h2 {
-        margin: 0 0 12px;
-        font-size: clamp(1.25rem, 2.3vw, 1.75rem);
-      }
-      .finding-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-      .finding-card {
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: #fff;
-        padding: 14px;
-      }
-      .finding-card h3 {
-        margin: 0 0 8px;
-        font-size: 1rem;
-      }
-      .finding-card p {
-        margin: 0;
-        color: var(--ink-2);
-        line-height: 1.55;
-        font-size: 14px;
-      }
-      .narrative-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-      .narrative-step {
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: #fff;
-        padding: 16px;
-      }
-      .narrative-step .step-tag {
-        display: inline-block;
-        margin-bottom: 8px;
-        font-size: 12px;
-        font-weight: 700;
-        color: #1d4ed8;
-        background: var(--accent-soft);
-        border: 1px solid #bfdbfe;
-        border-radius: 999px;
-        padding: 4px 8px;
-      }
-      .narrative-step p {
-        margin: 0;
-        color: var(--ink-1);
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
         line-height: 1.6;
       }
+
+      .wrap {
+        width: min(920px, 92vw);
+        margin: 0 auto;
+        padding: 28px 0 48px;
+      }
+
+      .paper {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 28px;
+      }
+
+      .title-block {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 20px;
+        margin-bottom: 22px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+      }
+
+      .author {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .link-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      .btn {
+        text-decoration: none;
+        color: var(--accent);
+        background: #f8fbff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+
+      section {
+        margin-top: 22px;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .abstract {
+        color: var(--text);
+      }
+
+      .teaser {
+        margin-top: 10px;
+      }
+
+      figure {
+        margin: 0;
+        border: 1px solid var(--line);
+        background: #fcfcfc;
+        padding: 12px;
+      }
+
+      figure img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+
+      figcaption {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .meta-link {
+        margin-top: 6px;
+        display: inline-block;
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 0.85rem;
+      }
+
+      .meta-link:hover {
+        text-decoration: underline;
+      }
+
+      .findings-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      .findings-table th,
+      .findings-table td {
+        border: 1px solid var(--line);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .findings-table th {
+        background: #f9fafb;
+        font-weight: 600;
+      }
+
       .figure-stack {
         display: grid;
         gap: 14px;
       }
-      .figure-card {
+
+      .figure-item {
         border: 1px solid var(--line);
-        border-radius: 14px;
         background: #fff;
-        padding: 14px;
+        padding: 12px;
       }
-      .figure-card h3 {
-        margin: 0 0 10px;
+
+      .figure-item h3 {
+        margin: 0 0 8px;
         font-size: 1rem;
-      }
-      .figure-card img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        border: 1px solid #e2e8f0;
-        display: block;
-        background: #f8fafc;
-      }
-      .figure-card p {
-        margin: 10px 0 0;
-        color: var(--ink-2);
-        line-height: 1.55;
-        max-width: 74ch;
-      }
-      .figure-link {
-        display: inline-block;
-        margin-top: 8px;
-        color: #1d4ed8;
-        text-decoration: none;
         font-weight: 600;
-        font-size: 13px;
       }
-      .figure-link:hover {
-        text-decoration: underline;
+
+      .figure-item p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.92rem;
       }
+
       .artifact-list {
-        margin: 10px 0 0;
+        margin: 0;
         padding-left: 18px;
-        color: var(--ink-1);
-        line-height: 1.6;
       }
+
       pre {
-        margin: 14px 0 0;
+        margin: 10px 0 0;
         overflow-x: auto;
-        border-radius: 12px;
-        background: #0f172a;
-        color: #e2e8f0;
-        padding: 14px;
+        border: 1px solid var(--line);
+        background: #f9fafb;
+        padding: 10px;
+        font-size: 0.9rem;
       }
-      .cta-row {
-        margin-top: 14px;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
+
       footer {
-        margin: 32px 0 42px;
-        color: var(--ink-2);
-        font-size: 14px;
+        margin-top: 24px;
+        border-top: 1px solid var(--line);
+        padding-top: 14px;
+        color: var(--muted);
+        font-size: 0.9rem;
       }
-      .footer-links {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        margin-bottom: 8px;
-      }
-      .footer-links a {
-        color: var(--ink-1);
-        text-decoration: none;
-      }
-      @media (max-width: 960px) {
-        .hero {
-          grid-template-columns: 1fr;
-          min-height: 0;
-          padding: 30px 0 18px;
-        }
-        .finding-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-        .panel {
-          padding: 20px;
+
+      @media (min-width: 980px) {
+        .figure-stack {
+          grid-template-columns: 1fr 1fr;
         }
       }
+
       @media (max-width: 700px) {
-        .finding-grid,
-        .narrative-grid {
-          grid-template-columns: 1fr;
+        .paper {
+          padding: 18px;
         }
-        section {
-          margin: 16px 0;
-        }
-        .hero-copy {
-          padding: 22px 18px;
-        }
+
         h1 {
-          font-size: clamp(1.8rem, 8vw, 2.25rem);
-          line-height: 1.12;
-        }
-        .subtitle {
-          font-size: 1rem;
-        }
-        .summary {
-          margin-top: 14px;
-          line-height: 1.62;
-        }
-        .hero-actions {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 8px;
-          margin-top: 16px;
-        }
-        .btn {
-          width: 100%;
-          min-height: 42px;
-        }
-        .hero-metrics {
-          padding: 14px;
-        }
-        .metric-list {
-          gap: 8px;
-        }
-        .metric-item {
-          padding: 10px;
-        }
-        .metric-item strong {
-          font-size: 1.15rem;
-        }
-        .figure-card {
-          padding: 12px;
-        }
-        .figure-card p {
-          font-size: 13px;
-          line-height: 1.5;
-          max-width: 62ch;
-        }
-        .panel {
-          padding: 16px;
-        }
-        .top-nav-inner {
-          align-items: flex-start;
-          gap: 8px;
-          flex-direction: column;
-        }
-        .nav-links {
-          gap: 10px 12px;
+          font-size: 1.35rem;
         }
       }
     </style>
   </head>
   <body>
-    <nav class="top-nav">
-      <div class="container top-nav-inner">
-        <div class="brand">Point Metrics Mislead</div>
-        <div class="nav-links">
-          <a href="#overview">Overview</a>
-          <a href="#findings">Findings</a>
-          <a href="#figures">Figures</a>
-          <a href="#artifact">Artifact</a>
-          <a href="#citation">Citation</a>
-        </div>
-      </div>
-    </nav>
-
-    <main class="container">
-      <section id="overview" class="hero">
-        <div class="hero-copy">
-          <span class="eyebrow">Research Artifact</span>
-          <h1>When Point Metrics Mislead</h1>
-          <p class="subtitle">Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection</p>
+    <main class="wrap">
+      <article class="paper">
+        <header class="title-block">
+          <h1>When Point Metrics Mislead: Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection</h1>
           <p class="author">Youngmin Ko</p>
-          <p class="summary">
-            Point-wise metrics can change time-series anomaly detection rankings when benchmark anomalies are sustained temporal
-            segments rather than isolated spikes.
+          <div class="link-row">
+            <a class="btn" href="#">Paper: Coming Soon</a>
+            <a class="btn" href="https://github.com/mandu5/structure-aware-tsad-evaluation">Code: GitHub</a>
+            <a class="btn" href="https://github.com/mandu5/structure-aware-tsad-evaluation">Artifact: GitHub</a>
+            <a class="btn" href="#citation">Citation</a>
+          </div>
+        </header>
+
+        <section id="abstract">
+          <h2>Abstract</h2>
+          <p class="abstract">
+            Time series anomaly detection is commonly reported with point-wise metrics such as AUC-ROC, while many benchmark anomalies are sustained temporal segments. This project evaluates when point-level and segment-aware metrics induce different pairwise model rankings, and provides a lightweight reproducibility artifact for validating the reported ranking-shift observations.
           </p>
-          <div class="hero-actions">
-            <a class="btn" href="#">arXiv: Coming Soon</a>
-            <a class="btn primary" href="https://github.com/mandu5/structure-aware-tsad-evaluation">Code / Artifact</a>
-            <a class="btn" href="#citation">BibTeX</a>
+        </section>
+
+        <section id="teaser">
+          <h2>Teaser Figure</h2>
+          <div class="teaser">
+            <figure>
+              <img src="./assets/metric_disagreement.png" alt="Overview of point-level and segment-aware metric disagreement" loading="lazy" decoding="async" />
+              <figcaption>Overview of disagreement between point-level and segment-aware evaluation, presented as a static rendering of the corresponding final figure in the manuscript.</figcaption>
+              <a class="meta-link" href="./assets/metric_disagreement.pdf">Open vector PDF</a>
+            </figure>
           </div>
-        </div>
-        <aside class="hero-metrics" aria-label="Key metrics">
-          <h3>Headline Evidence</h3>
-          <div class="metric-list">
-            <div class="metric-item">
-              <strong>14/60</strong>
-              <span>deep-model rank flips</span>
-            </div>
-            <div class="metric-item">
-              <strong>44/126</strong>
-              <span>rank flips with classical baselines</span>
-            </div>
-            <div class="metric-item">
-              <strong>0</strong>
-              <span>short anomaly segments in four industrial benchmarks</span>
-            </div>
-            <div class="metric-item">
-              <strong>4,498</strong>
-              <span>TSB-AD-M recomputed rows</span>
-            </div>
+        </section>
+
+        <section id="findings">
+          <h2>Key Findings</h2>
+          <table class="findings-table">
+            <thead>
+              <tr>
+                <th>Finding</th>
+                <th>Summary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ranking flips</td>
+                <td>Pairwise orderings differ between AUC-ROC and Aff-F1 in 14/60 deep-model comparisons and 44/126 comparisons when classical baselines are included.</td>
+              </tr>
+              <tr>
+                <td>Benchmark structure</td>
+                <td>Under the processed labels used in this artifact, four industrial benchmarks contain no short anomaly segments.</td>
+              </tr>
+              <tr>
+                <td>SAEScore usage</td>
+                <td>SAEScore is reported as a composite summary to expose reporting regimes, not as a universal replacement for constituent metrics.</td>
+              </tr>
+              <tr>
+                <td>TSB-AD-M audit scale</td>
+                <td>The TSB-AD-M replication audit covers 25 models, 180 multivariate series, and 4,498 recomputed model-series rows.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="figures">
+          <h2>Figures</h2>
+          <div class="figure-stack">
+            <article class="figure-item">
+              <h3>Figure 1. Anomaly-duration taxonomy</h3>
+              <figure>
+                <img src="./assets/taxonomy.png" alt="Paper Figure 1 anomaly-duration taxonomy" loading="lazy" decoding="async" />
+              </figure>
+              <p>Paper Figure 1 shows duration-stratified anomaly taxonomy across SWaT, MSL, SMAP, and WADI, computed using the processed label definitions retained in this artifact.</p>
+              <a class="meta-link" href="./assets/taxonomy.pdf">Open vector PDF</a>
+            </article>
+
+            <article class="figure-item">
+              <h3>Figure 4. AUC-ROC versus Aff-F1</h3>
+              <figure>
+                <img src="./assets/metric_disagreement.png" alt="Paper Figure 4 metric disagreement" loading="lazy" decoding="async" />
+              </figure>
+              <p>Paper Figure 4 compares AUC-ROC and Aff-F1, highlighting pairwise ranking discrepancies between point-level reporting and segment-aware evaluation across benchmark configurations.</p>
+              <a class="meta-link" href="./assets/metric_disagreement.pdf">Open vector PDF</a>
+            </article>
+
+            <article class="figure-item">
+              <h3>Figure 5. TSB-AD-M replication audit</h3>
+              <figure>
+                <img src="./assets/tsbad_audit.png" alt="Paper Figure 5 TSB-AD-M replication audit" loading="lazy" decoding="async" />
+              </figure>
+              <p>Paper Figure 5 presents the TSB-AD-M replication audit, showing taxonomy-weight distributions and the AUC-ROC versus SAEScore relationship across recomputed model-series rows.</p>
+              <a class="meta-link" href="./assets/tsbad_audit.pdf">Open vector PDF</a>
+            </article>
+
+            <article class="figure-item">
+              <h3>Figure 13. Bootstrap rank comparison</h3>
+              <figure>
+                <img src="./assets/bootstrap_rank.png" alt="Paper Figure 13 bootstrap rank comparison" loading="lazy" decoding="async" />
+              </figure>
+              <p>Paper Figure 13 reports bootstrap-based rank comparisons between AUC-ROC and SAEScore, estimated under repeated resampling to characterize ranking uncertainty and stability.</p>
+              <a class="meta-link" href="./assets/bootstrap_rank.pdf">Open vector PDF</a>
+            </article>
           </div>
-        </aside>
-      </section>
+        </section>
 
-      <section id="findings" class="panel">
-        <h2>Key Findings</h2>
-        <div class="finding-grid">
-          <article class="finding-card">
-            <h3>Metric disagreement is structured</h3>
-            <p>AUC-ROC and Aff-F1 disagree in pairwise rankings, and that disagreement is systematic rather than random noise.</p>
-          </article>
-          <article class="finding-card">
-            <h3>Dataset structure matters</h3>
-            <p>When anomalies are long segments, timestamp-level metrics and segment-level metrics emphasize different behaviors.</p>
-          </article>
-          <article class="finding-card">
-            <h3>SAEScore is a reporting composite</h3>
-            <p>SAEScore is presented as a transparent reporting blend, not as a universal replacement leaderboard metric.</p>
-          </article>
-          <article class="finding-card">
-            <h3>Reproducibility artifact included</h3>
-            <p>The repository ships derived outputs, validation scripts, and lightweight tests for direct verification.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="panel">
-        <h2>Problem -> Finding -> Artifact</h2>
-        <div class="narrative-grid">
-          <article class="narrative-step">
-            <span class="step-tag">Problem</span>
-            <p>Point metrics evaluate timestamp discrimination, which can underrepresent continuity and cohesion of anomaly segments.</p>
-          </article>
-          <article class="narrative-step">
-            <span class="step-tag">Mismatch</span>
-            <p>Industrial anomaly benchmarks often contain sustained temporal events rather than isolated point spikes.</p>
-          </article>
-          <article class="narrative-step">
-            <span class="step-tag">Result</span>
-            <p>Model rankings can shift under segment-aware reporting, motivating structure-aware evaluation for audit-quality analysis.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="figures" class="panel">
-        <h2>Figure Showcase</h2>
-        <div class="figure-stack">
-          <article class="figure-card">
-            <h3>Anomaly Duration Taxonomy</h3>
-            <img src="./assets/taxonomy.png" alt="Paper Figure 1 taxonomy" loading="lazy" decoding="async" />
-            <p>Paper Figure 1. Anomaly-duration taxonomy for SWaT, MSL, SMAP, and WADI, showing that short anomalies are absent from the four industrial benchmarks.</p>
-            <a class="figure-link" href="./assets/taxonomy.pdf">Open vector PDF</a>
-          </article>
-
-          <article class="figure-card">
-            <h3>Metric Disagreement</h3>
-            <img src="./assets/metric_disagreement.png" alt="Paper Figure 4 metric disagreement" loading="lazy" decoding="async" />
-            <p>Paper Figure 4. AUC-ROC versus Aff-F1, illustrating disagreement between point-level and segment-level evaluation.</p>
-            <a class="figure-link" href="./assets/metric_disagreement.pdf">Open vector PDF</a>
-          </article>
-
-          <article class="figure-card">
-            <h3>TSB-AD-M Replication Audit</h3>
-            <img src="./assets/tsbad_audit.png" alt="Paper Figure 5 TSB-AD-M replication audit" loading="lazy" decoding="async" />
-            <p>Paper Figure 5. TSB-AD-M replication audit with taxonomy weight distribution and AUC-ROC versus SAEScore scatter.</p>
-            <a class="figure-link" href="./assets/tsbad_audit.pdf">Open vector PDF</a>
-          </article>
-
-          <article class="figure-card">
-            <h3>Bootstrap Rank Comparison</h3>
-            <img src="./assets/bootstrap_rank.png" alt="Paper Figure 13 bootstrap rank comparison" loading="lazy" decoding="async" />
-            <p>Paper Figure 13. Bootstrap rank comparison between AUC-ROC and SAEScore reporting.</p>
-            <a class="figure-link" href="./assets/bootstrap_rank.pdf">Open vector PDF</a>
-          </article>
-        </div>
-      </section>
-
-      <section id="artifact" class="panel">
-        <h2>Reproducibility Artifact</h2>
-        <ul class="artifact-list">
-          <li>Derived outputs for headline verification.</li>
-          <li>Validation scripts for rank-flip and TSB-AD-M audits.</li>
-          <li>Lightweight tests for artifact trust checks.</li>
-          <li>No raw access-controlled datasets redistributed.</li>
-        </ul>
-        <pre>python scripts/validate_tab_rfr_counts.py
+        <section id="artifact">
+          <h2>Reproducibility Artifact</h2>
+          <ul class="artifact-list">
+            <li>Derived summaries required to reproduce the reported evaluation tables and checks.</li>
+            <li>Validation scripts for rank-flip counting, alpha-stratified analysis, and bootstrap comparison.</li>
+            <li>Lightweight tests for consistency checks on retained artifact outputs.</li>
+            <li>No raw access-controlled datasets are redistributed; users must obtain upstream datasets independently.</li>
+          </ul>
+          <pre>python scripts/validate_tab_rfr_counts.py
 python scripts/compute_tsbad_alpha_stratified_rfr.py
 python scripts/compute_rfr_bootstrap_ci.py --n-boot 100</pre>
-        <div class="cta-row">
-          <a class="btn primary" href="https://github.com/mandu5/structure-aware-tsad-evaluation">Open Artifact Repository</a>
-        </div>
-      </section>
+        </section>
 
-      <section id="citation" class="panel">
-        <h2>Citation</h2>
-        <pre>@misc{ko2026pointmetricsmislead,
+        <section id="citation">
+          <h2>Citation</h2>
+          <pre>@misc{ko2026pointmetricsmislead,
   title={When Point Metrics Mislead: Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection},
   author={Ko, Youngmin},
   year={2026},
   note={arXiv preprint, arXiv ID coming soon}
 }</pre>
-      </section>
+        </section>
 
-      <footer>
-        <div class="footer-links">
-          <a href="#">Paper</a>
-          <a href="https://github.com/mandu5/structure-aware-tsad-evaluation">Artifact</a>
-          <a href="#citation">Citation</a>
-        </div>
-        <div>&copy; 2026 Youngmin Ko</div>
-      </footer>
+        <footer>&copy; 2026 Youngmin Ko · Code and artifact released under Apache-2.0.</footer>
+      </article>
     </main>
   </body>
 </html>
