@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite the paper."
+title: "When Point Metrics Mislead: Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection"
+type: software
+authors:
+  - family-names: "Ko"
+    given-names: "Youngmin"
+year: 2026
+repository-code: "https://github.com/mandu5/structure-aware-tsad-evaluation"
+abstract: "Public reproducibility artifact for a structure-aware evaluation audit of ranking shifts in time series anomaly detection."
+keywords:
+  - time series anomaly detection
+  - evaluation
+  - benchmarking
+  - anomaly detection metrics
+  - reproducibility
+license: "Apache-2.0"

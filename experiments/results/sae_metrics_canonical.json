@@ -1,0 +1,396 @@
+{
+  "description": "Canonical metrics for SAEScore: 7 models x 6 TAB-style datasets when all generated sources are present. All Aff-F1: prts cardinality=one bias=flat, contamination-rate threshold.",
+  "protocol": "prts (ts_precision/ts_recall, cardinality=one, bias=flat) + contamination-rate percentile threshold. AUC from sklearn.metrics.roc_auc_score.",
+  "rows": [
+    {
+      "model": "AT",
+      "dataset": "SWaT",
+      "auc_roc": 0.4833,
+      "aff_f1": 0.2171,
+      "alpha": 1.0,
+      "sae_score": 0.2171,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "AT",
+      "dataset": "MSL",
+      "auc_roc": 0.4874,
+      "aff_f1": 0.0773,
+      "alpha": 1.0,
+      "sae_score": 0.0773,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "AT",
+      "dataset": "SMAP",
+      "auc_roc": 0.513,
+      "aff_f1": 0.2268,
+      "alpha": 1.0,
+      "sae_score": 0.2268,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "AT",
+      "dataset": "WADI",
+      "auc_roc": 0.5267,
+      "aff_f1": 0.0557,
+      "alpha": 1.0,
+      "sae_score": 0.0557,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "AT",
+      "dataset": "PSM",
+      "auc_roc": 0.5002,
+      "aff_f1": 0.4349,
+      "alpha": 0.4861,
+      "sae_score": 0.4684,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "AT",
+      "dataset": "SMD",
+      "auc_roc": 0.508,
+      "aff_f1": 0.0922,
+      "alpha": 0.6147,
+      "sae_score": 0.2524,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "TranAD",
+      "dataset": "SWaT",
+      "auc_roc": 0.8144,
+      "aff_f1": 0.1035,
+      "alpha": 1.0,
+      "sae_score": 0.1035,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "TranAD",
+      "dataset": "MSL",
+      "auc_roc": 0.5394,
+      "aff_f1": 0.1089,
+      "alpha": 1.0,
+      "sae_score": 0.1089,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "TranAD",
+      "dataset": "SMAP",
+      "auc_roc": 0.3974,
+      "aff_f1": 0.1001,
+      "alpha": 1.0,
+      "sae_score": 0.1001,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "TranAD",
+      "dataset": "WADI",
+      "auc_roc": 0.415,
+      "aff_f1": 0.039,
+      "alpha": 1.0,
+      "sae_score": 0.039,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "TranAD",
+      "dataset": "PSM",
+      "auc_roc": 0.6312,
+      "aff_f1": 0.4112,
+      "alpha": 0.4861,
+      "sae_score": 0.5242,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "TranAD",
+      "dataset": "SMD",
+      "auc_roc": 0.6467,
+      "aff_f1": 0.1683,
+      "alpha": 0.6147,
+      "sae_score": 0.3526,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "CATCH",
+      "dataset": "SWaT",
+      "auc_roc": 0.2286,
+      "aff_f1": 0.1261,
+      "alpha": 1.0,
+      "sae_score": 0.1261,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "CATCH",
+      "dataset": "MSL",
+      "auc_roc": 0.6271,
+      "aff_f1": 0.1706,
+      "alpha": 1.0,
+      "sae_score": 0.1706,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "CATCH",
+      "dataset": "SMAP",
+      "auc_roc": 0.4313,
+      "aff_f1": 0.1064,
+      "alpha": 1.0,
+      "sae_score": 0.1064,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "CATCH",
+      "dataset": "WADI",
+      "auc_roc": 0.4543,
+      "aff_f1": 0.0808,
+      "alpha": 1.0,
+      "sae_score": 0.0808,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "CATCH",
+      "dataset": "PSM",
+      "auc_roc": 0.5993,
+      "aff_f1": 0.4072,
+      "alpha": 0.4861,
+      "sae_score": 0.5059,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "CATCH",
+      "dataset": "SMD",
+      "auc_roc": 0.7828,
+      "aff_f1": 0.2075,
+      "alpha": 0.6147,
+      "sae_score": 0.4292,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "DADA",
+      "dataset": "SWaT",
+      "auc_roc": 0.798,
+      "aff_f1": 0.2002,
+      "alpha": 1.0,
+      "sae_score": 0.2002,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "DADA",
+      "dataset": "MSL",
+      "auc_roc": 0.7465,
+      "aff_f1": 0.2258,
+      "alpha": 1.0,
+      "sae_score": 0.2258,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "DADA",
+      "dataset": "SMAP",
+      "auc_roc": 0.4258,
+      "aff_f1": 0.1264,
+      "alpha": 1.0,
+      "sae_score": 0.1264,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "DADA",
+      "dataset": "WADI",
+      "auc_roc": 0.4213,
+      "aff_f1": 0.0465,
+      "alpha": 1.0,
+      "sae_score": 0.0465,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "DADA",
+      "dataset": "PSM",
+      "auc_roc": 0.6032,
+      "aff_f1": 0.3957,
+      "alpha": 0.4861,
+      "sae_score": 0.5023,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "DADA",
+      "dataset": "SMD",
+      "auc_roc": 0.7186,
+      "aff_f1": 0.1396,
+      "alpha": 0.6147,
+      "sae_score": 0.3627,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "MOMENT",
+      "dataset": "SWaT",
+      "auc_roc": 0.2871,
+      "aff_f1": 0.165,
+      "alpha": 1.0,
+      "sae_score": 0.165,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "MOMENT",
+      "dataset": "MSL",
+      "auc_roc": 0.6607,
+      "aff_f1": 0.1747,
+      "alpha": 1.0,
+      "sae_score": 0.1747,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "MOMENT",
+      "dataset": "SMAP",
+      "auc_roc": 0.4679,
+      "aff_f1": 0.1272,
+      "alpha": 1.0,
+      "sae_score": 0.1272,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "MOMENT",
+      "dataset": "WADI",
+      "auc_roc": 0.403,
+      "aff_f1": 0.0364,
+      "alpha": 1.0,
+      "sae_score": 0.0364,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "MOMENT",
+      "dataset": "PSM",
+      "auc_roc": 0.5693,
+      "aff_f1": 0.4041,
+      "alpha": 0.4861,
+      "sae_score": 0.489,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "MOMENT",
+      "dataset": "SMD",
+      "auc_roc": 0.7258,
+      "aff_f1": 0.1779,
+      "alpha": 0.6147,
+      "sae_score": 0.389,
+      "source": "unified_prts_metrics.json (prts + contam-rate threshold)"
+    },
+    {
+      "model": "IForest",
+      "dataset": "SWaT",
+      "auc_roc": 0.8623,
+      "aff_f1": 0.1333,
+      "alpha": 1.0,
+      "sae_score": 0.1333,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "IForest",
+      "dataset": "MSL",
+      "auc_roc": 0.6043,
+      "aff_f1": 0.0557,
+      "alpha": 1.0,
+      "sae_score": 0.0557,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "IForest",
+      "dataset": "SMAP",
+      "auc_roc": 0.6378,
+      "aff_f1": 0.0682,
+      "alpha": 1.0,
+      "sae_score": 0.0682,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "IForest",
+      "dataset": "WADI",
+      "auc_roc": 0.7147,
+      "aff_f1": 0.205,
+      "alpha": 1.0,
+      "sae_score": 0.205,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "IForest",
+      "dataset": "PSM",
+      "auc_roc": 0.6762,
+      "aff_f1": 0.2323,
+      "alpha": 0.4861,
+      "sae_score": 0.4604,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "IForest",
+      "dataset": "SMD",
+      "auc_roc": 0.6799,
+      "aff_f1": 0.1347,
+      "alpha": 0.6147,
+      "sae_score": 0.3448,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "LOF",
+      "dataset": "SWaT",
+      "auc_roc": 0.4874,
+      "aff_f1": 0.0767,
+      "alpha": 1.0,
+      "sae_score": 0.0767,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "LOF",
+      "dataset": "MSL",
+      "auc_roc": 0.525,
+      "aff_f1": 0.0796,
+      "alpha": 1.0,
+      "sae_score": 0.0796,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "LOF",
+      "dataset": "SMAP",
+      "auc_roc": 0.5135,
+      "aff_f1": 0.1078,
+      "alpha": 1.0,
+      "sae_score": 0.1078,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "LOF",
+      "dataset": "WADI",
+      "auc_roc": 0.5001,
+      "aff_f1": 0.0679,
+      "alpha": 1.0,
+      "sae_score": 0.0679,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "LOF",
+      "dataset": "PSM",
+      "auc_roc": 0.5181,
+      "aff_f1": 0.1857,
+      "alpha": 0.4861,
+      "sae_score": 0.3565,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    },
+    {
+      "model": "LOF",
+      "dataset": "SMD",
+      "auc_roc": 0.6476,
+      "aff_f1": 0.146,
+      "alpha": 0.6147,
+      "sae_score": 0.3393,
+      "source_auc": "run_classical_baselines.py",
+      "source_aff": "run_classical_baselines.py (prts cardinality=one bias=flat)"
+    }
+  ]
+}

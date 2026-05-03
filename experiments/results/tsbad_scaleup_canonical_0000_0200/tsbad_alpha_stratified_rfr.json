@@ -1,0 +1,3704 @@
+{
+  "canonical_dir": "experiments/results/tsbad_scaleup_canonical_0000_0200",
+  "n_rows": 4498,
+  "n_series": 180,
+  "n_models": 25,
+  "auc_roc_vs_sae_score": {
+    "metric_a": "auc_roc",
+    "metric_b": "sae_score",
+    "definition": "Within-series strict pairwise rank flips; tied pairs on either metric are excluded.",
+    "by_alpha_bin": {
+      "alpha=1": {
+        "n_series": 153,
+        "valid_model_rows": 3823,
+        "comparable_pairs": 40200,
+        "flips": 13349,
+        "pairwise_flip_rate": 0.3320646766169154,
+        "mean_per_series_rfr": 0.3635336870467167
+      },
+      "0<alpha<1": {
+        "n_series": 15,
+        "valid_model_rows": 375,
+        "comparable_pairs": 4500,
+        "flips": 791,
+        "pairwise_flip_rate": 0.17577777777777778,
+        "mean_per_series_rfr": 0.17577777777777776
+      },
+      "alpha=0": {
+        "n_series": 12,
+        "valid_model_rows": 300,
+        "comparable_pairs": 3592,
+        "flips": 0,
+        "pairwise_flip_rate": 0.0,
+        "mean_per_series_rfr": 0.0
+      },
+      "alpha<1": {
+        "n_series": 27,
+        "valid_model_rows": 675,
+        "comparable_pairs": 8092,
+        "flips": 791,
+        "pairwise_flip_rate": 0.09775086505190311,
+        "mean_per_series_rfr": 0.09765432098765432
+      },
+      "all": {
+        "n_series": 180,
+        "valid_model_rows": 4498,
+        "comparable_pairs": 48292,
+        "flips": 14140,
+        "pairwise_flip_rate": 0.2928021204340263,
+        "mean_per_series_rfr": 0.3236517821378573
+      }
+    },
+    "per_series": [
+      {
+        "file_name": "001_Genesis_id_1_Sensor_tr_4055_1st_15538.csv",
+        "collection": "Genesis",
+        "alpha": 0.6666666666666667,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 27,
+        "rfr": 0.09
+      },
+      {
+        "file_name": "002_MSL_id_1_Sensor_tr_500_1st_900.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 247,
+        "flips": 61,
+        "rfr": 0.24696356275303644
+      },
+      {
+        "file_name": "003_MSL_id_2_Sensor_tr_883_1st_1238.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 107,
+        "rfr": 0.3566666666666667
+      },
+      {
+        "file_name": "005_MSL_id_4_Sensor_tr_855_1st_2700.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 234,
+        "flips": 100,
+        "rfr": 0.42735042735042733
+      },
+      {
+        "file_name": "006_MSL_id_5_Sensor_tr_1150_1st_1250.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 104,
+        "rfr": 0.3466666666666667
+      },
+      {
+        "file_name": "007_MSL_id_6_Sensor_tr_980_1st_3550.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 294,
+        "flips": 118,
+        "rfr": 0.4013605442176871
+      },
+      {
+        "file_name": "008_MSL_id_7_Sensor_tr_656_1st_1630.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 139,
+        "rfr": 0.46959459459459457
+      },
+      {
+        "file_name": "009_MSL_id_8_Sensor_tr_714_1st_1390.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 47,
+        "flips": 6,
+        "rfr": 0.1276595744680851
+      },
+      {
+        "file_name": "010_MSL_id_9_Sensor_tr_554_1st_1172.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 281,
+        "flips": 133,
+        "rfr": 0.47330960854092524
+      },
+      {
+        "file_name": "012_MSL_id_11_Sensor_tr_539_1st_940.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 100,
+        "rfr": 0.33557046979865773
+      },
+      {
+        "file_name": "013_MSL_id_12_Sensor_tr_554_1st_1200.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 236,
+        "flips": 68,
+        "rfr": 0.288135593220339
+      },
+      {
+        "file_name": "014_MSL_id_13_Sensor_tr_1525_1st_4575.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 91,
+        "rfr": 0.30434782608695654
+      },
+      {
+        "file_name": "015_MSL_id_14_Sensor_tr_575_1st_1250.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 71,
+        "rfr": 0.23666666666666666
+      },
+      {
+        "file_name": "016_MSL_id_15_Sensor_tr_500_1st_780.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 107,
+        "rfr": 0.3566666666666667
+      },
+      {
+        "file_name": "017_MSL_id_16_Sensor_tr_512_1st_1850.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 63,
+        "rfr": 0.21212121212121213
+      },
+      {
+        "file_name": "018_Daphnet_id_1_HumanActivity_tr_9693_1st_20732.csv",
+        "collection": "Daphnet",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 56,
+        "rfr": 0.18729096989966554
+      },
+      {
+        "file_name": "019_MITDB_id_1_Medical_tr_37500_1st_103211.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 112,
+        "rfr": 0.3745819397993311
+      },
+      {
+        "file_name": "020_MITDB_id_2_Medical_tr_50000_1st_52315.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 277,
+        "flips": 86,
+        "rfr": 0.3104693140794224
+      },
+      {
+        "file_name": "021_MITDB_id_3_Medical_tr_50000_1st_57595.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 103,
+        "rfr": 0.34448160535117056
+      },
+      {
+        "file_name": "022_MITDB_id_4_Medical_tr_50000_1st_54253.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 136,
+        "rfr": 0.4533333333333333
+      },
+      {
+        "file_name": "024_MITDB_id_6_Medical_tr_50000_1st_58118.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 283,
+        "flips": 62,
+        "rfr": 0.21908127208480566
+      },
+      {
+        "file_name": "025_MITDB_id_7_Medical_tr_37500_1st_88864.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 67,
+        "rfr": 0.22408026755852842
+      },
+      {
+        "file_name": "026_MITDB_id_8_Medical_tr_30495_1st_30595.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 80,
+        "rfr": 0.26755852842809363
+      },
+      {
+        "file_name": "027_MITDB_id_9_Medical_tr_25000_1st_52255.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 279,
+        "flips": 128,
+        "rfr": 0.45878136200716846
+      },
+      {
+        "file_name": "029_MITDB_id_11_Medical_tr_50000_1st_518037.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 80,
+        "rfr": 0.26755852842809363
+      },
+      {
+        "file_name": "030_MITDB_id_12_Medical_tr_50000_1st_84572.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 118,
+        "rfr": 0.3959731543624161
+      },
+      {
+        "file_name": "031_MITDB_id_13_Medical_tr_50000_1st_79433.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 149,
+        "rfr": 0.5
+      },
+      {
+        "file_name": "032_GHL_id_1_Sensor_tr_50000_1st_65001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 77,
+        "rfr": 0.8555555555555555
+      },
+      {
+        "file_name": "033_GHL_id_2_Sensor_tr_50000_1st_51001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 110,
+        "flips": 96,
+        "rfr": 0.8727272727272727
+      },
+      {
+        "file_name": "034_GHL_id_3_Sensor_tr_50000_1st_122001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 110,
+        "flips": 70,
+        "rfr": 0.6363636363636364
+      },
+      {
+        "file_name": "035_GHL_id_4_Sensor_tr_50000_1st_90001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 129,
+        "flips": 88,
+        "rfr": 0.6821705426356589
+      },
+      {
+        "file_name": "036_GHL_id_5_Sensor_tr_50000_1st_67147.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 164,
+        "flips": 87,
+        "rfr": 0.5304878048780488
+      },
+      {
+        "file_name": "037_GHL_id_6_Sensor_tr_50000_1st_80001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 147,
+        "flips": 99,
+        "rfr": 0.673469387755102
+      },
+      {
+        "file_name": "038_GHL_id_7_Sensor_tr_50000_1st_100001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 66,
+        "rfr": 0.7333333333333333
+      },
+      {
+        "file_name": "039_GHL_id_8_Sensor_tr_50000_1st_63030.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 64,
+        "rfr": 0.7111111111111111
+      },
+      {
+        "file_name": "041_GHL_id_10_Sensor_tr_50000_1st_57001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 110,
+        "flips": 76,
+        "rfr": 0.6909090909090909
+      },
+      {
+        "file_name": "042_GHL_id_11_Sensor_tr_50000_1st_150001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 67,
+        "rfr": 0.7444444444444445
+      },
+      {
+        "file_name": "043_GHL_id_12_Sensor_tr_39938_1st_40038.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 69,
+        "flips": 56,
+        "rfr": 0.8115942028985508
+      },
+      {
+        "file_name": "044_GHL_id_13_Sensor_tr_50000_1st_145001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 82,
+        "rfr": 0.9111111111111111
+      },
+      {
+        "file_name": "045_GHL_id_14_Sensor_tr_50000_1st_85076.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 195,
+        "flips": 76,
+        "rfr": 0.38974358974358975
+      },
+      {
+        "file_name": "046_GHL_id_15_Sensor_tr_50000_1st_156462.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 245,
+        "flips": 68,
+        "rfr": 0.27755102040816326
+      },
+      {
+        "file_name": "047_GHL_id_16_Sensor_tr_50000_1st_77001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 147,
+        "flips": 93,
+        "rfr": 0.6326530612244898
+      },
+      {
+        "file_name": "048_GHL_id_17_Sensor_tr_50000_1st_154001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 147,
+        "flips": 107,
+        "rfr": 0.7278911564625851
+      },
+      {
+        "file_name": "050_GHL_id_19_Sensor_tr_43750_1st_55001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 195,
+        "flips": 64,
+        "rfr": 0.3282051282051282
+      },
+      {
+        "file_name": "051_GHL_id_20_Sensor_tr_50000_1st_75110.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 69,
+        "flips": 26,
+        "rfr": 0.37681159420289856
+      },
+      {
+        "file_name": "052_GHL_id_21_Sensor_tr_50000_1st_98001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 24,
+        "flips": 23,
+        "rfr": 0.9583333333333334
+      },
+      {
+        "file_name": "053_GHL_id_22_Sensor_tr_50000_1st_126448.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 180,
+        "flips": 106,
+        "rfr": 0.5888888888888889
+      },
+      {
+        "file_name": "054_GHL_id_23_Sensor_tr_50000_1st_135001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 255,
+        "flips": 119,
+        "rfr": 0.4666666666666667
+      },
+      {
+        "file_name": "055_GHL_id_24_Sensor_tr_50000_1st_118124.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 24,
+        "flips": 22,
+        "rfr": 0.9166666666666666
+      },
+      {
+        "file_name": "056_GHL_id_25_Sensor_tr_50000_1st_105568.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 147,
+        "flips": 82,
+        "rfr": 0.5578231292517006
+      },
+      {
+        "file_name": "057_SMD_id_1_Facility_tr_4529_1st_4629.csv",
+        "collection": "SMD",
+        "alpha": 0.8,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 52,
+        "rfr": 0.17333333333333334
+      },
+      {
+        "file_name": "058_SMD_id_2_Facility_tr_1087_1st_1187.csv",
+        "collection": "SMD",
+        "alpha": 0.9090909090909092,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 53,
+        "rfr": 0.17666666666666667
+      },
+      {
+        "file_name": "059_SMD_id_3_Facility_tr_757_1st_857.csv",
+        "collection": "SMD",
+        "alpha": 0.6,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 56,
+        "rfr": 0.18666666666666668
+      },
+      {
+        "file_name": "060_SMD_id_4_Facility_tr_7176_1st_10609.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 81,
+        "rfr": 0.27
+      },
+      {
+        "file_name": "061_SMD_id_5_Facility_tr_7176_1st_15144.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 92,
+        "rfr": 0.30666666666666664
+      },
+      {
+        "file_name": "063_SMD_id_7_Facility_tr_5923_1st_6506.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 40,
+        "rfr": 0.13333333333333333
+      },
+      {
+        "file_name": "064_SMD_id_8_Facility_tr_2272_1st_2372.csv",
+        "collection": "SMD",
+        "alpha": 0.9,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 63,
+        "rfr": 0.21
+      },
+      {
+        "file_name": "065_SMD_id_9_Facility_tr_737_1st_837.csv",
+        "collection": "SMD",
+        "alpha": 0.7692307692307692,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 75,
+        "rfr": 0.25
+      },
+      {
+        "file_name": "066_SMD_id_10_Facility_tr_2634_1st_2734.csv",
+        "collection": "SMD",
+        "alpha": 0.75,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 71,
+        "rfr": 0.23666666666666666
+      },
+      {
+        "file_name": "067_SMD_id_11_Facility_tr_1980_1st_2080.csv",
+        "collection": "SMD",
+        "alpha": 0.4444444444444444,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 22,
+        "rfr": 0.07333333333333333
+      },
+      {
+        "file_name": "068_SMD_id_12_Facility_tr_1099_1st_1199.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 68,
+        "rfr": 0.22666666666666666
+      },
+      {
+        "file_name": "069_SMD_id_13_Facility_tr_5925_1st_12760.csv",
+        "collection": "SMD",
+        "alpha": 0.7272727272727273,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 23,
+        "rfr": 0.07666666666666666
+      },
+      {
+        "file_name": "070_SMD_id_14_Facility_tr_1070_1st_1170.csv",
+        "collection": "SMD",
+        "alpha": 0.875,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 82,
+        "rfr": 0.2733333333333333
+      },
+      {
+        "file_name": "071_SMD_id_15_Facility_tr_1109_1st_1209.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 73,
+        "rfr": 0.24333333333333335
+      },
+      {
+        "file_name": "073_SMD_id_17_Facility_tr_5926_1st_10620.csv",
+        "collection": "SMD",
+        "alpha": 0.7142857142857143,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 91,
+        "rfr": 0.30333333333333334
+      },
+      {
+        "file_name": "074_SMD_id_18_Facility_tr_7174_1st_21230.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 56,
+        "rfr": 0.18666666666666668
+      },
+      {
+        "file_name": "075_SMD_id_19_Facility_tr_564_1st_664.csv",
+        "collection": "SMD",
+        "alpha": 0.1999999999999999,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 17,
+        "rfr": 0.056666666666666664
+      },
+      {
+        "file_name": "076_SMD_id_20_Facility_tr_5925_1st_17580.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 73,
+        "rfr": 0.24414715719063546
+      },
+      {
+        "file_name": "077_SMD_id_21_Facility_tr_3026_1st_3126.csv",
+        "collection": "SMD",
+        "alpha": 0.9090909090909092,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 78,
+        "rfr": 0.26
+      },
+      {
+        "file_name": "078_SMD_id_22_Facility_tr_500_1st_326.csv",
+        "collection": "SMD",
+        "alpha": 0.8461538461538461,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 59,
+        "rfr": 0.19666666666666666
+      },
+      {
+        "file_name": "079_LTDB_id_1_Medical_tr_3618_1st_3718.csv",
+        "collection": "LTDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 44,
+        "rfr": 0.14666666666666667
+      },
+      {
+        "file_name": "080_LTDB_id_2_Medical_tr_500_1st_266.csv",
+        "collection": "LTDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 59,
+        "rfr": 0.19666666666666666
+      },
+      {
+        "file_name": "081_LTDB_id_3_Medical_tr_500_1st_26.csv",
+        "collection": "LTDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 94,
+        "rfr": 0.31438127090301005
+      },
+      {
+        "file_name": "083_LTDB_id_5_Medical_tr_15502_1st_15602.csv",
+        "collection": "LTDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 295,
+        "flips": 67,
+        "rfr": 0.2271186440677966
+      },
+      {
+        "file_name": "084_SVDB_id_1_Medical_tr_12973_1st_13073.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 127,
+        "rfr": 0.4276094276094276
+      },
+      {
+        "file_name": "085_SVDB_id_2_Medical_tr_50000_1st_54982.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 82,
+        "rfr": 0.2751677852348993
+      },
+      {
+        "file_name": "086_SVDB_id_3_Medical_tr_533_1st_633.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 81,
+        "rfr": 0.27
+      },
+      {
+        "file_name": "087_SVDB_id_4_Medical_tr_5421_1st_5521.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 80,
+        "rfr": 0.2684563758389262
+      },
+      {
+        "file_name": "088_SVDB_id_5_Medical_tr_500_1st_168.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 85,
+        "rfr": 0.28523489932885904
+      },
+      {
+        "file_name": "089_SVDB_id_6_Medical_tr_50000_1st_83083.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 108,
+        "rfr": 0.36486486486486486
+      },
+      {
+        "file_name": "091_SVDB_id_8_Medical_tr_500_1st_126.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 53,
+        "rfr": 0.17666666666666667
+      },
+      {
+        "file_name": "092_SVDB_id_9_Medical_tr_2674_1st_2774.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 66,
+        "rfr": 0.22
+      },
+      {
+        "file_name": "093_SVDB_id_10_Medical_tr_500_1st_37.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 81,
+        "rfr": 0.2709030100334448
+      },
+      {
+        "file_name": "094_SVDB_id_11_Medical_tr_20100_1st_23611.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 66,
+        "rfr": 0.22073578595317725
+      },
+      {
+        "file_name": "095_SVDB_id_12_Medical_tr_6264_1st_6364.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 105,
+        "rfr": 0.3511705685618729
+      },
+      {
+        "file_name": "096_SVDB_id_13_Medical_tr_500_1st_444.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 141,
+        "rfr": 0.47
+      },
+      {
+        "file_name": "097_SVDB_id_14_Medical_tr_1031_1st_1131.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 38,
+        "rfr": 0.12794612794612795
+      },
+      {
+        "file_name": "098_SVDB_id_15_Medical_tr_500_1st_303.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 89,
+        "rfr": 0.2976588628762542
+      },
+      {
+        "file_name": "099_SVDB_id_16_Medical_tr_1115_1st_1215.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 45,
+        "rfr": 0.1505016722408027
+      },
+      {
+        "file_name": "100_SVDB_id_17_Medical_tr_17803_1st_17903.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 91,
+        "rfr": 0.30434782608695654
+      },
+      {
+        "file_name": "101_SVDB_id_18_Medical_tr_1851_1st_1951.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 46,
+        "rfr": 0.15333333333333332
+      },
+      {
+        "file_name": "102_SVDB_id_19_Medical_tr_50000_1st_107354.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 80,
+        "rfr": 0.26755852842809363
+      },
+      {
+        "file_name": "103_SVDB_id_20_Medical_tr_12167_1st_12267.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 149,
+        "rfr": 0.5
+      },
+      {
+        "file_name": "104_SVDB_id_21_Medical_tr_50000_1st_106634.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 60,
+        "rfr": 0.20270270270270271
+      },
+      {
+        "file_name": "105_SVDB_id_22_Medical_tr_500_1st_417.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 83,
+        "rfr": 0.27759197324414714
+      },
+      {
+        "file_name": "106_SVDB_id_23_Medical_tr_37500_1st_121963.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 108,
+        "rfr": 0.36486486486486486
+      },
+      {
+        "file_name": "108_SVDB_id_25_Medical_tr_1238_1st_1338.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 61,
+        "rfr": 0.2053872053872054
+      },
+      {
+        "file_name": "109_SVDB_id_26_Medical_tr_1038_1st_1138.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 99,
+        "rfr": 0.3311036789297659
+      },
+      {
+        "file_name": "110_SVDB_id_27_Medical_tr_30824_1st_30924.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 80,
+        "rfr": 0.26666666666666666
+      },
+      {
+        "file_name": "111_SVDB_id_28_Medical_tr_1791_1st_1891.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 294,
+        "flips": 82,
+        "rfr": 0.2789115646258503
+      },
+      {
+        "file_name": "112_SVDB_id_29_Medical_tr_8226_1st_8326.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 295,
+        "flips": 127,
+        "rfr": 0.43050847457627117
+      },
+      {
+        "file_name": "114_SVDB_id_31_Medical_tr_25000_1st_63090.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 293,
+        "flips": 102,
+        "rfr": 0.34812286689419797
+      },
+      {
+        "file_name": "115_PSM_id_1_Facility_tr_50000_1st_129872.csv",
+        "collection": "PSM",
+        "alpha": 0.4861111111111111,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 22,
+        "rfr": 0.07333333333333333
+      },
+      {
+        "file_name": "116_TAO_id_1_Environment_tr_500_1st_3.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "117_TAO_id_2_Environment_tr_500_1st_1.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "118_TAO_id_3_Environment_tr_500_1st_7.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "119_TAO_id_4_Environment_tr_500_1st_1.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "121_TAO_id_6_Environment_tr_500_1st_7.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "122_TAO_id_7_Environment_tr_500_1st_19.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "123_TAO_id_8_Environment_tr_500_1st_62.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "124_TAO_id_9_Environment_tr_500_1st_1.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "125_TAO_id_10_Environment_tr_500_1st_9.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "127_TAO_id_12_Environment_tr_500_1st_24.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "128_TAO_id_13_Environment_tr_500_1st_7.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "129_OPPORTUNITY_id_1_HumanActivity_tr_1801_1st_1901.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 272,
+        "flips": 92,
+        "rfr": 0.3382352941176471
+      },
+      {
+        "file_name": "130_OPPORTUNITY_id_2_HumanActivity_tr_1045_1st_1145.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 279,
+        "flips": 66,
+        "rfr": 0.23655913978494625
+      },
+      {
+        "file_name": "132_OPPORTUNITY_id_4_HumanActivity_tr_895_1st_995.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 180,
+        "flips": 39,
+        "rfr": 0.21666666666666667
+      },
+      {
+        "file_name": "133_OPPORTUNITY_id_5_HumanActivity_tr_1745_1st_6500.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 51,
+        "rfr": 0.17
+      },
+      {
+        "file_name": "134_OPPORTUNITY_id_6_HumanActivity_tr_1477_1st_1577.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 234,
+        "flips": 49,
+        "rfr": 0.2094017094017094
+      },
+      {
+        "file_name": "135_OPPORTUNITY_id_7_HumanActivity_tr_2085_1st_2185.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 255,
+        "flips": 78,
+        "rfr": 0.3058823529411765
+      },
+      {
+        "file_name": "136_OPPORTUNITY_id_8_HumanActivity_tr_1495_1st_1595.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 245,
+        "flips": 85,
+        "rfr": 0.3469387755102041
+      },
+      {
+        "file_name": "137_CreditCard_id_1_Finance_tr_500_1st_541.csv",
+        "collection": "CreditCard",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 0,
+        "rfr": 0.0
+      },
+      {
+        "file_name": "138_CATSv2_id_1_Sensor_tr_16568_1st_16668.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 294,
+        "flips": 82,
+        "rfr": 0.2789115646258503
+      },
+      {
+        "file_name": "139_CATSv2_id_2_Sensor_tr_5592_1st_5692.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 128,
+        "rfr": 0.4280936454849498
+      },
+      {
+        "file_name": "141_CATSv2_id_4_Sensor_tr_41727_1st_41827.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 123,
+        "rfr": 0.41
+      },
+      {
+        "file_name": "142_CATSv2_id_5_Sensor_tr_30704_1st_30804.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 129,
+        "rfr": 0.43
+      },
+      {
+        "file_name": "143_CATSv2_id_6_Sensor_tr_50000_1st_60232.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 127,
+        "rfr": 0.42333333333333334
+      },
+      {
+        "file_name": "144_SMAP_id_1_Sensor_tr_2052_1st_5300.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 65,
+        "rfr": 0.21739130434782608
+      },
+      {
+        "file_name": "145_SMAP_id_2_Sensor_tr_2133_1st_5400.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 123,
+        "rfr": 0.41
+      },
+      {
+        "file_name": "146_SMAP_id_3_Sensor_tr_2128_1st_5000.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 101,
+        "rfr": 0.3377926421404682
+      },
+      {
+        "file_name": "147_SMAP_id_4_Sensor_tr_2160_1st_6449.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 221,
+        "flips": 96,
+        "rfr": 0.4343891402714932
+      },
+      {
+        "file_name": "148_SMAP_id_5_Sensor_tr_2011_1st_5060.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 161,
+        "flips": 62,
+        "rfr": 0.38509316770186336
+      },
+      {
+        "file_name": "150_SMAP_id_7_Sensor_tr_2077_1st_5394.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 94,
+        "rfr": 0.31543624161073824
+      },
+      {
+        "file_name": "151_SMAP_id_8_Sensor_tr_1971_1st_4870.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 287,
+        "flips": 138,
+        "rfr": 0.4808362369337979
+      },
+      {
+        "file_name": "152_SMAP_id_9_Sensor_tr_2073_1st_5600.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 151,
+        "rfr": 0.5067114093959731
+      },
+      {
+        "file_name": "153_SMAP_id_10_Sensor_tr_1840_1st_4030.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 220,
+        "flips": 129,
+        "rfr": 0.5863636363636363
+      },
+      {
+        "file_name": "154_SMAP_id_11_Sensor_tr_2117_1st_4770.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 163,
+        "flips": 41,
+        "rfr": 0.25153374233128833
+      },
+      {
+        "file_name": "155_SMAP_id_12_Sensor_tr_1907_1st_4800.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 252,
+        "flips": 134,
+        "rfr": 0.5317460317460317
+      },
+      {
+        "file_name": "156_SMAP_id_13_Sensor_tr_1173_1st_2750.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 24,
+        "comparable_pairs": 272,
+        "flips": 74,
+        "rfr": 0.27205882352941174
+      },
+      {
+        "file_name": "157_SMAP_id_14_Sensor_tr_2126_1st_5000.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 95,
+        "rfr": 0.3177257525083612
+      },
+      {
+        "file_name": "158_SMAP_id_15_Sensor_tr_2075_1st_5610.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 60,
+        "rfr": 0.20270270270270271
+      },
+      {
+        "file_name": "159_SMAP_id_16_Sensor_tr_1757_1st_2650.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 264,
+        "flips": 42,
+        "rfr": 0.1590909090909091
+      },
+      {
+        "file_name": "160_SMAP_id_17_Sensor_tr_1832_1st_5300.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 272,
+        "flips": 71,
+        "rfr": 0.2610294117647059
+      },
+      {
+        "file_name": "161_SMAP_id_18_Sensor_tr_2075_1st_5550.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 144,
+        "rfr": 0.4816053511705686
+      },
+      {
+        "file_name": "162_SMAP_id_19_Sensor_tr_1908_1st_4690.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 266,
+        "flips": 95,
+        "rfr": 0.35714285714285715
+      },
+      {
+        "file_name": "163_SMAP_id_20_Sensor_tr_2051_1st_4575.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 279,
+        "flips": 108,
+        "rfr": 0.3870967741935484
+      },
+      {
+        "file_name": "165_SMAP_id_22_Sensor_tr_2129_1st_5000.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 108,
+        "rfr": 0.36486486486486486
+      },
+      {
+        "file_name": "166_SMAP_id_23_Sensor_tr_1113_1st_1890.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 24,
+        "comparable_pairs": 269,
+        "flips": 41,
+        "rfr": 0.1524163568773234
+      },
+      {
+        "file_name": "167_SMAP_id_24_Sensor_tr_2094_1st_5600.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 282,
+        "flips": 75,
+        "rfr": 0.26595744680851063
+      },
+      {
+        "file_name": "168_SMAP_id_25_Sensor_tr_1998_1st_2098.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 292,
+        "flips": 137,
+        "rfr": 0.4691780821917808
+      },
+      {
+        "file_name": "169_SMAP_id_26_Sensor_tr_1811_1st_4510.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 269,
+        "flips": 136,
+        "rfr": 0.5055762081784386
+      },
+      {
+        "file_name": "170_SMAP_id_27_Sensor_tr_2160_1st_4690.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 277,
+        "flips": 163,
+        "rfr": 0.5884476534296029
+      },
+      {
+        "file_name": "171_SWaT_id_1_Sensor_tr_3749_1st_9522.csv",
+        "collection": "SWaT",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 82,
+        "rfr": 0.2733333333333333
+      },
+      {
+        "file_name": "172_SWaT_id_2_Sensor_tr_23700_1st_23800.csv",
+        "collection": "SWaT",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 136,
+        "rfr": 0.4533333333333333
+      },
+      {
+        "file_name": "173_GECCO_id_1_Sensor_tr_16165_1st_16265.csv",
+        "collection": "GECCO",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 52,
+        "rfr": 0.17333333333333334
+      },
+      {
+        "file_name": "174_Exathlon_id_1_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 84,
+        "rfr": 0.28
+      },
+      {
+        "file_name": "175_Exathlon_id_2_Facility_tr_10684_1st_10784.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 80,
+        "rfr": 0.26666666666666666
+      },
+      {
+        "file_name": "176_Exathlon_id_3_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 102,
+        "rfr": 0.34
+      },
+      {
+        "file_name": "177_Exathlon_id_4_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 82,
+        "rfr": 0.2733333333333333
+      },
+      {
+        "file_name": "179_Exathlon_id_6_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 81,
+        "rfr": 0.27
+      },
+      {
+        "file_name": "180_Exathlon_id_7_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 107,
+        "rfr": 0.3566666666666667
+      },
+      {
+        "file_name": "181_Exathlon_id_8_Facility_tr_11663_1st_13482.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 88,
+        "rfr": 0.29333333333333333
+      },
+      {
+        "file_name": "182_Exathlon_id_9_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 97,
+        "rfr": 0.3233333333333333
+      },
+      {
+        "file_name": "183_Exathlon_id_10_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 88,
+        "rfr": 0.29333333333333333
+      },
+      {
+        "file_name": "184_Exathlon_id_11_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 91,
+        "rfr": 0.30333333333333334
+      },
+      {
+        "file_name": "185_Exathlon_id_12_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 70,
+        "rfr": 0.23333333333333334
+      },
+      {
+        "file_name": "186_Exathlon_id_13_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 116,
+        "rfr": 0.38666666666666666
+      },
+      {
+        "file_name": "187_Exathlon_id_14_Facility_tr_6193_1st_6293.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 103,
+        "rfr": 0.3433333333333333
+      },
+      {
+        "file_name": "188_Exathlon_id_15_Facility_tr_12538_1st_12638.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 100,
+        "rfr": 0.3333333333333333
+      },
+      {
+        "file_name": "189_Exathlon_id_16_Facility_tr_11663_1st_13482.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 88,
+        "rfr": 0.29333333333333333
+      },
+      {
+        "file_name": "190_Exathlon_id_17_Facility_tr_12538_1st_12638.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 87,
+        "rfr": 0.29
+      },
+      {
+        "file_name": "191_Exathlon_id_18_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 90,
+        "rfr": 0.3
+      },
+      {
+        "file_name": "192_Exathlon_id_19_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 86,
+        "rfr": 0.2866666666666667
+      },
+      {
+        "file_name": "193_Exathlon_id_20_Facility_tr_8898_1st_8998.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 55,
+        "rfr": 0.18333333333333332
+      },
+      {
+        "file_name": "194_Exathlon_id_21_Facility_tr_6985_1st_7085.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 68,
+        "rfr": 0.22666666666666666
+      },
+      {
+        "file_name": "196_Exathlon_id_23_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 76,
+        "rfr": 0.25333333333333335
+      },
+      {
+        "file_name": "197_Exathlon_id_24_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 104,
+        "rfr": 0.3466666666666667
+      },
+      {
+        "file_name": "198_Exathlon_id_25_Facility_tr_12538_1st_12638.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 94,
+        "rfr": 0.31333333333333335
+      },
+      {
+        "file_name": "199_Exathlon_id_26_Facility_tr_12538_1st_12638.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 84,
+        "rfr": 0.28
+      },
+      {
+        "file_name": "200_Exathlon_id_27_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 105,
+        "rfr": 0.35
+      }
+    ]
+  },
+  "auc_roc_vs_aff_f1": {
+    "metric_a": "auc_roc",
+    "metric_b": "aff_f1",
+    "definition": "Within-series strict pairwise rank flips; tied pairs on either metric are excluded.",
+    "by_alpha_bin": {
+      "alpha=1": {
+        "n_series": 153,
+        "valid_model_rows": 3823,
+        "comparable_pairs": 40200,
+        "flips": 13349,
+        "pairwise_flip_rate": 0.3320646766169154,
+        "mean_per_series_rfr": 0.3635336870467167
+      },
+      "0<alpha<1": {
+        "n_series": 15,
+        "valid_model_rows": 375,
+        "comparable_pairs": 4419,
+        "flips": 1280,
+        "pairwise_flip_rate": 0.2896582937316135,
+        "mean_per_series_rfr": 0.2914374981041647
+      },
+      "alpha=0": {
+        "n_series": 12,
+        "valid_model_rows": 300,
+        "comparable_pairs": 3561,
+        "flips": 522,
+        "pairwise_flip_rate": 0.14658803706823925,
+        "mean_per_series_rfr": 0.14742252617072568
+      },
+      "alpha<1": {
+        "n_series": 27,
+        "valid_model_rows": 675,
+        "comparable_pairs": 7980,
+        "flips": 1802,
+        "pairwise_flip_rate": 0.22581453634085213,
+        "mean_per_series_rfr": 0.22743084391152518
+      },
+      "all": {
+        "n_series": 180,
+        "valid_model_rows": 4498,
+        "comparable_pairs": 48180,
+        "flips": 15151,
+        "pairwise_flip_rate": 0.31446658364466584,
+        "mean_per_series_rfr": 0.34311826057643796
+      }
+    },
+    "per_series": [
+      {
+        "file_name": "001_Genesis_id_1_Sensor_tr_4055_1st_15538.csv",
+        "collection": "Genesis",
+        "alpha": 0.6666666666666667,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 222,
+        "flips": 86,
+        "rfr": 0.38738738738738737
+      },
+      {
+        "file_name": "002_MSL_id_1_Sensor_tr_500_1st_900.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 247,
+        "flips": 61,
+        "rfr": 0.24696356275303644
+      },
+      {
+        "file_name": "003_MSL_id_2_Sensor_tr_883_1st_1238.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 107,
+        "rfr": 0.3566666666666667
+      },
+      {
+        "file_name": "005_MSL_id_4_Sensor_tr_855_1st_2700.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 234,
+        "flips": 100,
+        "rfr": 0.42735042735042733
+      },
+      {
+        "file_name": "006_MSL_id_5_Sensor_tr_1150_1st_1250.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 104,
+        "rfr": 0.3466666666666667
+      },
+      {
+        "file_name": "007_MSL_id_6_Sensor_tr_980_1st_3550.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 294,
+        "flips": 118,
+        "rfr": 0.4013605442176871
+      },
+      {
+        "file_name": "008_MSL_id_7_Sensor_tr_656_1st_1630.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 139,
+        "rfr": 0.46959459459459457
+      },
+      {
+        "file_name": "009_MSL_id_8_Sensor_tr_714_1st_1390.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 47,
+        "flips": 6,
+        "rfr": 0.1276595744680851
+      },
+      {
+        "file_name": "010_MSL_id_9_Sensor_tr_554_1st_1172.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 281,
+        "flips": 133,
+        "rfr": 0.47330960854092524
+      },
+      {
+        "file_name": "012_MSL_id_11_Sensor_tr_539_1st_940.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 100,
+        "rfr": 0.33557046979865773
+      },
+      {
+        "file_name": "013_MSL_id_12_Sensor_tr_554_1st_1200.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 236,
+        "flips": 68,
+        "rfr": 0.288135593220339
+      },
+      {
+        "file_name": "014_MSL_id_13_Sensor_tr_1525_1st_4575.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 91,
+        "rfr": 0.30434782608695654
+      },
+      {
+        "file_name": "015_MSL_id_14_Sensor_tr_575_1st_1250.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 71,
+        "rfr": 0.23666666666666666
+      },
+      {
+        "file_name": "016_MSL_id_15_Sensor_tr_500_1st_780.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 107,
+        "rfr": 0.3566666666666667
+      },
+      {
+        "file_name": "017_MSL_id_16_Sensor_tr_512_1st_1850.csv",
+        "collection": "MSL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 63,
+        "rfr": 0.21212121212121213
+      },
+      {
+        "file_name": "018_Daphnet_id_1_HumanActivity_tr_9693_1st_20732.csv",
+        "collection": "Daphnet",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 56,
+        "rfr": 0.18729096989966554
+      },
+      {
+        "file_name": "019_MITDB_id_1_Medical_tr_37500_1st_103211.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 112,
+        "rfr": 0.3745819397993311
+      },
+      {
+        "file_name": "020_MITDB_id_2_Medical_tr_50000_1st_52315.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 277,
+        "flips": 86,
+        "rfr": 0.3104693140794224
+      },
+      {
+        "file_name": "021_MITDB_id_3_Medical_tr_50000_1st_57595.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 103,
+        "rfr": 0.34448160535117056
+      },
+      {
+        "file_name": "022_MITDB_id_4_Medical_tr_50000_1st_54253.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 136,
+        "rfr": 0.4533333333333333
+      },
+      {
+        "file_name": "024_MITDB_id_6_Medical_tr_50000_1st_58118.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 283,
+        "flips": 62,
+        "rfr": 0.21908127208480566
+      },
+      {
+        "file_name": "025_MITDB_id_7_Medical_tr_37500_1st_88864.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 67,
+        "rfr": 0.22408026755852842
+      },
+      {
+        "file_name": "026_MITDB_id_8_Medical_tr_30495_1st_30595.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 80,
+        "rfr": 0.26755852842809363
+      },
+      {
+        "file_name": "027_MITDB_id_9_Medical_tr_25000_1st_52255.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 279,
+        "flips": 128,
+        "rfr": 0.45878136200716846
+      },
+      {
+        "file_name": "029_MITDB_id_11_Medical_tr_50000_1st_518037.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 80,
+        "rfr": 0.26755852842809363
+      },
+      {
+        "file_name": "030_MITDB_id_12_Medical_tr_50000_1st_84572.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 118,
+        "rfr": 0.3959731543624161
+      },
+      {
+        "file_name": "031_MITDB_id_13_Medical_tr_50000_1st_79433.csv",
+        "collection": "MITDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 149,
+        "rfr": 0.5
+      },
+      {
+        "file_name": "032_GHL_id_1_Sensor_tr_50000_1st_65001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 77,
+        "rfr": 0.8555555555555555
+      },
+      {
+        "file_name": "033_GHL_id_2_Sensor_tr_50000_1st_51001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 110,
+        "flips": 96,
+        "rfr": 0.8727272727272727
+      },
+      {
+        "file_name": "034_GHL_id_3_Sensor_tr_50000_1st_122001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 110,
+        "flips": 70,
+        "rfr": 0.6363636363636364
+      },
+      {
+        "file_name": "035_GHL_id_4_Sensor_tr_50000_1st_90001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 129,
+        "flips": 88,
+        "rfr": 0.6821705426356589
+      },
+      {
+        "file_name": "036_GHL_id_5_Sensor_tr_50000_1st_67147.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 164,
+        "flips": 87,
+        "rfr": 0.5304878048780488
+      },
+      {
+        "file_name": "037_GHL_id_6_Sensor_tr_50000_1st_80001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 147,
+        "flips": 99,
+        "rfr": 0.673469387755102
+      },
+      {
+        "file_name": "038_GHL_id_7_Sensor_tr_50000_1st_100001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 66,
+        "rfr": 0.7333333333333333
+      },
+      {
+        "file_name": "039_GHL_id_8_Sensor_tr_50000_1st_63030.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 64,
+        "rfr": 0.7111111111111111
+      },
+      {
+        "file_name": "041_GHL_id_10_Sensor_tr_50000_1st_57001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 110,
+        "flips": 76,
+        "rfr": 0.6909090909090909
+      },
+      {
+        "file_name": "042_GHL_id_11_Sensor_tr_50000_1st_150001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 67,
+        "rfr": 0.7444444444444445
+      },
+      {
+        "file_name": "043_GHL_id_12_Sensor_tr_39938_1st_40038.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 69,
+        "flips": 56,
+        "rfr": 0.8115942028985508
+      },
+      {
+        "file_name": "044_GHL_id_13_Sensor_tr_50000_1st_145001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 90,
+        "flips": 82,
+        "rfr": 0.9111111111111111
+      },
+      {
+        "file_name": "045_GHL_id_14_Sensor_tr_50000_1st_85076.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 195,
+        "flips": 76,
+        "rfr": 0.38974358974358975
+      },
+      {
+        "file_name": "046_GHL_id_15_Sensor_tr_50000_1st_156462.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 245,
+        "flips": 68,
+        "rfr": 0.27755102040816326
+      },
+      {
+        "file_name": "047_GHL_id_16_Sensor_tr_50000_1st_77001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 147,
+        "flips": 93,
+        "rfr": 0.6326530612244898
+      },
+      {
+        "file_name": "048_GHL_id_17_Sensor_tr_50000_1st_154001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 147,
+        "flips": 107,
+        "rfr": 0.7278911564625851
+      },
+      {
+        "file_name": "050_GHL_id_19_Sensor_tr_43750_1st_55001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 195,
+        "flips": 64,
+        "rfr": 0.3282051282051282
+      },
+      {
+        "file_name": "051_GHL_id_20_Sensor_tr_50000_1st_75110.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 69,
+        "flips": 26,
+        "rfr": 0.37681159420289856
+      },
+      {
+        "file_name": "052_GHL_id_21_Sensor_tr_50000_1st_98001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 24,
+        "flips": 23,
+        "rfr": 0.9583333333333334
+      },
+      {
+        "file_name": "053_GHL_id_22_Sensor_tr_50000_1st_126448.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 180,
+        "flips": 106,
+        "rfr": 0.5888888888888889
+      },
+      {
+        "file_name": "054_GHL_id_23_Sensor_tr_50000_1st_135001.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 255,
+        "flips": 119,
+        "rfr": 0.4666666666666667
+      },
+      {
+        "file_name": "055_GHL_id_24_Sensor_tr_50000_1st_118124.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 24,
+        "flips": 22,
+        "rfr": 0.9166666666666666
+      },
+      {
+        "file_name": "056_GHL_id_25_Sensor_tr_50000_1st_105568.csv",
+        "collection": "GHL",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 147,
+        "flips": 82,
+        "rfr": 0.5578231292517006
+      },
+      {
+        "file_name": "057_SMD_id_1_Facility_tr_4529_1st_4629.csv",
+        "collection": "SMD",
+        "alpha": 0.8,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 70,
+        "rfr": 0.23333333333333334
+      },
+      {
+        "file_name": "058_SMD_id_2_Facility_tr_1087_1st_1187.csv",
+        "collection": "SMD",
+        "alpha": 0.9090909090909092,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 54,
+        "rfr": 0.18
+      },
+      {
+        "file_name": "059_SMD_id_3_Facility_tr_757_1st_857.csv",
+        "collection": "SMD",
+        "alpha": 0.6,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 67,
+        "rfr": 0.22333333333333333
+      },
+      {
+        "file_name": "060_SMD_id_4_Facility_tr_7176_1st_10609.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 81,
+        "rfr": 0.27
+      },
+      {
+        "file_name": "061_SMD_id_5_Facility_tr_7176_1st_15144.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 92,
+        "rfr": 0.30666666666666664
+      },
+      {
+        "file_name": "063_SMD_id_7_Facility_tr_5923_1st_6506.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 40,
+        "rfr": 0.13333333333333333
+      },
+      {
+        "file_name": "064_SMD_id_8_Facility_tr_2272_1st_2372.csv",
+        "collection": "SMD",
+        "alpha": 0.9,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 70,
+        "rfr": 0.23333333333333334
+      },
+      {
+        "file_name": "065_SMD_id_9_Facility_tr_737_1st_837.csv",
+        "collection": "SMD",
+        "alpha": 0.7692307692307692,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 95,
+        "rfr": 0.31666666666666665
+      },
+      {
+        "file_name": "066_SMD_id_10_Facility_tr_2634_1st_2734.csv",
+        "collection": "SMD",
+        "alpha": 0.75,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 86,
+        "rfr": 0.2866666666666667
+      },
+      {
+        "file_name": "067_SMD_id_11_Facility_tr_1980_1st_2080.csv",
+        "collection": "SMD",
+        "alpha": 0.4444444444444444,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 125,
+        "rfr": 0.4166666666666667
+      },
+      {
+        "file_name": "068_SMD_id_12_Facility_tr_1099_1st_1199.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 68,
+        "rfr": 0.22666666666666666
+      },
+      {
+        "file_name": "069_SMD_id_13_Facility_tr_5925_1st_12760.csv",
+        "collection": "SMD",
+        "alpha": 0.7272727272727273,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 40,
+        "rfr": 0.13333333333333333
+      },
+      {
+        "file_name": "070_SMD_id_14_Facility_tr_1070_1st_1170.csv",
+        "collection": "SMD",
+        "alpha": 0.875,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 95,
+        "rfr": 0.31666666666666665
+      },
+      {
+        "file_name": "071_SMD_id_15_Facility_tr_1109_1st_1209.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 73,
+        "rfr": 0.24333333333333335
+      },
+      {
+        "file_name": "073_SMD_id_17_Facility_tr_5926_1st_10620.csv",
+        "collection": "SMD",
+        "alpha": 0.7142857142857143,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 124,
+        "rfr": 0.4175084175084175
+      },
+      {
+        "file_name": "074_SMD_id_18_Facility_tr_7174_1st_21230.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 56,
+        "rfr": 0.18666666666666668
+      },
+      {
+        "file_name": "075_SMD_id_19_Facility_tr_564_1st_664.csv",
+        "collection": "SMD",
+        "alpha": 0.1999999999999999,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 102,
+        "rfr": 0.34
+      },
+      {
+        "file_name": "076_SMD_id_20_Facility_tr_5925_1st_17580.csv",
+        "collection": "SMD",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 73,
+        "rfr": 0.24414715719063546
+      },
+      {
+        "file_name": "077_SMD_id_21_Facility_tr_3026_1st_3126.csv",
+        "collection": "SMD",
+        "alpha": 0.9090909090909092,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 82,
+        "rfr": 0.2733333333333333
+      },
+      {
+        "file_name": "078_SMD_id_22_Facility_tr_500_1st_326.csv",
+        "collection": "SMD",
+        "alpha": 0.8461538461538461,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 68,
+        "rfr": 0.22666666666666666
+      },
+      {
+        "file_name": "079_LTDB_id_1_Medical_tr_3618_1st_3718.csv",
+        "collection": "LTDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 44,
+        "rfr": 0.14666666666666667
+      },
+      {
+        "file_name": "080_LTDB_id_2_Medical_tr_500_1st_266.csv",
+        "collection": "LTDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 59,
+        "rfr": 0.19666666666666666
+      },
+      {
+        "file_name": "081_LTDB_id_3_Medical_tr_500_1st_26.csv",
+        "collection": "LTDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 94,
+        "rfr": 0.31438127090301005
+      },
+      {
+        "file_name": "083_LTDB_id_5_Medical_tr_15502_1st_15602.csv",
+        "collection": "LTDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 295,
+        "flips": 67,
+        "rfr": 0.2271186440677966
+      },
+      {
+        "file_name": "084_SVDB_id_1_Medical_tr_12973_1st_13073.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 127,
+        "rfr": 0.4276094276094276
+      },
+      {
+        "file_name": "085_SVDB_id_2_Medical_tr_50000_1st_54982.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 82,
+        "rfr": 0.2751677852348993
+      },
+      {
+        "file_name": "086_SVDB_id_3_Medical_tr_533_1st_633.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 81,
+        "rfr": 0.27
+      },
+      {
+        "file_name": "087_SVDB_id_4_Medical_tr_5421_1st_5521.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 80,
+        "rfr": 0.2684563758389262
+      },
+      {
+        "file_name": "088_SVDB_id_5_Medical_tr_500_1st_168.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 85,
+        "rfr": 0.28523489932885904
+      },
+      {
+        "file_name": "089_SVDB_id_6_Medical_tr_50000_1st_83083.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 108,
+        "rfr": 0.36486486486486486
+      },
+      {
+        "file_name": "091_SVDB_id_8_Medical_tr_500_1st_126.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 53,
+        "rfr": 0.17666666666666667
+      },
+      {
+        "file_name": "092_SVDB_id_9_Medical_tr_2674_1st_2774.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 66,
+        "rfr": 0.22
+      },
+      {
+        "file_name": "093_SVDB_id_10_Medical_tr_500_1st_37.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 81,
+        "rfr": 0.2709030100334448
+      },
+      {
+        "file_name": "094_SVDB_id_11_Medical_tr_20100_1st_23611.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 66,
+        "rfr": 0.22073578595317725
+      },
+      {
+        "file_name": "095_SVDB_id_12_Medical_tr_6264_1st_6364.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 105,
+        "rfr": 0.3511705685618729
+      },
+      {
+        "file_name": "096_SVDB_id_13_Medical_tr_500_1st_444.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 141,
+        "rfr": 0.47
+      },
+      {
+        "file_name": "097_SVDB_id_14_Medical_tr_1031_1st_1131.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 38,
+        "rfr": 0.12794612794612795
+      },
+      {
+        "file_name": "098_SVDB_id_15_Medical_tr_500_1st_303.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 89,
+        "rfr": 0.2976588628762542
+      },
+      {
+        "file_name": "099_SVDB_id_16_Medical_tr_1115_1st_1215.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 45,
+        "rfr": 0.1505016722408027
+      },
+      {
+        "file_name": "100_SVDB_id_17_Medical_tr_17803_1st_17903.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 91,
+        "rfr": 0.30434782608695654
+      },
+      {
+        "file_name": "101_SVDB_id_18_Medical_tr_1851_1st_1951.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 46,
+        "rfr": 0.15333333333333332
+      },
+      {
+        "file_name": "102_SVDB_id_19_Medical_tr_50000_1st_107354.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 80,
+        "rfr": 0.26755852842809363
+      },
+      {
+        "file_name": "103_SVDB_id_20_Medical_tr_12167_1st_12267.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 149,
+        "rfr": 0.5
+      },
+      {
+        "file_name": "104_SVDB_id_21_Medical_tr_50000_1st_106634.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 60,
+        "rfr": 0.20270270270270271
+      },
+      {
+        "file_name": "105_SVDB_id_22_Medical_tr_500_1st_417.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 83,
+        "rfr": 0.27759197324414714
+      },
+      {
+        "file_name": "106_SVDB_id_23_Medical_tr_37500_1st_121963.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 108,
+        "rfr": 0.36486486486486486
+      },
+      {
+        "file_name": "108_SVDB_id_25_Medical_tr_1238_1st_1338.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 61,
+        "rfr": 0.2053872053872054
+      },
+      {
+        "file_name": "109_SVDB_id_26_Medical_tr_1038_1st_1138.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 99,
+        "rfr": 0.3311036789297659
+      },
+      {
+        "file_name": "110_SVDB_id_27_Medical_tr_30824_1st_30924.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 80,
+        "rfr": 0.26666666666666666
+      },
+      {
+        "file_name": "111_SVDB_id_28_Medical_tr_1791_1st_1891.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 294,
+        "flips": 82,
+        "rfr": 0.2789115646258503
+      },
+      {
+        "file_name": "112_SVDB_id_29_Medical_tr_8226_1st_8326.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 295,
+        "flips": 127,
+        "rfr": 0.43050847457627117
+      },
+      {
+        "file_name": "114_SVDB_id_31_Medical_tr_25000_1st_63090.csv",
+        "collection": "SVDB",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 293,
+        "flips": 102,
+        "rfr": 0.34812286689419797
+      },
+      {
+        "file_name": "115_PSM_id_1_Facility_tr_50000_1st_129872.csv",
+        "collection": "PSM",
+        "alpha": 0.4861111111111111,
+        "alpha_bin": "0<alpha<1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 116,
+        "rfr": 0.38666666666666666
+      },
+      {
+        "file_name": "116_TAO_id_1_Environment_tr_500_1st_3.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 45,
+        "rfr": 0.15100671140939598
+      },
+      {
+        "file_name": "117_TAO_id_2_Environment_tr_500_1st_1.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 35,
+        "rfr": 0.11705685618729098
+      },
+      {
+        "file_name": "118_TAO_id_3_Environment_tr_500_1st_7.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 44,
+        "rfr": 0.14864864864864866
+      },
+      {
+        "file_name": "119_TAO_id_4_Environment_tr_500_1st_1.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 51,
+        "rfr": 0.1705685618729097
+      },
+      {
+        "file_name": "121_TAO_id_6_Environment_tr_500_1st_7.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 23,
+        "rfr": 0.07692307692307693
+      },
+      {
+        "file_name": "122_TAO_id_7_Environment_tr_500_1st_19.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 47,
+        "rfr": 0.15719063545150502
+      },
+      {
+        "file_name": "123_TAO_id_8_Environment_tr_500_1st_62.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 297,
+        "flips": 30,
+        "rfr": 0.10101010101010101
+      },
+      {
+        "file_name": "124_TAO_id_9_Environment_tr_500_1st_1.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 51,
+        "rfr": 0.17114093959731544
+      },
+      {
+        "file_name": "125_TAO_id_10_Environment_tr_500_1st_9.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 33,
+        "rfr": 0.11036789297658862
+      },
+      {
+        "file_name": "127_TAO_id_12_Environment_tr_500_1st_24.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 43,
+        "rfr": 0.14527027027027026
+      },
+      {
+        "file_name": "128_TAO_id_13_Environment_tr_500_1st_7.csv",
+        "collection": "TAO",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 28,
+        "rfr": 0.09364548494983277
+      },
+      {
+        "file_name": "129_OPPORTUNITY_id_1_HumanActivity_tr_1801_1st_1901.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 272,
+        "flips": 92,
+        "rfr": 0.3382352941176471
+      },
+      {
+        "file_name": "130_OPPORTUNITY_id_2_HumanActivity_tr_1045_1st_1145.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 279,
+        "flips": 66,
+        "rfr": 0.23655913978494625
+      },
+      {
+        "file_name": "132_OPPORTUNITY_id_4_HumanActivity_tr_895_1st_995.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 180,
+        "flips": 39,
+        "rfr": 0.21666666666666667
+      },
+      {
+        "file_name": "133_OPPORTUNITY_id_5_HumanActivity_tr_1745_1st_6500.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 51,
+        "rfr": 0.17
+      },
+      {
+        "file_name": "134_OPPORTUNITY_id_6_HumanActivity_tr_1477_1st_1577.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 234,
+        "flips": 49,
+        "rfr": 0.2094017094017094
+      },
+      {
+        "file_name": "135_OPPORTUNITY_id_7_HumanActivity_tr_2085_1st_2185.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 255,
+        "flips": 78,
+        "rfr": 0.3058823529411765
+      },
+      {
+        "file_name": "136_OPPORTUNITY_id_8_HumanActivity_tr_1495_1st_1595.csv",
+        "collection": "OPPORTUNITY",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 245,
+        "flips": 85,
+        "rfr": 0.3469387755102041
+      },
+      {
+        "file_name": "137_CreditCard_id_1_Finance_tr_500_1st_541.csv",
+        "collection": "CreditCard",
+        "alpha": 0.0,
+        "alpha_bin": "alpha=0",
+        "valid_model_rows": 25,
+        "comparable_pairs": 282,
+        "flips": 92,
+        "rfr": 0.3262411347517731
+      },
+      {
+        "file_name": "138_CATSv2_id_1_Sensor_tr_16568_1st_16668.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 294,
+        "flips": 82,
+        "rfr": 0.2789115646258503
+      },
+      {
+        "file_name": "139_CATSv2_id_2_Sensor_tr_5592_1st_5692.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 128,
+        "rfr": 0.4280936454849498
+      },
+      {
+        "file_name": "141_CATSv2_id_4_Sensor_tr_41727_1st_41827.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 123,
+        "rfr": 0.41
+      },
+      {
+        "file_name": "142_CATSv2_id_5_Sensor_tr_30704_1st_30804.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 129,
+        "rfr": 0.43
+      },
+      {
+        "file_name": "143_CATSv2_id_6_Sensor_tr_50000_1st_60232.csv",
+        "collection": "CATSv2",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 127,
+        "rfr": 0.42333333333333334
+      },
+      {
+        "file_name": "144_SMAP_id_1_Sensor_tr_2052_1st_5300.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 65,
+        "rfr": 0.21739130434782608
+      },
+      {
+        "file_name": "145_SMAP_id_2_Sensor_tr_2133_1st_5400.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 123,
+        "rfr": 0.41
+      },
+      {
+        "file_name": "146_SMAP_id_3_Sensor_tr_2128_1st_5000.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 101,
+        "rfr": 0.3377926421404682
+      },
+      {
+        "file_name": "147_SMAP_id_4_Sensor_tr_2160_1st_6449.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 221,
+        "flips": 96,
+        "rfr": 0.4343891402714932
+      },
+      {
+        "file_name": "148_SMAP_id_5_Sensor_tr_2011_1st_5060.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 161,
+        "flips": 62,
+        "rfr": 0.38509316770186336
+      },
+      {
+        "file_name": "150_SMAP_id_7_Sensor_tr_2077_1st_5394.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 94,
+        "rfr": 0.31543624161073824
+      },
+      {
+        "file_name": "151_SMAP_id_8_Sensor_tr_1971_1st_4870.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 287,
+        "flips": 138,
+        "rfr": 0.4808362369337979
+      },
+      {
+        "file_name": "152_SMAP_id_9_Sensor_tr_2073_1st_5600.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 298,
+        "flips": 151,
+        "rfr": 0.5067114093959731
+      },
+      {
+        "file_name": "153_SMAP_id_10_Sensor_tr_1840_1st_4030.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 220,
+        "flips": 129,
+        "rfr": 0.5863636363636363
+      },
+      {
+        "file_name": "154_SMAP_id_11_Sensor_tr_2117_1st_4770.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 163,
+        "flips": 41,
+        "rfr": 0.25153374233128833
+      },
+      {
+        "file_name": "155_SMAP_id_12_Sensor_tr_1907_1st_4800.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 252,
+        "flips": 134,
+        "rfr": 0.5317460317460317
+      },
+      {
+        "file_name": "156_SMAP_id_13_Sensor_tr_1173_1st_2750.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 24,
+        "comparable_pairs": 272,
+        "flips": 74,
+        "rfr": 0.27205882352941174
+      },
+      {
+        "file_name": "157_SMAP_id_14_Sensor_tr_2126_1st_5000.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 95,
+        "rfr": 0.3177257525083612
+      },
+      {
+        "file_name": "158_SMAP_id_15_Sensor_tr_2075_1st_5610.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 60,
+        "rfr": 0.20270270270270271
+      },
+      {
+        "file_name": "159_SMAP_id_16_Sensor_tr_1757_1st_2650.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 264,
+        "flips": 42,
+        "rfr": 0.1590909090909091
+      },
+      {
+        "file_name": "160_SMAP_id_17_Sensor_tr_1832_1st_5300.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 272,
+        "flips": 71,
+        "rfr": 0.2610294117647059
+      },
+      {
+        "file_name": "161_SMAP_id_18_Sensor_tr_2075_1st_5550.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 299,
+        "flips": 144,
+        "rfr": 0.4816053511705686
+      },
+      {
+        "file_name": "162_SMAP_id_19_Sensor_tr_1908_1st_4690.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 266,
+        "flips": 95,
+        "rfr": 0.35714285714285715
+      },
+      {
+        "file_name": "163_SMAP_id_20_Sensor_tr_2051_1st_4575.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 279,
+        "flips": 108,
+        "rfr": 0.3870967741935484
+      },
+      {
+        "file_name": "165_SMAP_id_22_Sensor_tr_2129_1st_5000.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 296,
+        "flips": 108,
+        "rfr": 0.36486486486486486
+      },
+      {
+        "file_name": "166_SMAP_id_23_Sensor_tr_1113_1st_1890.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 24,
+        "comparable_pairs": 269,
+        "flips": 41,
+        "rfr": 0.1524163568773234
+      },
+      {
+        "file_name": "167_SMAP_id_24_Sensor_tr_2094_1st_5600.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 282,
+        "flips": 75,
+        "rfr": 0.26595744680851063
+      },
+      {
+        "file_name": "168_SMAP_id_25_Sensor_tr_1998_1st_2098.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 292,
+        "flips": 137,
+        "rfr": 0.4691780821917808
+      },
+      {
+        "file_name": "169_SMAP_id_26_Sensor_tr_1811_1st_4510.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 269,
+        "flips": 136,
+        "rfr": 0.5055762081784386
+      },
+      {
+        "file_name": "170_SMAP_id_27_Sensor_tr_2160_1st_4690.csv",
+        "collection": "SMAP",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 277,
+        "flips": 163,
+        "rfr": 0.5884476534296029
+      },
+      {
+        "file_name": "171_SWaT_id_1_Sensor_tr_3749_1st_9522.csv",
+        "collection": "SWaT",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 82,
+        "rfr": 0.2733333333333333
+      },
+      {
+        "file_name": "172_SWaT_id_2_Sensor_tr_23700_1st_23800.csv",
+        "collection": "SWaT",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 136,
+        "rfr": 0.4533333333333333
+      },
+      {
+        "file_name": "173_GECCO_id_1_Sensor_tr_16165_1st_16265.csv",
+        "collection": "GECCO",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 52,
+        "rfr": 0.17333333333333334
+      },
+      {
+        "file_name": "174_Exathlon_id_1_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 84,
+        "rfr": 0.28
+      },
+      {
+        "file_name": "175_Exathlon_id_2_Facility_tr_10684_1st_10784.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 80,
+        "rfr": 0.26666666666666666
+      },
+      {
+        "file_name": "176_Exathlon_id_3_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 102,
+        "rfr": 0.34
+      },
+      {
+        "file_name": "177_Exathlon_id_4_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 82,
+        "rfr": 0.2733333333333333
+      },
+      {
+        "file_name": "179_Exathlon_id_6_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 81,
+        "rfr": 0.27
+      },
+      {
+        "file_name": "180_Exathlon_id_7_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 107,
+        "rfr": 0.3566666666666667
+      },
+      {
+        "file_name": "181_Exathlon_id_8_Facility_tr_11663_1st_13482.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 88,
+        "rfr": 0.29333333333333333
+      },
+      {
+        "file_name": "182_Exathlon_id_9_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 97,
+        "rfr": 0.3233333333333333
+      },
+      {
+        "file_name": "183_Exathlon_id_10_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 88,
+        "rfr": 0.29333333333333333
+      },
+      {
+        "file_name": "184_Exathlon_id_11_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 91,
+        "rfr": 0.30333333333333334
+      },
+      {
+        "file_name": "185_Exathlon_id_12_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 70,
+        "rfr": 0.23333333333333334
+      },
+      {
+        "file_name": "186_Exathlon_id_13_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 116,
+        "rfr": 0.38666666666666666
+      },
+      {
+        "file_name": "187_Exathlon_id_14_Facility_tr_6193_1st_6293.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 103,
+        "rfr": 0.3433333333333333
+      },
+      {
+        "file_name": "188_Exathlon_id_15_Facility_tr_12538_1st_12638.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 100,
+        "rfr": 0.3333333333333333
+      },
+      {
+        "file_name": "189_Exathlon_id_16_Facility_tr_11663_1st_13482.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 88,
+        "rfr": 0.29333333333333333
+      },
+      {
+        "file_name": "190_Exathlon_id_17_Facility_tr_12538_1st_12638.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 87,
+        "rfr": 0.29
+      },
+      {
+        "file_name": "191_Exathlon_id_18_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 90,
+        "rfr": 0.3
+      },
+      {
+        "file_name": "192_Exathlon_id_19_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 86,
+        "rfr": 0.2866666666666667
+      },
+      {
+        "file_name": "193_Exathlon_id_20_Facility_tr_8898_1st_8998.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 55,
+        "rfr": 0.18333333333333332
+      },
+      {
+        "file_name": "194_Exathlon_id_21_Facility_tr_6985_1st_7085.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 68,
+        "rfr": 0.22666666666666666
+      },
+      {
+        "file_name": "196_Exathlon_id_23_Facility_tr_11665_1st_13484.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 76,
+        "rfr": 0.25333333333333335
+      },
+      {
+        "file_name": "197_Exathlon_id_24_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 104,
+        "rfr": 0.3466666666666667
+      },
+      {
+        "file_name": "198_Exathlon_id_25_Facility_tr_12538_1st_12638.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 94,
+        "rfr": 0.31333333333333335
+      },
+      {
+        "file_name": "199_Exathlon_id_26_Facility_tr_12538_1st_12638.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 84,
+        "rfr": 0.28
+      },
+      {
+        "file_name": "200_Exathlon_id_27_Facility_tr_10766_1st_12590.csv",
+        "collection": "Exathlon",
+        "alpha": 1.0,
+        "alpha_bin": "alpha=1",
+        "valid_model_rows": 25,
+        "comparable_pairs": 300,
+        "flips": 105,
+        "rfr": 0.35
+      }
+    ]
+  }
+}

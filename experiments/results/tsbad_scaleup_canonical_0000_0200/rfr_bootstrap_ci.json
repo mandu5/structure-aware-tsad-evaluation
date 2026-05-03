@@ -1,0 +1,25 @@
+{
+  "n_boot": 100,
+  "seed": 42,
+  "ci_level": 0.95,
+  "n_series": 180,
+  "n_models": 25,
+  "point_estimates": {
+    "overall_pairwise_flip_rate": 0.2928021204340263,
+    "mean_per_series_rfr": 0.3236517821378573
+  },
+  "bootstrap_ci": {
+    "overall_pairwise_flip_rate": [
+      0.27582729876049256,
+      0.3118454365346579
+    ],
+    "mean_per_series_rfr": [
+      0.3030929165115633,
+      0.34674639703933813
+    ]
+  },
+  "bootstrap_se": {
+    "overall_pairwise_flip_rate": 0.009759448415249023,
+    "mean_per_series_rfr": 0.012369054730683476
+  }
+}

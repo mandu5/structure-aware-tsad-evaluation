@@ -1,0 +1,130 @@
+{
+  "auc_roc": {
+    "metric": "auc_roc",
+    "n_boot": 10000,
+    "n_datasets": 6,
+    "datasets": [
+      "MSL",
+      "PSM",
+      "SMAP",
+      "SMD",
+      "SWaT",
+      "WADI"
+    ],
+    "summary": [
+      {
+        "model": "IForest",
+        "mean_rank": 1.99015,
+        "ci95_low": 1.0,
+        "ci95_high": 3.0,
+        "top1_frequency": 0.8778
+      },
+      {
+        "model": "DADA",
+        "mean_rank": 3.4996333333333336,
+        "ci95_low": 2.3333333333333335,
+        "ci95_high": 4.833333333333333,
+        "top1_frequency": 0.0714
+      },
+      {
+        "model": "CATCH",
+        "mean_rank": 4.013566666666667,
+        "ci95_low": 2.5,
+        "ci95_high": 5.5,
+        "top1_frequency": 0.0454
+      },
+      {
+        "model": "LOF",
+        "mean_rank": 4.334816666666667,
+        "ci95_low": 3.1666666666666665,
+        "ci95_high": 5.5,
+        "top1_frequency": 0.0
+      },
+      {
+        "model": "MOMENT",
+        "mean_rank": 4.344,
+        "ci95_low": 2.8333333333333335,
+        "ci95_high": 5.833333333333333,
+        "top1_frequency": 0.0054
+      },
+      {
+        "model": "TranAD",
+        "mean_rank": 4.6518,
+        "ci95_low": 3.1666666666666665,
+        "ci95_high": 6.166666666666667,
+        "top1_frequency": 0.0
+      },
+      {
+        "model": "AT",
+        "mean_rank": 5.166033333333333,
+        "ci95_low": 3.5,
+        "ci95_high": 6.666666666666667,
+        "top1_frequency": 0.0
+      }
+    ]
+  },
+  "sae_score": {
+    "metric": "sae_score",
+    "n_boot": 10000,
+    "n_datasets": 6,
+    "datasets": [
+      "MSL",
+      "PSM",
+      "SMAP",
+      "SMD",
+      "SWaT",
+      "WADI"
+    ],
+    "summary": [
+      {
+        "model": "DADA",
+        "mean_rank": 2.8317499999999995,
+        "ci95_low": 1.8333333333333333,
+        "ci95_high": 3.8333333333333335,
+        "top1_frequency": 0.3959
+      },
+      {
+        "model": "CATCH",
+        "mean_rank": 3.0068,
+        "ci95_low": 1.8333333333333333,
+        "ci95_high": 4.166666666666667,
+        "top1_frequency": 0.4204
+      },
+      {
+        "model": "MOMENT",
+        "mean_rank": 3.337383333333333,
+        "ci95_low": 2.1666666666666665,
+        "ci95_high": 4.833333333333333,
+        "top1_frequency": 0.0482
+      },
+      {
+        "model": "AT",
+        "mean_rank": 3.9885333333333337,
+        "ci95_low": 2.1666666666666665,
+        "ci95_high": 5.833333333333333,
+        "top1_frequency": 0.1253
+      },
+      {
+        "model": "TranAD",
+        "mean_rank": 4.495233333333333,
+        "ci95_low": 2.8333333333333335,
+        "ci95_high": 5.666666666666667,
+        "top1_frequency": 0.0038
+      },
+      {
+        "model": "IForest",
+        "mean_rank": 5.0014166666666675,
+        "ci95_low": 3.1666666666666665,
+        "ci95_high": 6.5,
+        "top1_frequency": 0.0064
+      },
+      {
+        "model": "LOF",
+        "mean_rank": 5.3388833333333325,
+        "ci95_low": 4.166666666666667,
+        "ci95_high": 6.5,
+        "top1_frequency": 0.0
+      }
+    ]
+  }
+}
