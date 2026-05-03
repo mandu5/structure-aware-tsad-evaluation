@@ -51,6 +51,13 @@
         letter-spacing: -0.01em;
       }
 
+      .paper-subtitle {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
       .author {
         margin: 0;
         color: var(--muted);
@@ -212,12 +219,13 @@
     <main class="wrap">
       <article class="paper">
         <header class="title-block">
-          <h1>When Point Metrics Mislead: Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection</h1>
+          <h1>When Point Metrics Mislead</h1>
+          <p class="paper-subtitle">Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection</p>
           <p class="author">Youngmin Ko</p>
           <div class="link-row">
             <a class="btn" href="#">Paper: Coming Soon</a>
             <a class="btn" href="https://github.com/mandu5/structure-aware-tsad-evaluation">Code: GitHub</a>
-            <a class="btn" href="https://github.com/mandu5/structure-aware-tsad-evaluation">Artifact: GitHub</a>
+            <a class="btn" href="https://github.com/mandu5/structure-aware-tsad-evaluation/blob/main/docs/artifact_manifest.md">Artifact: Manifest</a>
             <a class="btn" href="#citation">Citation</a>
           </div>
         </header>
@@ -227,17 +235,6 @@
           <p class="abstract">
             Time series anomaly detection is commonly reported with point-wise metrics such as AUC-ROC, while many benchmark anomalies are sustained temporal segments. This project evaluates when point-level and segment-aware metrics induce different pairwise model rankings, and provides a lightweight reproducibility artifact for validating the reported ranking-shift observations.
           </p>
-        </section>
-
-        <section id="teaser">
-          <h2>Teaser Figure</h2>
-          <div class="teaser">
-            <figure>
-              <img src="./assets/metric_disagreement.png" alt="Overview of point-level and segment-aware metric disagreement" loading="lazy" decoding="async" />
-              <figcaption>Overview of disagreement between point-level and segment-aware evaluation, presented as a static rendering of the corresponding final figure in the manuscript.</figcaption>
-              <a class="meta-link" href="./assets/metric_disagreement.pdf">Open vector PDF</a>
-            </figure>
-          </div>
         </section>
 
         <section id="findings">
