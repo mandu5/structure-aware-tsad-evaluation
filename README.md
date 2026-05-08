@@ -8,7 +8,7 @@ Author: Youngmin Ko
 
 TL;DR: Point-wise metrics can change TSAD model rankings when benchmark anomalies are sustained segments rather than isolated spikes.
 
-Project page: https://mandu5.github.io/structure-aware-tsad-evaluation/
+Project page: https://tsad-eval-site.onrender.com/
 
 ## Key findings
 
@@ -30,7 +30,7 @@ Project page: https://mandu5.github.io/structure-aware-tsad-evaluation/
 │   └── compute_rfr_bootstrap_ci.py
 ├── experiments/results/          # Derived summaries only (no raw datasets)
 ├── docs/
-│   ├── index.html                # Project page (GitHub Pages)
+│   ├── index.html                # Project page (static site source)
 │   ├── reproduction.md
 │   ├── dataset_access.md
 │   ├── artifact_manifest.md
@@ -71,9 +71,9 @@ Users are responsible for complying with upstream licenses and access terms.
 
 ## Project page
 
-This repository includes a static project page in `docs/index.html`. After pushing to GitHub, enable GitHub Pages with:
+The public site is built from `docs/` and deployed on [Render](https://render.com/) as a static site ([live URL](https://tsad-eval-site.onrender.com/)). Blueprint config lives in [`render.yaml`](render.yaml) at the repository root (`runtime: static`, `staticPublishPath: docs`, `SKIP_INSTALL_DEPS=true` so the artifact’s root `requirements.txt` is not installed during deploy).
 
-`Settings -> Pages -> Deploy from a branch -> main -> /docs`
+You can still host the same files with **GitHub Pages** if you prefer: `Settings -> Pages -> Deploy from a branch -> main -> /docs` (mirror of the Render site).
 
 ## Citation
 
