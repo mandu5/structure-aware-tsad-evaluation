@@ -4,3 +4,9 @@ services:
     runtime: static
     buildCommand: "true"
     staticPublishPath: docs
+    # Static sites auto-install deps from lockfiles/manifests at repo root; this
+    # repo ships requirements.txt for the Python artifact, not for the docs site.
+    # https://docs.render.com/static-sites#dependency-installation
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
