@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: tsad-eval-site
+    env: static
+    buildCommand: ""
+    staticPublishPath: docs
