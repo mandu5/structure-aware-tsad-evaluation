@@ -1,6 +1,6 @@
 services:
   - type: web
     name: tsad-eval-site
-    env: static
-    buildCommand: echo "Static site deploy - no build step"
+    runtime: static
+    buildCommand: "true"
     staticPublishPath: docs
