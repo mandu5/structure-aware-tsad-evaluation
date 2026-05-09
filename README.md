@@ -1,6 +1,5 @@
 # Structure-Aware Evaluation for Time Series Anomaly Detection
-
-![CI](https://github.com/mandu5/structure-aware-tsad-evaluation/actions/workflows/ci.yml/badge.svg?branch=main)
+<a href="https://github.com/cocel-postech/genz-icp/tree/master/python/genz_icp"><img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" /></a>
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 Public artifact for the paper:
