@@ -2,7 +2,7 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-
+.omc/
 .DS_Store
 
 build/
@@ -18,3 +18,4 @@ dist/
 *.pth
 *.h5
 *.hdf5
+논문
