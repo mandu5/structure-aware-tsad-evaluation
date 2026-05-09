@@ -1,6 +1,8 @@
 # Asset Sources
 
 - `favicon.svg`: original SVG favicon (site accent `#1f4e79`, simple line motif)
+- `ranking-flip-summary.png`: README preview image for ranking-flip summary section
+- `anomaly-duration-taxonomy.png`: README preview image for anomaly-duration taxonomy section
 
 - `taxonomy.png`: static rendering of paper Figure 1 (`fig1_anomaly_taxonomy.pdf`)
 - `metric_disagreement.png`: static rendering of paper Figure 4 (`fig4_main_results.pdf`)

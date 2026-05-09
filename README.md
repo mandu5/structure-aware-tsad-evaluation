@@ -1,5 +1,8 @@
 # Structure-Aware Evaluation for Time Series Anomaly Detection
 
+![CI](https://github.com/mandu5/structure-aware-tsad-evaluation/actions/workflows/ci.yml/badge.svg?branch=main)
+![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+
 Public artifact for the paper:
 
 **When Point Metrics Mislead: Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection**
@@ -9,6 +12,12 @@ Author: Youngmin Ko
 TL;DR: Point-wise metrics can change TSAD model rankings when benchmark anomalies are sustained segments rather than isolated spikes.
 
 Project page: https://tsad-eval-site.onrender.com/
+
+## Preview
+
+![Ranking flip summary](./docs/assets/ranking-flip-summary.png)
+
+![Anomaly duration taxonomy](./docs/assets/anomaly-duration-taxonomy.png)
 
 ## Key findings
 
@@ -48,6 +57,27 @@ Project page: https://tsad-eval-site.onrender.com/
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+## Docker
+
+Build the image:
+
+```bash
+docker build -t tsad-eval .
+```
+
+Run headline validation:
+
+```bash
+docker run --rm tsad-eval python scripts/validate_tab_rfr_counts.py
+```
+
+Optional validation scripts:
+
+```bash
+docker run --rm tsad-eval python scripts/compute_tsbad_alpha_stratified_rfr.py
+docker run --rm tsad-eval python scripts/compute_rfr_bootstrap_ci.py --n-boot 100
 ```
 
 Run headline validation:
