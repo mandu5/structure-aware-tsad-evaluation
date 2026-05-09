@@ -15,9 +15,11 @@ Project page: https://tsad-eval-site.onrender.com/
 
 ## Preview
 
-![Ranking flip summary](./docs/assets/ranking-flip-summary.png)
+Paper figures (static PNGs in `docs/assets/`, same as the project page):
 
-![Anomaly duration taxonomy](./docs/assets/anomaly-duration-taxonomy.png)
+![Figure 4 — AUC-ROC vs Aff-F1 (pairwise ranking disagreement)](./docs/assets/metric_disagreement.png)
+
+![Figure 1 — Anomaly-duration taxonomy (SWaT, MSL, SMAP, WADI)](./docs/assets/taxonomy.png)
 
 ## Key findings
 
