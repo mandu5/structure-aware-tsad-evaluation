@@ -16,7 +16,7 @@ Project page: https://tsad-eval-site.onrender.com/
 
 Paper figures (static PNGs in `docs/assets/`, same as the project page):
 
-![Figure 4 — AUC-ROC vs Aff-F1 (pairwise ranking disagreement)](./docs/assets/metric_disagreement.png)
+![Figure 4 — AUC-ROC vs SAEScore (TSB-AD merged bundle: distribution)](./docs/assets/tsbad_audit.png)
 
 ![Figure 1 — Anomaly-duration taxonomy (SWaT, MSL, SMAP, WADI)](./docs/assets/taxonomy.png)
 
