@@ -1,0 +1,40 @@
+# Reproduce the analysis, the manuscript numbers, and the manuscript.
+#
+#   make            regenerate artifacts, numbers and the PDF
+#   make analysis   rerun the analysis scripts
+#   make numbers    regenerate paper/numbers.tex from the artifacts
+#   make paper      build paper/main.pdf
+#   make verify     tests + prove nothing drifted (what CI runs)
+
+PYTHON ?= python3
+CANON  := experiments/results/tsbad_scaleup_canonical_0000_0200
+
+.PHONY: all analysis numbers paper verify test clean
+
+all: paper
+
+analysis:
+	$(PYTHON) scripts/compute_structure_robustness.py
+	$(PYTHON) scripts/compute_tab_null_and_ties.py
+
+numbers: analysis
+	$(PYTHON) scripts/export_paper_numbers.py
+
+paper: numbers
+	tectonic -X compile paper/main.tex
+
+test:
+	$(PYTHON) -m pytest -q
+
+# Regenerating must not change anything that is committed.
+verify: test
+	$(PYTHON) scripts/validate_tab_rfr_counts.py
+	$(PYTHON) scripts/compute_structure_robustness.py
+	$(PYTHON) scripts/compute_tab_null_and_ties.py
+	git diff --exit-code -- experiments/results
+	$(PYTHON) scripts/export_paper_numbers.py
+	git diff --exit-code -- paper/numbers.tex
+	@echo "verify: artifacts and manuscript numbers are consistent"
+
+clean:
+	rm -f paper/*.aux paper/*.log paper/*.blg paper/*.bbl paper/*.out

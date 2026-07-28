@@ -29,3 +29,44 @@ jobs:
       - name: Validate headline counts
         run: |
           python scripts/validate_tab_rfr_counts.py
+
+      - name: Regenerate robustness artifacts
+        run: |
+          python scripts/compute_structure_robustness.py
+          python scripts/compute_tab_null_and_ties.py
+
+      - name: Committed artifacts match a fresh run
+        run: |
+          git diff --exit-code -- experiments/results
+
+      - name: Manuscript numbers match the artifacts
+        run: |
+          python scripts/export_paper_numbers.py
+          git diff --exit-code -- paper/numbers.tex
+
+  paper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Tectonic
+        uses: wtfjoke/setup-tectonic@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build the manuscript
+        run: tectonic -X compile paper/main.tex --keep-logs
+
+      - name: Fail on undefined references or citations
+        run: |
+          if grep -qE "Citation .* undefined|Reference .* undefined|There were undefined references" paper/main.log; then
+            grep -E "Citation .* undefined|Reference .* undefined" paper/main.log
+            exit 1
+          fi
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuscript
+          path: paper/main.pdf
