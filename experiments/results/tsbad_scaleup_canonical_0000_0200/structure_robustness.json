@@ -1,0 +1,554 @@
+{
+  "canonical_dir": "tsbad_scaleup_canonical_0000_0200",
+  "n_series": 180,
+  "n_models": 25,
+  "n_collections": 17,
+  "seed": 42,
+  "saescore_reduction_identity": {
+    "definition": "SAEScore = (1 - alpha) * AUC-ROC + alpha * Aff-F1",
+    "max_abs_diff_saescore_minus_auc_at_alpha_0": 0.0,
+    "max_abs_diff_saescore_minus_afff1_at_alpha_1": 0.0,
+    "note": "At alpha=0 SAEScore is identically AUC-ROC and at alpha=1 it is identically Aff-F1, so alpha-stratified AUC-ROC-vs-SAEScore flip rates interpolate between self-comparison and the AUC-ROC-vs-Aff-F1 comparison and are not evidence of a structural regime split."
+  },
+  "flip_rate": {
+    "auc_vs_aff_f1": 0.31446658364466584,
+    "auc_vs_saescore": 0.2928021204340263,
+    "random_ranking_null_mean": 0.5001839751685878,
+    "random_ranking_null_sd": 0.005565252264219117,
+    "n_perm": 200,
+    "agreement_share": 0.6855334163553342
+  },
+  "gap_stratified": [
+    {
+      "lo": 0.0,
+      "hi": 0.01,
+      "pairs": 4700,
+      "share_of_pairs": 0.09755085097550852,
+      "flip_rate": 0.47425531914893615
+    },
+    {
+      "lo": 0.01,
+      "hi": 0.02,
+      "pairs": 3139,
+      "share_of_pairs": 0.06515151515151515,
+      "flip_rate": 0.4839120739088882
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.05,
+      "pairs": 6513,
+      "share_of_pairs": 0.13518057285180574,
+      "flip_rate": 0.4230001535390757
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.1,
+      "pairs": 7757,
+      "share_of_pairs": 0.16100041511000415,
+      "flip_rate": 0.3616088694082764
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.2,
+      "pairs": 10026,
+      "share_of_pairs": 0.20809464508094644,
+      "flip_rate": 0.26032315978456017
+    },
+    {
+      "lo": 0.2,
+      "hi": null,
+      "pairs": 16045,
+      "share_of_pairs": 0.33302200083022,
+      "flip_rate": 0.201495793081957
+    }
+  ],
+  "noise_band_sensitivity": [
+    {
+      "excluded_below": 0.01,
+      "pairs_retained": 43480,
+      "share_retained": 0.9024491490244915,
+      "flip_rate": 0.29719411223551057
+    },
+    {
+      "excluded_below": 0.02,
+      "pairs_retained": 40341,
+      "share_retained": 0.8372976338729763,
+      "flip_rate": 0.2826652785007808
+    },
+    {
+      "excluded_below": 0.05,
+      "pairs_retained": 33828,
+      "share_retained": 0.7021170610211707,
+      "flip_rate": 0.25564621024003786
+    }
+  ],
+  "predictors": {
+    "alpha": {
+      "series_level": {
+        "n": 180,
+        "rho": 0.32407135799725256,
+        "perm_p": 0.0001999600079984003
+      },
+      "collection_level": {
+        "n": 17,
+        "rho": 0.05631561207503953,
+        "perm_p": 0.831633673265347
+      },
+      "leave_one_collection_out": {
+        "min_rho": 0.08979575137214006,
+        "max_rho": 0.37413060336124276,
+        "worst_drop": "TAO",
+        "all": [
+          {
+            "dropped": "CATSv2",
+            "rho": 0.3215188165373305
+          },
+          {
+            "dropped": "CreditCard",
+            "rho": 0.33354058591558267
+          },
+          {
+            "dropped": "Daphnet",
+            "rho": 0.32694405518855213
+          },
+          {
+            "dropped": "Exathlon",
+            "rho": 0.35689355152256563
+          },
+          {
+            "dropped": "GECCO",
+            "rho": 0.3272029116024552
+          },
+          {
+            "dropped": "GHL",
+            "rho": 0.29716192752149884
+          },
+          {
+            "dropped": "Genesis",
+            "rho": 0.33989055994628886
+          },
+          {
+            "dropped": "LTDB",
+            "rho": 0.33549006355684546
+          },
+          {
+            "dropped": "MITDB",
+            "rho": 0.3306117203022926
+          },
+          {
+            "dropped": "MSL",
+            "rho": 0.3354747998985681
+          },
+          {
+            "dropped": "OPPORTUNITY",
+            "rho": 0.3375337041144212
+          },
+          {
+            "dropped": "PSM",
+            "rho": 0.33975033314533415
+          },
+          {
+            "dropped": "SMAP",
+            "rho": 0.336353614869012
+          },
+          {
+            "dropped": "SMD",
+            "rho": 0.3527767628120213
+          },
+          {
+            "dropped": "SVDB",
+            "rho": 0.37413060336124276
+          },
+          {
+            "dropped": "SWaT",
+            "rho": 0.32458663318461606
+          },
+          {
+            "dropped": "TAO",
+            "rho": 0.08979575137214006
+          }
+        ]
+      }
+    },
+    "mean_segment_duration": {
+      "series_level": {
+        "n": 180,
+        "rho": 0.3717407405186306,
+        "perm_p": 0.0001999600079984003
+      },
+      "collection_level": {
+        "n": 17,
+        "rho": 0.37500000000000006,
+        "perm_p": 0.13697260547890422
+      },
+      "leave_one_collection_out": {
+        "min_rho": 0.24082754035470216,
+        "max_rho": 0.48138465221007243,
+        "worst_drop": "GHL",
+        "all": [
+          {
+            "dropped": "CATSv2",
+            "rho": 0.36355757829145485
+          },
+          {
+            "dropped": "CreditCard",
+            "rho": 0.37733395274791015
+          },
+          {
+            "dropped": "Daphnet",
+            "rho": 0.374067426940998
+          },
+          {
+            "dropped": "Exathlon",
+            "rho": 0.48138465221007243
+          },
+          {
+            "dropped": "GECCO",
+            "rho": 0.36348312999585936
+          },
+          {
+            "dropped": "GHL",
+            "rho": 0.24082754035470216
+          },
+          {
+            "dropped": "Genesis",
+            "rho": 0.38118012471018076
+          },
+          {
+            "dropped": "LTDB",
+            "rho": 0.36313443565097814
+          },
+          {
+            "dropped": "MITDB",
+            "rho": 0.3741273119210774
+          },
+          {
+            "dropped": "MSL",
+            "rho": 0.4065709037810221
+          },
+          {
+            "dropped": "OPPORTUNITY",
+            "rho": 0.3835425610578265
+          },
+          {
+            "dropped": "PSM",
+            "rho": 0.3727269310145711
+          },
+          {
+            "dropped": "SMAP",
+            "rho": 0.458750926491392
+          },
+          {
+            "dropped": "SMD",
+            "rho": 0.3415904157401837
+          },
+          {
+            "dropped": "SVDB",
+            "rho": 0.3943143917803164
+          },
+          {
+            "dropped": "SWaT",
+            "rho": 0.36640752384988695
+          },
+          {
+            "dropped": "TAO",
+            "rho": 0.24893203899932145
+          }
+        ]
+      }
+    },
+    "segment_count": {
+      "series_level": {
+        "n": 180,
+        "rho": -0.377475641840052,
+        "perm_p": 0.0001999600079984003
+      },
+      "collection_level": {
+        "n": 17,
+        "rho": -0.41176470588235303,
+        "perm_p": 0.10517896420715857
+      },
+      "leave_one_collection_out": {
+        "min_rho": -0.42520007979424757,
+        "max_rho": -0.2534927647193327,
+        "worst_drop": "TAO",
+        "all": [
+          {
+            "dropped": "CATSv2",
+            "rho": -0.3987183473000057
+          },
+          {
+            "dropped": "CreditCard",
+            "rho": -0.38159236379430245
+          },
+          {
+            "dropped": "Daphnet",
+            "rho": -0.3759669199197301
+          },
+          {
+            "dropped": "Exathlon",
+            "rho": -0.3834616797494727
+          },
+          {
+            "dropped": "GECCO",
+            "rho": -0.3703171190486666
+          },
+          {
+            "dropped": "GHL",
+            "rho": -0.3267537936652289
+          },
+          {
+            "dropped": "Genesis",
+            "rho": -0.3776639898256592
+          },
+          {
+            "dropped": "LTDB",
+            "rho": -0.3614736877329913
+          },
+          {
+            "dropped": "MITDB",
+            "rho": -0.40884443175906526
+          },
+          {
+            "dropped": "MSL",
+            "rho": -0.41894034125305996
+          },
+          {
+            "dropped": "OPPORTUNITY",
+            "rho": -0.42520007979424757
+          },
+          {
+            "dropped": "PSM",
+            "rho": -0.38396882322541426
+          },
+          {
+            "dropped": "SMAP",
+            "rho": -0.40235327728603026
+          },
+          {
+            "dropped": "SMD",
+            "rho": -0.3751125281427963
+          },
+          {
+            "dropped": "SVDB",
+            "rho": -0.34608106265039756
+          },
+          {
+            "dropped": "SWaT",
+            "rho": -0.3852432162166737
+          },
+          {
+            "dropped": "TAO",
+            "rho": -0.2534927647193327
+          }
+        ]
+      }
+    },
+    "anomaly_density": {
+      "series_level": {
+        "n": 180,
+        "rho": -0.36010301838595643,
+        "perm_p": 0.0001999600079984003
+      },
+      "collection_level": {
+        "n": 17,
+        "rho": -0.33333333333333337,
+        "perm_p": 0.19376124775044992
+      },
+      "leave_one_collection_out": {
+        "min_rho": -0.4087754196562284,
+        "max_rho": -0.2144438343661164,
+        "worst_drop": "GHL",
+        "all": [
+          {
+            "dropped": "CATSv2",
+            "rho": -0.35861749339431265
+          },
+          {
+            "dropped": "CreditCard",
+            "rho": -0.3613536032730787
+          },
+          {
+            "dropped": "Daphnet",
+            "rho": -0.3584532950846331
+          },
+          {
+            "dropped": "Exathlon",
+            "rho": -0.4087754196562284
+          },
+          {
+            "dropped": "GECCO",
+            "rho": -0.36837314426740814
+          },
+          {
+            "dropped": "GHL",
+            "rho": -0.2144438343661164
+          },
+          {
+            "dropped": "Genesis",
+            "rho": -0.3557758460751698
+          },
+          {
+            "dropped": "LTDB",
+            "rho": -0.35877085435303296
+          },
+          {
+            "dropped": "MITDB",
+            "rho": -0.3890906071499359
+          },
+          {
+            "dropped": "MSL",
+            "rho": -0.3991788885737022
+          },
+          {
+            "dropped": "OPPORTUNITY",
+            "rho": -0.3550044077200271
+          },
+          {
+            "dropped": "PSM",
+            "rho": -0.3670954355325221
+          },
+          {
+            "dropped": "SMAP",
+            "rho": -0.35430354861188046
+          },
+          {
+            "dropped": "SMD",
+            "rho": -0.4075660463691732
+          },
+          {
+            "dropped": "SVDB",
+            "rho": -0.3491337786235025
+          },
+          {
+            "dropped": "SWaT",
+            "rho": -0.37128570452090087
+          },
+          {
+            "dropped": "TAO",
+            "rho": -0.2988477530323992
+          }
+        ]
+      }
+    },
+    "series_length": {
+      "series_level": {
+        "n": 180,
+        "rho": 0.20469139984465523,
+        "perm_p": 0.007598480303939212
+      },
+      "collection_level": {
+        "n": 17,
+        "rho": 0.26960784313725494,
+        "perm_p": 0.28754249150169964
+      },
+      "leave_one_collection_out": {
+        "min_rho": 0.039427118410527165,
+        "max_rho": 0.3451627713980118,
+        "worst_drop": "GHL",
+        "all": [
+          {
+            "dropped": "CATSv2",
+            "rho": 0.18358095823893153
+          },
+          {
+            "dropped": "CreditCard",
+            "rho": 0.2047811414100988
+          },
+          {
+            "dropped": "Daphnet",
+            "rho": 0.20324291968168365
+          },
+          {
+            "dropped": "Exathlon",
+            "rho": 0.19010088555829113
+          },
+          {
+            "dropped": "GECCO",
+            "rho": 0.20717812496235308
+          },
+          {
+            "dropped": "GHL",
+            "rho": 0.039427118410527165
+          },
+          {
+            "dropped": "Genesis",
+            "rho": 0.20846050067731678
+          },
+          {
+            "dropped": "LTDB",
+            "rho": 0.20840913205117892
+          },
+          {
+            "dropped": "MITDB",
+            "rho": 0.19313053422573725
+          },
+          {
+            "dropped": "MSL",
+            "rho": 0.2552979572907145
+          },
+          {
+            "dropped": "OPPORTUNITY",
+            "rho": 0.1889133386526995
+          },
+          {
+            "dropped": "PSM",
+            "rho": 0.20251302347636888
+          },
+          {
+            "dropped": "SMAP",
+            "rho": 0.3451627713980118
+          },
+          {
+            "dropped": "SMD",
+            "rho": 0.1825574401386417
+          },
+          {
+            "dropped": "SVDB",
+            "rho": 0.32826387670649293
+          },
+          {
+            "dropped": "SWaT",
+            "rho": 0.19621077188142175
+          },
+          {
+            "dropped": "TAO",
+            "rho": 0.14902195134351365
+          }
+        ]
+      }
+    }
+  },
+  "identifiability": {
+    "alpha": {
+      "collections_with_constant_value": 16,
+      "n_collections": 17,
+      "constant_among_collections_with_ge8_series": 7,
+      "n_collections_with_ge8_series": 8
+    },
+    "mean_segment_duration": {
+      "collections_with_constant_value": 5,
+      "n_collections": 17,
+      "constant_among_collections_with_ge8_series": 0,
+      "n_collections_with_ge8_series": 8
+    },
+    "segment_count": {
+      "collections_with_constant_value": 5,
+      "n_collections": 17,
+      "constant_among_collections_with_ge8_series": 0,
+      "n_collections_with_ge8_series": 8
+    }
+  },
+  "bootstrap_ci": {
+    "level": 0.95,
+    "cluster_over_collections": [
+      0.26698323976755256,
+      0.371270323254459
+    ],
+    "resample_series": [
+      0.2972720976226481,
+      0.33234950187961493
+    ],
+    "note": "Series resampling understates uncertainty because alpha is near-constant within a collection."
+  }
+}
