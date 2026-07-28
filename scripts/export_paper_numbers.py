@@ -123,7 +123,30 @@ def main() -> None:
         d = sr["identifiability"][name]
         M[f"Const{short}"] = _fmt(d["collections_with_constant_value"])
         M[f"ConstBig{short}"] = _fmt(d["constant_among_collections_with_ge8_series"])
+        M[f"ConstMulti{short}"] = _fmt(d["constant_among_multi_series_collections"])
     M["NBigCollections"] = _fmt(sr["identifiability"]["alpha"]["n_collections_with_ge8_series"])
+    M["NMultiCollections"] = _fmt(sr["identifiability"]["alpha"]["n_multi_series_collections"])
+
+    # ---------- predictors under the two-sided estimand ----------
+    for key, entry in sr["predictors_two_sided"].items():
+        k = _macroname(key)
+        M[f"JointSeries{k}"] = _fmt(entry["n_series_retained"])
+        for name, short in (("alpha", "Alpha"), ("mean_segment_duration", "Dur"),
+                            ("segment_count", "Nseg")):
+            v = entry["predictors"][name]
+            M[f"TwoSer{short}Rho{k}"] = _fmt(v["series_rho"])
+            M[f"TwoSer{short}P{k}"] = _fmt(v["series_perm_p"], 3)
+            M[f"TwoCol{short}Rho{k}"] = _fmt(v["collection_rho"])
+            M[f"TwoCol{short}P{k}"] = _fmt(v["collection_perm_p"], 3)
+
+    # ---------- the headline two-sided statistic, instrumented ----------
+    for e in sr["gap_stratified_joint_instrumented"]:
+        k = _macroname(f"{e['both_at_least']:.2f}".replace("0.", ""))
+        M[f"JointNull{k}"] = _fmt(e["random_ranking_null_mean"])
+        M[f"JointCiLo{k}"] = _fmt(e["ci_cluster_over_collections"][0])
+        M[f"JointCiHi{k}"] = _fmt(e["ci_cluster_over_collections"][1])
+        M[f"JointZeroColl{k}"] = _fmt(e["n_collections_with_zero_flips"])
+        M[f"JointNColl{k}"] = _fmt(e["n_collections"])
 
     # ---------- SAEScore reduction identity ----------
     ident = sr["saescore_reduction_identity"]
@@ -163,7 +186,24 @@ def main() -> None:
         M[f"Tab{short}CiPairLo"] = _fmt(r["ci"]["pair_level"][0])
         M[f"Tab{short}CiPairHi"] = _fmt(r["ci"]["pair_level"][1])
 
+    pooled_f = sum(r["flips"] for r in al["auc_roc_vs_aff_f1"]["per_series"])
+    pooled_p = sum(r["comparable_pairs"] for r in al["auc_roc_vs_aff_f1"]["per_series"])
+    M["TsbadFlipAffFlips"] = _fmt(pooled_f)
+    M["TsbadFlipAffPairs"] = _fmt(pooled_p)
+
     cls = tb["by_model_class"]["auc_roc_vs_aff_f1"]
+    for det in ("IForest", "LOF"):
+        d = cls.get(f"deep-{det}")
+        if d:
+            M[f"DeepWith{_macroname(det)}Rate"] = _fmt(d["flip_rate"])
+            M[f"DeepWith{_macroname(det)}Flips"] = _fmt(d["flips"])
+            M[f"DeepWith{_macroname(det)}Pairs"] = _fmt(d["pairs"])
+    for m in ("IForest", "LOF", "AT", "MOMENT"):
+        d = cls.get(f"model:{m}")
+        if d:
+            M[f"Model{_macroname(m)}Rate"] = _fmt(d["flip_rate"])
+            M[f"Model{_macroname(m)}Flips"] = _fmt(d["flips"])
+            M[f"Model{_macroname(m)}Pairs"] = _fmt(d["pairs"])
     for k, short in (("deep-deep", "DD"), ("deep-classical", "DC"), ("classical-classical", "CC")):
         M[f"Cls{short}Rate"] = _fmt(cls[k]["flip_rate"])
         M[f"Cls{short}Flips"] = _fmt(cls[k]["flips"])

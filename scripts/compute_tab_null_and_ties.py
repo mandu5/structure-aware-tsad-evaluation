@@ -154,9 +154,18 @@ def _by_model_class(by_dataset: dict[str, list[dict]], secondary: str) -> dict:
                 continue
             n_classical = (m1 in CLASSICAL_MODELS) + (m2 in CLASSICAL_MODELS)
             key = ("deep-deep", "deep-classical", "classical-classical")[n_classical]
+            flipped = (a1 > a2) != (s1 > s2)
             buckets[key][1] += 1
-            if (a1 > a2) != (s1 > s2):
-                buckets[key][0] += 1
+            buckets[key][0] += flipped
+            # Which classical detector a mixed pair contains matters: these two
+            # behave very differently, so "classical" is not a useful class here.
+            if n_classical == 1:
+                which = m1 if m1 in CLASSICAL_MODELS else m2
+                buckets[f"deep-{which}"][1] += 1
+                buckets[f"deep-{which}"][0] += flipped
+            for m in (m1, m2):
+                buckets[f"model:{m}"][1] += 1
+                buckets[f"model:{m}"][0] += flipped
     return {k: {"pairs": v[1], "flips": v[0], "flip_rate": v[0] / v[1] if v[1] else None}
             for k, v in buckets.items()}
 
@@ -288,9 +297,14 @@ def main() -> None:
     print("--- pairs by model class (all 7 models) ---")
     for metric, d in out["by_model_class"].items():
         print(f"  {metric}")
-        for k in ("deep-deep", "deep-classical", "classical-classical"):
+        for k in ("deep-deep", "deep-classical", "classical-classical",
+                  "deep-IForest", "deep-LOF"):
             if k in d:
                 print(f"    {k:22s} {d[k]['flips']:3d}/{d[k]['pairs']:3d} = {d[k]['flip_rate']:.4f}")
+        print("    per-model involvement:")
+        for k in sorted((x for x in d if x.startswith("model:")),
+                        key=lambda x: -d[x]["flip_rate"]):
+            print(f"      {k[6:]:20s} {d[k]['flips']:3d}/{d[k]['pairs']:3d} = {d[k]['flip_rate']:.4f}")
     print()
     print("--- excluding near-random rows by measured AUC-ROC (not by architecture) ---")
     for metric, entries in out["near_random_exclusion"].items():

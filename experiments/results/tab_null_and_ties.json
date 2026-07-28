@@ -471,10 +471,55 @@
         "flips": 14,
         "flip_rate": 0.23333333333333334
       },
+      "model:AT": {
+        "pairs": 36,
+        "flips": 15,
+        "flip_rate": 0.4166666666666667
+      },
+      "model:CATCH": {
+        "pairs": 36,
+        "flips": 9,
+        "flip_rate": 0.25
+      },
+      "model:DADA": {
+        "pairs": 36,
+        "flips": 12,
+        "flip_rate": 0.3333333333333333
+      },
+      "model:MOMENT": {
+        "pairs": 36,
+        "flips": 8,
+        "flip_rate": 0.2222222222222222
+      },
+      "model:TranAD": {
+        "pairs": 36,
+        "flips": 11,
+        "flip_rate": 0.3055555555555556
+      },
       "deep-classical": {
         "pairs": 60,
         "flips": 27,
         "flip_rate": 0.45
+      },
+      "deep-IForest": {
+        "pairs": 30,
+        "flips": 16,
+        "flip_rate": 0.5333333333333333
+      },
+      "model:IForest": {
+        "pairs": 36,
+        "flips": 19,
+        "flip_rate": 0.5277777777777778
+      },
+      "deep-LOF": {
+        "pairs": 30,
+        "flips": 11,
+        "flip_rate": 0.36666666666666664
+      },
+      "model:LOF": {
+        "pairs": 36,
+        "flips": 14,
+        "flip_rate": 0.3888888888888889
       },
       "classical-classical": {
         "pairs": 6,
@@ -488,10 +533,55 @@
         "flips": 8,
         "flip_rate": 0.13333333333333333
       },
+      "model:AT": {
+        "pairs": 36,
+        "flips": 11,
+        "flip_rate": 0.3055555555555556
+      },
+      "model:CATCH": {
+        "pairs": 36,
+        "flips": 8,
+        "flip_rate": 0.2222222222222222
+      },
+      "model:DADA": {
+        "pairs": 36,
+        "flips": 8,
+        "flip_rate": 0.2222222222222222
+      },
+      "model:MOMENT": {
+        "pairs": 36,
+        "flips": 6,
+        "flip_rate": 0.16666666666666666
+      },
+      "model:TranAD": {
+        "pairs": 36,
+        "flips": 9,
+        "flip_rate": 0.25
+      },
       "deep-classical": {
         "pairs": 60,
         "flips": 26,
         "flip_rate": 0.43333333333333335
+      },
+      "deep-IForest": {
+        "pairs": 30,
+        "flips": 16,
+        "flip_rate": 0.5333333333333333
+      },
+      "model:IForest": {
+        "pairs": 36,
+        "flips": 18,
+        "flip_rate": 0.5
+      },
+      "deep-LOF": {
+        "pairs": 30,
+        "flips": 10,
+        "flip_rate": 0.3333333333333333
+      },
+      "model:LOF": {
+        "pairs": 36,
+        "flips": 12,
+        "flip_rate": 0.3333333333333333
       },
       "classical-classical": {
         "pairs": 6,

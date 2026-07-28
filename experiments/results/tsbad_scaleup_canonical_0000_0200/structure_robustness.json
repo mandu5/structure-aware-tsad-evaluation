@@ -12,9 +12,9 @@
   },
   "flip_rate": {
     "auc_vs_aff_f1": 0.31446658364466584,
-    "auc_vs_saescore": 0.2928021204340263,
-    "random_ranking_null_mean": 0.5001839751685878,
-    "random_ranking_null_sd": 0.005565252264219117,
+    "auc_vs_saescore": 0.29278999461630845,
+    "random_ranking_null_mean": 0.5001820972845061,
+    "random_ranking_null_sd": 0.0055655660037960564,
     "n_perm": 200,
     "agreement_share": 0.6855334163553342
   },
@@ -124,6 +124,41 @@
       "pairs": 6412,
       "share_of_pairs": 0.13308426733084266,
       "flip_rate": 0.021990018714909545
+    }
+  ],
+  "gap_stratified_joint_instrumented": [
+    {
+      "both_at_least": 0.05,
+      "random_ranking_null_mean": 0.5013686981301073,
+      "random_ranking_null_sd": 0.011450097116815838,
+      "ci_cluster_over_collections": [
+        0.09045233369636696,
+        0.17832714811617778
+      ],
+      "n_collections_with_zero_flips": 0,
+      "n_collections": 17
+    },
+    {
+      "both_at_least": 0.1,
+      "random_ranking_null_mean": 0.4988256553517876,
+      "random_ranking_null_sd": 0.015156244481153965,
+      "ci_cluster_over_collections": [
+        0.03734490462864655,
+        0.09537495510373833
+      ],
+      "n_collections_with_zero_flips": 2,
+      "n_collections": 17
+    },
+    {
+      "both_at_least": 0.2,
+      "random_ranking_null_mean": 0.4990592635629552,
+      "random_ranking_null_sd": 0.021851678854107416,
+      "ci_cluster_over_collections": [
+        0.009227388114837982,
+        0.04166850123282845
+      ],
+      "n_collections_with_zero_flips": 9,
+      "n_collections": 16
     }
   ],
   "noise_band_sensitivity": [
@@ -583,22 +618,105 @@
       }
     }
   },
+  "predictors_two_sided": {
+    "05": {
+      "threshold": 0.05,
+      "n_series_retained": 161,
+      "n_collections": 17,
+      "predictors": {
+        "alpha": {
+          "series_rho": 0.08577370154300143,
+          "series_perm_p": 0.29077092290770923,
+          "collection_rho": 0.1278516598460357,
+          "collection_perm_p": 0.6312368763123688
+        },
+        "mean_segment_duration": {
+          "series_rho": -0.005603715545895613,
+          "series_perm_p": 0.9457054294570543,
+          "collection_rho": 0.16666666666666669,
+          "collection_perm_p": 0.5208479152084792
+        },
+        "segment_count": {
+          "series_rho": -0.32942150801573733,
+          "series_perm_p": 9.999000099990002e-05,
+          "collection_rho": -0.6225490196078433,
+          "collection_perm_p": 0.007899210078992101
+        }
+      }
+    },
+    "10": {
+      "threshold": 0.1,
+      "n_series_retained": 151,
+      "n_collections": 17,
+      "predictors": {
+        "alpha": {
+          "series_rho": 0.0641693419950307,
+          "series_perm_p": 0.4326567343265673,
+          "collection_rho": 0.1880876659714158,
+          "collection_perm_p": 0.47585241475852413
+        },
+        "mean_segment_duration": {
+          "series_rho": 0.06660071301322557,
+          "series_perm_p": 0.42325767423257676,
+          "collection_rho": 0.26854695421573727,
+          "collection_perm_p": 0.29457054294570545
+        },
+        "segment_count": {
+          "series_rho": -0.3193075394546028,
+          "series_perm_p": 0.00029997000299970003,
+          "collection_rho": -0.45738819142680365,
+          "collection_perm_p": 0.06819318068193181
+        }
+      }
+    },
+    "20": {
+      "threshold": 0.2,
+      "n_series_retained": 128,
+      "n_collections": 16,
+      "predictors": {
+        "alpha": {
+          "series_rho": 0.01589192993933569,
+          "series_perm_p": 0.8585141485851415,
+          "collection_rho": 0.03623753373681479,
+          "collection_perm_p": 0.8985101489851015
+        },
+        "mean_segment_duration": {
+          "series_rho": 0.06869337929015691,
+          "series_perm_p": 0.4470552944705529,
+          "collection_rho": -0.009723055853282465,
+          "collection_perm_p": 0.9762023797620238
+        },
+        "segment_count": {
+          "series_rho": -0.10978462230234064,
+          "series_perm_p": 0.22037796220377961,
+          "collection_rho": -0.21390722877221424,
+          "collection_perm_p": 0.4246575342465753
+        }
+      }
+    }
+  },
   "identifiability": {
     "alpha": {
       "collections_with_constant_value": 16,
       "n_collections": 17,
+      "constant_among_multi_series_collections": 11,
+      "n_multi_series_collections": 12,
       "constant_among_collections_with_ge8_series": 7,
       "n_collections_with_ge8_series": 8
     },
     "mean_segment_duration": {
       "collections_with_constant_value": 5,
       "n_collections": 17,
+      "constant_among_multi_series_collections": 0,
+      "n_multi_series_collections": 12,
       "constant_among_collections_with_ge8_series": 0,
       "n_collections_with_ge8_series": 8
     },
     "segment_count": {
       "collections_with_constant_value": 5,
       "n_collections": 17,
+      "constant_among_multi_series_collections": 0,
+      "n_multi_series_collections": 12,
       "constant_among_collections_with_ge8_series": 0,
       "n_collections_with_ge8_series": 8
     }
@@ -606,12 +724,12 @@
   "bootstrap_ci": {
     "level": 0.95,
     "cluster_over_collections": [
-      0.27009132064468283,
-      0.3694753058785488
+      0.2694849499066379,
+      0.37149357229423674
     ],
     "resample_series": [
-      0.2973604823289585,
-      0.3319191484438003
+      0.2979278800435542,
+      0.331213384718723
     ],
     "note": "Series resampling understates uncertainty because alpha is near-constant within a collection."
   }

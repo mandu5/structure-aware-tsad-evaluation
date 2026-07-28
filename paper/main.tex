@@ -76,8 +76,9 @@ pairs that two metrics order differently. We audit that statistic on a
 \TsbadSeries-series, \TsbadModels-model recomputation of TSB-AD-M spanning
 \TsbadCollections{} source collections, and on a \TabDatasets-dataset,
 seven-detector grid. Our main finding is that evaluation series are treated as
-independent when they are not, and that this invalidates the structural
-explanations built on top of the statistic. The covariate most often invoked to
+independent when they are not, and that this invalidates the standard
+$\alpha$-based structural explanation built on top of the statistic. The
+covariate most often invoked to
 explain disagreement, the short-anomaly ratio $\alpha$, is constant within
 \ConstAlpha{} of our \TsbadCollections{} collections: it is a collection label
 rather than a series-level variable. Its rank correlation with the flip rate
@@ -87,8 +88,8 @@ collection is removed. Interval estimates move the same way, from
 $[\TsbadCiSeriesLo, \TsbadCiSeriesHi]$ resampling series to
 $[\TsbadCiClusterLo, \TsbadCiClusterHi]$ clustering over collections; on the
 six-dataset grid the clustered interval spans
-$[\TabDeepAffCiClusterLo, \TabDeepAffCiClusterHi]$, which cannot support any
-claim about magnitude. Two further omissions point the same way. Raw flip
+$[\TabDeepAffCiClusterLo, \TabDeepAffCiClusterHi]$, which cannot resolve its
+magnitude. Two further omissions point the same way. Raw flip
 percentages are reported without stating the chance level, which is $0.5$ and
 not $0$: our observed \TsbadFlipAff{} against a permutation null of
 \TsbadNull{} means the metrics agree on \TsbadAgreePct\% of pairs. And flips are
@@ -98,7 +99,9 @@ differently, so confident disagreement is roughly two percent rather than the
 \TsbadFlipAff{} that gets reported. We apply
 the audit to a composite metric we previously proposed ourselves and show it is
 uninformative by construction at both ends of the regime it was built to span.
-Mean segment duration and segment count do survive clustering. We give a
+Applying the same corrections to our own positive findings leaves one covariate
+standing, segment count, at $\TwoColNsegRhoZeroFive{}$
+($p = \TwoColNsegPZeroFive{}$) with collections as the unit. We give a
 reporting protocol and release code that regenerates every number here from
 committed artifacts.
 \end{abstract}
@@ -180,7 +183,7 @@ case of the null, partly concurrent with work in another field.
 \item We give a worked failure case: a metric defined as an interpolation
   between two others is uninformative at both endpoints of the very regime it
   was introduced to span. The metric is one we proposed ourselves, and the
-  analysis we published in support of it cannot come out any other way
+  analysis we offered in support of it cannot come out any other way
   (Section~\ref{sec:interp}).
 \item We identify two continuous covariates that do survive clustering, and
   give a reporting protocol (Sections~\ref{sec:survives}--\ref{sec:protocol}).
@@ -199,11 +202,12 @@ this is fixable.
 \paragraph{Grids.} We use two evaluation grids. The first is a
 \TabDatasets-dataset study on TAB-style benchmarks \citep{qiu2025tab}: SWaT
 \citep{mathur2016swat, goh2017swat}, MSL and SMAP \citep{hundman2018detecting},
-WADI \citep{ahmed2017wadi}, PSM, and SMD \citep{su2019robust}, evaluated with
+WADI \citep{ahmed2017wadi}, PSM \citep{abdulaal2021psm}, and SMD
+\citep{su2019robust}, evaluated with
 five deep detectors---Anomaly Transformer \citep{xu2022anomaly}, TranAD
 \citep{tuli2022tranad}, CATCH \citep{wu2025catch}, DADA \citep{shentu2025dada},
 and MOMENT \citep{goswami2024moment}---plus two classical baselines, Isolation
-Forest and LOF. The second is a replication on the TSB-AD-M evaluation list
+Forest \citep{liu2008isolation} and LOF \citep{breunig2000lof}. The second is a replication on the TSB-AD-M evaluation list
 \citep{liu2024elephant}, covering \TsbadSeries{} multivariate series and
 \TsbadModels{} scored models for \TsbadRows{} model--series metric rows, drawn
 from \TsbadCollections{} source collections.
@@ -221,7 +225,8 @@ scores $a_i$ under a primary metric and $b_i$ under a secondary metric, we count
 unordered pairs $(i,j)$ with $a_i \neq a_j$ and $b_i \neq b_j$, and call a pair
 \emph{flipped} when $\operatorname{sign}(a_i - a_j) \neq \operatorname{sign}(b_i - b_j)$.
 The flip rate pools flipped pairs over comparable pairs. This matches the
-definition used in the sources we are auditing, including our own.
+definition used in our own earlier analysis, which is the instance we audit
+directly here.
 
 \paragraph{Anomaly-duration taxonomy.} Anomaly segments are contiguous runs of
 positive labels in the test partition, bucketed as Short ($\leq 5$ steps), Medium
@@ -234,8 +239,8 @@ here.
 
 \paragraph{Reproducibility.} Every number in this paper is emitted as a \LaTeX{}
 macro by a script that reads the committed JSON artifacts, so the manuscript
-cannot drift from the analysis. Rerunning three scripts regenerates all
-artifacts and all numbers.
+cannot drift from the analysis. Rerunning three analysis scripts regenerates all
+artifacts, and a fourth regenerates every number in the manuscript.
 
 \section{Against a null, the metrics mostly agree}
 \label{sec:null}
@@ -264,7 +269,7 @@ reference is the null column. All rates are \auc{} versus \afff{}.}
 \toprule
 Grid & Models & Flips / pairs & Rate & Null & Agreement \\
 \midrule
-TSB-AD-M & \TsbadModels{} & --- & \TsbadFlipAff{} & \TsbadNull{} & \TsbadAgreePct\% \\
+TSB-AD-M & \TsbadModels{} & \TsbadFlipAffFlips/\TsbadFlipAffPairs & \TsbadFlipAff{} & \TsbadNull{} & \TsbadAgreePct\% \\
 TAB & 5 deep & \TabDeepAffFlips/\TabDeepAffPairs & \TabDeepAffRate{} & \TabDeepAffNull{} & \TabDeepAffAgreePct\% \\
 TAB & 7 (with classical) & \TabAllAffFlips/\TabAllAffPairs & \TabAllAffRate{} & \TabAllAffNull{} & \TabAllAffAgreePct\% \\
 \bottomrule
@@ -294,7 +299,7 @@ so a metric that orders them differently has not reversed a finding. Because
 such pairs are numerous, they can carry a flip rate on their own.
 
 Table~\ref{tab:margin} stratifies the TSB-AD-M pairs by $|\Delta\auc{}|$. The
-pattern is monotone and steep: pairs separated by less than $0.01$ flip at
+pattern is steep, and monotone above a margin of $0.02$: pairs separated by less than $0.01$ flip at
 \TsbadGapZeroZeroToZeroOne{}, essentially the chance rate, while pairs separated
 by at least $0.20$ flip at \TsbadGapTwoZeroToInf{}. Excluding every pair within
 $0.05$ \auc{} retains \TsbadDropShareZeroFive\% of pairs and gives
@@ -317,10 +322,29 @@ Requiring both metrics to separate the pair gives the two-sided statistic
 ordered differently. The corresponding figures at joint margins of $0.05$ and
 $0.10$ are \TsbadJointZeroFive{} and \TsbadJointOneZero{}.
 
-We regard the two-sided number as the answer to the question the literature is
-actually asking. ``How often do two metrics confidently disagree about which of
-two detectors is better?'' is not \TsbadFlipAff{}, and it is not
-\TsbadGapTwoZeroToInf{}. On this grid it is about two percent.
+We regard the two-sided number as the closer answer to the question the
+literature is actually asking. ``How often do two metrics confidently disagree
+about which of two detectors is better?'' is not \TsbadFlipAff{}, and it is not
+\TsbadGapTwoZeroToInf{}. On this grid it is about two percent, against a
+random-ranking null of \JointNullTwoZero{} and with a cluster bootstrap
+interval of $[\JointCiLoTwoZero, \JointCiHiTwoZero]$ over collections. It is
+also extremely unevenly distributed: \JointZeroCollTwoZero{} of the
+\JointNCollTwoZero{} collections that retain any doubly-separated pair contain
+\emph{no} confident disagreement at all.
+
+Two properties of this estimand should be stated rather than left to the reader.
+Requiring both metrics to separate a pair conditions on the secondary metric's
+margin, which is not independent of sign agreement, so the two-sided rate is
+conservative in the same structural way the one-sided rate is anti-conservative;
+the two bracket the quantity of interest rather than either being unbiased. And
+the same absolute threshold is applied to two metrics with different dispersions,
+which makes the \afff{} condition the binding one: at $0.20$ it cuts the
+$|\Delta\auc{}| \geq 0.20$ set from \TsbadGapPairsTwoZeroToInf{} pairs to
+\TsbadJointPairsTwoZero{}. We therefore report both statistics throughout. The
+one-sided rate remains the right answer to a different and legitimate
+question---how often a reader who ranks by \auc{} would be contradicted by
+\afff{}---and we do not claim it is meaningless, only that it is not a measure
+of confident disagreement.
 
 \begin{table}[t]
 \centering
@@ -362,25 +386,6 @@ $\geq 0.40$    & \TsbadSecPairsFourZeroToInf      & \TsbadSecFourZeroToInf      
 \end{tabular}
 \end{table}
 
-\begin{table}[t]
-\centering
-\caption{TSB-AD-M flip rate by \auc{} margin. Disagreement falls steeply with
-margin but does not vanish.}
-\label{tab:margin}
-\begin{tabular}{lrrr}
-\toprule
-$|\Delta\auc{}|$ & Pairs & Share & Flip rate \\
-\midrule
-$< 0.01$        & \TsbadGapPairsZeroZeroToZeroOne   & \TsbadGapShareZeroZeroToZeroOne\%   & \TsbadGapZeroZeroToZeroOne \\
-$0.01$--$0.02$  & \TsbadGapPairsZeroOneToZeroTwo    & \TsbadGapShareZeroOneToZeroTwo\%    & \TsbadGapZeroOneToZeroTwo \\
-$0.02$--$0.05$  & \TsbadGapPairsZeroTwoToZeroFive   & \TsbadGapShareZeroTwoToZeroFive\%   & \TsbadGapZeroTwoToZeroFive \\
-$0.05$--$0.10$  & \TsbadGapPairsZeroFiveToOneZero   & \TsbadGapShareZeroFiveToOneZero\%   & \TsbadGapZeroFiveToOneZero \\
-$0.10$--$0.20$  & \TsbadGapPairsOneZeroToTwoZero    & \TsbadGapShareOneZeroToTwoZero\%    & \TsbadGapOneZeroToTwoZero \\
-$\geq 0.20$     & \TsbadGapPairsTwoZeroToInf        & \TsbadGapShareTwoZeroToInf\%        & \TsbadGapTwoZeroToInf \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 A related concern is that flips are produced by detectors that do not
 discriminate at all. On the \TabDatasets-dataset grid we drop every
 model--dataset row with $|\auc{} - 0.5| < \delta$ and recompute. The rate is
@@ -399,7 +404,17 @@ the $\delta = 0.10$ exclusion drops \NrDeepOneZero{} deep rows against
 \NrClsOneZero{} classical ones. Pairs that mix a deep and a classical detector do
 flip more often (\ClsDCFlips/\ClsDCPairs{} $=$ \ClsDCRate{}, versus
 \ClsDDFlips/\ClsDDPairs{} $=$ \ClsDDRate{} for deep--deep pairs), but this traces
-to LOF specifically rather than to classical methods as a class.
+to Isolation Forest, not to classical methods as a class: split by which
+classical detector the pair contains, the rate is
+\DeepWithIForestFlips/\DeepWithIForestPairs{} $=$ \DeepWithIForestRate{} for
+\mbox{deep--IForest} against \DeepWithLOFFlips/\DeepWithLOFPairs{} $=$
+\DeepWithLOFRate{} for \mbox{deep--LOF}. Across all
+\TabAllAffPairs{} pairs Isolation Forest is involved in more flips than any
+other detector (\ModelIForestFlips/\ModelIForestPairs{} $=$
+\ModelIForestRate{}), which is the same detector that leads on \auc{} on four
+of the six datasets. Being the strongest detector by one metric and the largest
+single source of disagreement is not a contradiction; it is what metric
+disagreement looks like when it is concentrated in one model.
 
 \section{Evaluation series are not independent}
 \label{sec:cluster}
@@ -412,33 +427,38 @@ seriously---creates a confound for any covariate that is a property of the
 collection.
 
 The short-anomaly ratio is such a covariate. Table~\ref{tab:ident} shows that
-$\alpha$ is constant within \ConstAlpha{} of \TsbadCollections{} collections, and
-within \ConstBigAlpha{} of the \NBigCollections{} collections that contribute at
-least eight series. It is, operationally, a collection label. Mean segment
-duration and segment count are not: both vary within every one of the large
-collections.
+$\alpha$ is constant within \ConstMultiAlpha{} of the \NMultiCollections{}
+collections that contain more than one series, and within \ConstBigAlpha{} of
+the \NBigCollections{} that contribute at least eight. It is, operationally, a
+collection label. Mean segment duration and segment count are not: both vary
+within every multi-series collection.
 
 \begin{table}[t]
 \centering
-\caption{Within-collection variation of structural covariates on TSB-AD-M.
-A covariate that is constant within collections cannot be identified at the
-series level.}
+\caption{Within-collection variation of structural covariates on TSB-AD-M. A
+covariate that is constant within collections cannot be identified separately
+from collection identity at the series level; its between-collection variation
+remains admissible evidence, but at $n = \TsbadCollections{}$ rather than
+$n = \TsbadSeries{}$. Five collections contribute a single series and are
+constant for every covariate by construction, which is why the middle column is
+the informative one.}
 \label{tab:ident}
-\begin{tabular}{lrr}
+\begin{tabular}{lrrr}
 \toprule
-Covariate & Constant within & Constant within large \\
-          & (of \TsbadCollections{} collections) & (of \NBigCollections{} with $\geq 8$ series) \\
+Covariate & All & Multi-series & Large \\
+          & (\TsbadCollections{}) & ($\geq 2$ series: \NMultiCollections{}) & ($\geq 8$ series: \NBigCollections{}) \\
 \midrule
-$\alpha = 1 - N_{\text{short}}/N_{\text{total}}$ & \ConstAlpha{} & \ConstBigAlpha{} \\
-Mean segment duration & \ConstDur{} & \ConstBigDur{} \\
-Segment count & \ConstNseg{} & \ConstBigNseg{} \\
+$\alpha = 1 - N_{\text{short}}/N_{\text{total}}$ & \ConstAlpha{} & \ConstMultiAlpha{} & \ConstBigAlpha{} \\
+Mean segment duration & \ConstDur{} & \ConstMultiDur{} & \ConstBigDur{} \\
+Segment count & \ConstNseg{} & \ConstMultiNseg{} & \ConstBigNseg{} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 The consequences are in Table~\ref{tab:pred}. At the series level $\alpha$
-correlates with the flip rate at $\rho = \SerAlphaRho{}$ with a permutation
-$p$ at the resolution floor of the test---an apparently decisive result. At the
+correlates with the flip rate at $\rho = \SerAlphaRho{}$ with a permutation $p$
+of $\SerAlphaP{}$ against a resolution floor of $10^{-4}$---an apparently
+decisive result. At the
 collection level the same association is $\ColAlphaRho{}$ with
 $p = \ColAlphaP{}$. Leave-one-collection-out is equally stark: removing
 \LocoAlphaWorst{} alone takes the series-level correlation to
@@ -448,10 +468,12 @@ collection wearing the clothes of twelve observations.
 
 The same holds on the \TabDatasets-dataset grid, independently. Only
 \TabAlphaLtOne{} of \TabDatasets{} datasets have $\alpha < 1$, so the entire
-structural claim rests on them; and of the \TabDeepAffFlips{} deep-model flips,
-\DeepPSMFlips{} come from PSM and \DeepSWaTFlips{} from SWaT. SWaT has
-$\alpha = \AlphaSWaT{}$---the regime in which the structural account predicts
-the \emph{fewest} flips.
+structural claim rests on them. SWaT, MSL, SMAP and WADI all have $\alpha = 1$
+and ten deep-model pairs each, yet produce \DeepSWaTFlips{}, \DeepMSLFlips{},
+\DeepSMAPFlips{} and \DeepWADIFlips{} flips respectively. Within a single
+$\alpha$ regime the flip count ranges over the full width of the effect
+$\alpha$ is supposed to explain, so on this grid $\alpha$ cannot separate these
+datasets at all.
 
 Finally, spread within the $\alpha = 1$ regime exceeds spread across $\alpha$
 regimes: among collections with $\alpha = 1$ throughout, pooled flip rates run
@@ -461,11 +483,13 @@ itself.
 
 \begin{table}[t]
 \centering
-\caption{Spearman correlation between structural covariates and the flip rate,
-at series level and with collections as the unit, plus the range under
-leave-one-collection-out. Series-level $p$-values are permutation-based and
-report the resolution floor of the test. $\alpha$ is the only covariate that
-does not survive.}
+\caption{Spearman correlation between structural covariates and the one-sided
+flip rate, at series level and with collections as the unit, plus the range of
+the series-level $\rho$ under leave-one-collection-out. Permutation $p$-values
+are bounded below by $1/(n_{\text{perm}}+1) = 10^{-4}$ and are upper bounds.
+``Worst drop'' names the collection whose removal minimises $|\rho|$. Against
+this estimand $\alpha$ is the only covariate that fails; Table~\ref{tab:twosided}
+repeats the exercise against the two-sided rate, where duration fails as well.}
 \label{tab:pred}
 \begin{tabular}{lrrrrl}
 \toprule
@@ -486,11 +510,13 @@ $[\TsbadCiSeriesLo, \TsbadCiSeriesHi]$ for the TSB-AD-M flip rate; a cluster
 bootstrap over collections gives $[\TsbadCiClusterLo, \TsbadCiClusterHi]$, about
 three times wider. On the \TabDatasets-dataset grid the effect is severe enough
 to be disqualifying: the deep-model interval is
-$[\TabDeepAffCiPairLo, \TabDeepAffCiPairHi]$ at pair level but
+$[\TabDeepAffCiPairLo, \TabDeepAffCiPairHi]$ treating the \TabDeepAffPairs{}
+pairs as independent Bernoulli draws, but
 $[\TabDeepAffCiClusterLo, \TabDeepAffCiClusterHi]$ clustering over the six
-datasets. A study of that size cannot resolve a flip rate to better than a
-range spanning most of the unit interval, and should not be used to argue about
-its magnitude.
+datasets. A study of that size cannot resolve a flip rate to better than a range
+more than a third of the unit interval wide---compatible with near-agreement and
+with near-chance simultaneously---and should not be used to argue about its
+magnitude.
 
 \section{A worked failure case: interpolation metrics at their endpoints}
 \label{sec:interp}
@@ -536,21 +562,62 @@ and $\alpha$ does not survive as a predictor.
 \section{What survives}
 \label{sec:survives}
 
-The structural hypothesis is not dead; its standard operationalization is.
-Mean segment duration correlates with the flip rate at $\SerDurRho{}$ at the
-series level and $\ColDurRho{}$ at the collection level, and stays within
-$[\LocoDurMin, \LocoDurMax]$ under leave-one-collection-out. Segment count
-behaves symmetrically at $\SerNsegRho{}$ and $\ColNsegRho{}$. Neither collapses
-the way $\alpha$ does, and neither is constant within the large collections.
+The structural hypothesis is not dead, but less of it survives than the
+clustering correction alone suggests. Against the one-sided pooled rate, two
+covariates hold up where $\alpha$ does not: mean segment duration at
+$\SerDurRho{}$ (series) and $\ColDurRho{}$ (collection), stable within
+$[\LocoDurMin, \LocoDurMax]$ under leave-one-collection-out, and segment count
+at $\SerNsegRho{}$ and $\ColNsegRho{}$. Neither is constant within the
+multi-series collections, so unlike $\alpha$ both are identifiable.
 
-We state the limits plainly. With \TsbadCollections{} collections the
-collection-level tests are underpowered: the permutation $p$-values are
-$\ColDurP{}$ and $\ColNsegP{}$, and we do not claim significance for them. What
-we claim is the comparison. Under identical treatment, $\alpha$ moves from
-$\SerAlphaRho{}$ to $\ColAlphaRho{}$ and collapses under leave-one-out, whereas
-duration and segment count retain their sign and roughly their magnitude at both
-levels. That contrast is the evidence; the individual collection-level
-coefficients are not.
+Applying our own margin correction one level deeper removes one of them.
+Table~\ref{tab:twosided} recomputes the same associations against the two-sided
+flip rate---the estimand Section~\ref{sec:margin} argues for---at a joint
+margin of $0.05$, which retains \JointSeriesZeroFive{} of \TsbadSeries{}
+series. Mean segment duration goes to $\TwoSerDurRhoZeroFive{}$
+($p = \TwoSerDurPZeroFive{}$) at the series level and
+$\TwoColDurRhoZeroFive{}$ ($p = \TwoColDurPZeroFive{}$) at the collection
+level: it does not survive. It was tracking the contaminated part of the
+statistic. Segment count instead strengthens, to $\TwoSerNsegRhoZeroFive{}$ and
+$\TwoColNsegRhoZeroFive{}$ with $p = \TwoColNsegPZeroFive{}$---the only
+collection-level association anywhere in this paper that is significant at
+conventional levels. $\alpha$ remains absent at $\TwoColAlphaRhoZeroFive{}$
+($p = \TwoColAlphaPZeroFive{}$).
+
+\begin{table}[t]
+\centering
+\caption{Structural covariates against the one-sided pooled flip rate (as in
+Table~\ref{tab:pred}) and against the two-sided rate at a joint margin of
+$0.05$, which retains \JointSeriesZeroFive{} of \TsbadSeries{} series.
+Permutation $p$ in parentheses. Only segment count survives both corrections.}
+\label{tab:twosided}
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{One-sided} & \multicolumn{2}{c}{Two-sided ($\geq 0.05$ both)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Covariate & Series $\rho$ & Coll.\ $\rho$ & Series $\rho$ & Coll.\ $\rho$ \\
+\midrule
+$\alpha$              & \SerAlphaRho & \ColAlphaRho\ (\ColAlphaP) & \TwoSerAlphaRhoZeroFive\ (\TwoSerAlphaPZeroFive) & \TwoColAlphaRhoZeroFive\ (\TwoColAlphaPZeroFive) \\
+Mean segment duration & \SerDurRho   & \ColDurRho\ (\ColDurP)     & \TwoSerDurRhoZeroFive\ (\TwoSerDurPZeroFive)     & \TwoColDurRhoZeroFive\ (\TwoColDurPZeroFive) \\
+Segment count         & \SerNsegRho  & \ColNsegRho\ (\ColNsegP)   & \TwoSerNsegRhoZeroFive\ (\TwoSerNsegPZeroFive)   & \TwoColNsegRhoZeroFive\ (\TwoColNsegPZeroFive) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We report this because it is what our own method demands, and we note that it
+costs us one of two positive findings. The surviving statement is single and
+narrow: among the structural covariates we can measure, the number of anomaly
+segments in a series is the one that still tracks metric disagreement after both
+the clustering and the margin corrections, and it does so in the direction that
+fewer, longer segments mean more disagreement.
+
+We state the limits plainly. With \TsbadCollections{} collections these tests
+are underpowered, and at a joint margin of $0.20$ the retained sample is small
+enough that nothing reaches significance, segment count included
+($\TwoColNsegRhoTwoZero{}$, $p = \TwoColNsegPTwoZero{}$). What we claim is the
+comparison, not the coefficients: under identical treatment $\alpha$ fails every
+test we apply, duration fails the margin test, and segment count fails none of
+them.
 
 Note also that these covariates are not independent of one another. Mean segment
 duration is algebraically determined by anomaly density, series length and
@@ -568,9 +635,11 @@ above.
 \item \textbf{Report the null.} State the random-ranking baseline next to any
   metric-disagreement statistic. For pairwise flip rates it is $0.5$; obtain it
   by permuting one metric across models within each evaluation group.
-\item \textbf{Stratify by margin.} Report the flip rate as a function of the
-  primary metric's gap, or at minimum report it with near-ties excluded and say
-  what fraction of pairs that removes.
+\item \textbf{Stratify by \emph{both} margins.} Report the flip rate among
+  pairs that both metrics separate by a stated threshold, and say what fraction
+  of pairs that retains. Conditioning on the primary metric alone selects pairs
+  whose secondary margin is free to be negligible, and leaves a residual that is
+  mostly near-ties on the metric one did not condition on.
 \item \textbf{Cluster at the source.} Use the source collection or dataset, not
   the series, as the resampling unit, and report the clustered interval. Where
   the two intervals differ materially, report both.
@@ -596,8 +665,8 @@ point-adjustment lets random scores outperform published detectors, which is the
 canonical demonstration that a TSAD metric can be uninformative.
 \citet{wu2023current} and \citet{liu2024elephant} argue that benchmark datasets
 themselves are flawed, mislabeled, or trivially solvable, and
-\citet{schmidl2022anomaly} and \citet{boniol2024dive} survey the resulting
-landscape. \citet{lyu2026didwe} stress-tests post-point-adjustment replacement
+\citet{schmidl2022anomaly}, \citet{blazquez2021review} and
+\citet{boniol2024dive} survey the resulting landscape. \citet{lyu2026didwe} stress-tests post-point-adjustment replacement
 metrics and finds that several, including affiliation-based and ROC-based
 scores, inflate steeply under best-of-$N$ seed selection while PR-based metrics
 stay flat. That result is complementary to ours and sharpens it: the metric on
@@ -653,8 +722,8 @@ model-coverage-limited rather than a complete benchmark run, so it should be rea
 as a replication of the statistical phenomenon and not as a TSB-AD leaderboard
 claim. With \TsbadCollections{} collections and \TabDatasets{} datasets, the
 cluster-level analyses that carry our main argument are themselves
-underpowered---which is part of the point, but does mean our positive claims
-about duration and segment count are directional rather than established. We
+underpowered---which is part of the point, but does mean our surviving positive
+claim about segment count is directional rather than established. We
 have not shown that any published conclusion in the TSAD literature is wrong as
 a result of these omissions; we have shown that the evidence offered for one
 class of conclusion, including ours, does not have the strength attributed to it.
@@ -664,15 +733,17 @@ class of conclusion, including ours, does not have the strength attributed to it
 A rank-flip rate is a compact and persuasive statistic, and it is currently
 reported in a way that cannot be interpreted. Supplied with a null, the flip
 rates in this literature and in our own prior work describe metrics that
-substantially agree. Stratified by margin, a real residual disagreement remains
-that near-ties do not explain. Clustered at the source collection, the structural
+substantially agree. Stratified by both margins, most of the apparent residual
+turns out to be near-ties on the metric one did not condition on. Clustered at
+the source collection, the structural
 account of that disagreement does not survive, and neither does the composite
 metric we built on it. What we can defend is narrower than what we previously
-claimed, and we think it is more useful: point and segment metrics confidently
-disagree on about two percent of model pairs, what disagreement there is varies
+claimed, and we think it is more useful: on TSB-AD-M, point and segment metrics
+disagree on about two percent of the pairs that both of them clearly separate,
+what disagreement there is varies
 across benchmark collections to a degree that dwarfs any anomaly-structure
-effect we can identify, and the structural covariates that do track it are
-continuous ones the field has not been using.
+effect we can identify, and the one structural covariate that still tracks it
+under both corrections is a continuous one the field has not been using.
 
 \subsubsection*{Broader Impact Statement}
 

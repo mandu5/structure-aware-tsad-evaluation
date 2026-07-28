@@ -88,13 +88,20 @@ def _collect(groups: list[tuple[str, str, np.ndarray, np.ndarray]]) -> dict:
     for series, collection, auc, other in groups:
         gap, flipped = pairwise_flips(auc, other)
         gap_b, _ = pairwise_flips(other, auc)  # same pair set, margin on the secondary metric
-        per_series.append({
+        rec = {
             "series": series,
             "collection": collection,
             "pairs": int(gap.size),
             "flips": int(flipped.sum()),
             "rfr": float(flipped.mean()) if gap.size else float("nan"),
-        })
+        }
+        for thr in JOINT_THRESHOLDS:
+            m = (gap >= thr) & (gap_b >= thr)
+            key = f"{thr:.2f}".replace("0.", "")
+            rec[f"pairs_joint{key}"] = int(m.sum())
+            rec[f"flips_joint{key}"] = int(flipped[m].sum())
+            rec[f"rfr_joint{key}"] = float(flipped[m].mean()) if m.any() else float("nan")
+        per_series.append(rec)
         gaps_all.append(gap)
         gaps_b_all.append(gap_b)
         flip_all.append(flipped)
@@ -116,7 +123,9 @@ def main() -> None:
         if not p.exists():
             raise FileNotFoundError(f"{p} not found. Pass --canonical-dir pointing at a canonical snapshot.")
 
-    df = pd.read_csv(rows_path)
+    # Default float parsing collapses values such as 0.9999999999999999 to 1.0,
+    # inventing ties that the exact-equality tie rule then drops.
+    df = pd.read_csv(rows_path, float_precision="round_trip")
     if "sae_score" in df.columns and "saescore" not in df.columns:
         df = df.rename(columns={"sae_score": "saescore"})
     needed = {"file_name", "collection", "model", "auc_roc", "aff_f1", "alpha", "saescore"}
@@ -249,15 +258,47 @@ def main() -> None:
             },
         }
 
+    # The predictor block above uses the one-sided pooled rate, which Section on
+    # margins shows is mostly contaminated by near-ties on the secondary metric.
+    # Re-run it against the paper's own preferred two-sided estimand.
+    predictors_joint = {}
+    for thr in JOINT_THRESHOLDS:
+        key = f"{thr:.2f}".replace("0.", "")
+        sub = ps[ps[f"pairs_joint{key}"] > 0].copy()
+        colj = sub.groupby("collection").apply(
+            lambda g: pd.Series({
+                "flip_rate": g[f"flips_joint{key}"].sum() / g[f"pairs_joint{key}"].sum(),
+                **{k: g[k].mean() for k in ["alpha", "segment_count", "mean_segment_duration"]},
+            }),
+            include_groups=False,
+        ).reset_index()
+        entry = {"threshold": float(thr), "n_series_retained": int(len(sub)),
+                 "n_collections": int(len(colj)), "predictors": {}}
+        for name in ["alpha", "mean_segment_duration", "segment_count"]:
+            entry["predictors"][name] = {
+                "series_rho": spearman(sub[name], sub[f"rfr_joint{key}"]),
+                "series_perm_p": spearman_perm_p(sub[name].to_numpy(),
+                                                 sub[f"rfr_joint{key}"].to_numpy(),
+                                                 args.n_perm_rho, rng),
+                "collection_rho": spearman(colj[name], colj["flip_rate"]),
+                "collection_perm_p": spearman_perm_p(colj[name].to_numpy(),
+                                                     colj["flip_rate"].to_numpy(),
+                                                     args.n_perm_rho, rng),
+            }
+        predictors_joint[key] = entry
+
     # within-collection variance of each predictor: is it a series variable at all?
     identifiability = {}
     for name in ["alpha", "mean_segment_duration", "segment_count"]:
         nunique = ps.groupby("collection")[name].nunique()
         sizes = ps.groupby("collection").size()
         big = sizes[sizes >= 8].index
+        multi = sizes[sizes >= 2].index
         identifiability[name] = {
             "collections_with_constant_value": int((nunique <= 1).sum()),
             "n_collections": int(len(nunique)),
+            "constant_among_multi_series_collections": int((nunique[multi] <= 1).sum()),
+            "n_multi_series_collections": int(len(multi)),
             "constant_among_collections_with_ge8_series": int((nunique[big] <= 1).sum()),
             "n_collections_with_ge8_series": int(len(big)),
         }
@@ -281,6 +322,40 @@ def main() -> None:
         p = idx_pairs[k].sum()
         series_boot[b] = idx_flips[k].sum() / p if p else np.nan
     series_ci = [float(np.nanquantile(series_boot, lo_q)), float(np.nanquantile(series_boot, 1 - lo_q))]
+
+    # The two-sided rate is the paper's headline number; instrument it the same
+    # way as the pooled rate (protocol items 1 and 3).
+    joint_instrumented = []
+    for thr in JOINT_THRESHOLDS:
+        key = f"{thr:.2f}".replace("0.", "")
+        nulls = np.empty(args.n_perm)
+        for b in range(args.n_perm):
+            fl = tot = 0
+            for _, _, auc_v, other_v in groups_aff:
+                perm = rng.permutation(other_v)
+                g1, fp = pairwise_flips(auc_v, perm)
+                g2, _ = pairwise_flips(perm, auc_v)
+                m = (g1 >= thr) & (g2 >= thr)
+                fl += int(fp[m].sum()); tot += int(m.sum())
+            nulls[b] = fl / tot if tot else np.nan
+        sub = ps[ps[f"pairs_joint{key}"] > 0]
+        names_j = sorted(sub["collection"].unique())
+        bycj = {c: g for c, g in sub.groupby("collection")}
+        cb = np.empty(args.n_boot)
+        for b in range(args.n_boot):
+            pick = rng.choice(names_j, size=len(names_j), replace=True)
+            pp = sum(int(bycj[c][f"pairs_joint{key}"].sum()) for c in pick)
+            cb[b] = sum(int(bycj[c][f"flips_joint{key}"].sum()) for c in pick) / pp if pp else np.nan
+        joint_instrumented.append({
+            "both_at_least": float(thr),
+            "random_ranking_null_mean": float(np.nanmean(nulls)),
+            "random_ranking_null_sd": float(np.nanstd(nulls, ddof=1)),
+            "ci_cluster_over_collections": [float(np.nanquantile(cb, lo_q)),
+                                            float(np.nanquantile(cb, 1 - lo_q))],
+            "n_collections_with_zero_flips": int(sum(
+                1 for c in names_j if int(bycj[c][f"flips_joint{key}"].sum()) == 0)),
+            "n_collections": int(len(names_j)),
+        })
 
     payload = {
         "canonical_dir": canonical.name,
@@ -308,8 +383,10 @@ def main() -> None:
         "gap_stratified": gap_buckets,
         "gap_stratified_secondary": sec_buckets,
         "gap_stratified_joint": joint,
+        "gap_stratified_joint_instrumented": joint_instrumented,
         "noise_band_sensitivity": noise_band,
         "predictors": predictors,
+        "predictors_two_sided": predictors_joint,
         "identifiability": identifiability,
         "bootstrap_ci": {
             "level": args.ci_level,

@@ -27,7 +27,7 @@
       "alpha=0": {
         "n_series": 12,
         "valid_model_rows": 300,
-        "comparable_pairs": 3592,
+        "comparable_pairs": 3594,
         "flips": 0,
         "pairwise_flip_rate": 0.0,
         "mean_per_series_rfr": 0.0
@@ -35,17 +35,17 @@
       "alpha<1": {
         "n_series": 27,
         "valid_model_rows": 675,
-        "comparable_pairs": 8092,
+        "comparable_pairs": 8094,
         "flips": 791,
-        "pairwise_flip_rate": 0.09775086505190311,
+        "pairwise_flip_rate": 0.09772671114405733,
         "mean_per_series_rfr": 0.09765432098765432
       },
       "all": {
         "n_series": 180,
         "valid_model_rows": 4498,
-        "comparable_pairs": 48292,
+        "comparable_pairs": 48294,
         "flips": 14140,
-        "pairwise_flip_rate": 0.2928021204340263,
+        "pairwise_flip_rate": 0.29278999461630845,
         "mean_per_series_rfr": 0.3236517821378573
       }
     },
@@ -563,7 +563,7 @@
       {
         "file_name": "058_SMD_id_2_Facility_tr_1087_1st_1187.csv",
         "collection": "SMD",
-        "alpha": 0.9090909090909092,
+        "alpha": 0.9090909090909091,
         "alpha_bin": "0<alpha<1",
         "valid_model_rows": 25,
         "comparable_pairs": 300,
@@ -713,7 +713,7 @@
       {
         "file_name": "075_SMD_id_19_Facility_tr_564_1st_664.csv",
         "collection": "SMD",
-        "alpha": 0.1999999999999999,
+        "alpha": 0.19999999999999996,
         "alpha_bin": "0<alpha<1",
         "valid_model_rows": 25,
         "comparable_pairs": 300,
@@ -733,7 +733,7 @@
       {
         "file_name": "077_SMD_id_21_Facility_tr_3026_1st_3126.csv",
         "collection": "SMD",
-        "alpha": 0.9090909090909092,
+        "alpha": 0.9090909090909091,
         "alpha_bin": "0<alpha<1",
         "valid_model_rows": 25,
         "comparable_pairs": 300,
@@ -1073,7 +1073,7 @@
       {
         "file_name": "115_PSM_id_1_Facility_tr_50000_1st_129872.csv",
         "collection": "PSM",
-        "alpha": 0.4861111111111111,
+        "alpha": 0.48611111111111116,
         "alpha_bin": "0<alpha<1",
         "valid_model_rows": 25,
         "comparable_pairs": 300,
@@ -1096,7 +1096,7 @@
         "alpha": 0.0,
         "alpha_bin": "alpha=0",
         "valid_model_rows": 25,
-        "comparable_pairs": 299,
+        "comparable_pairs": 300,
         "flips": 0,
         "rfr": 0.0
       },
@@ -1136,7 +1136,7 @@
         "alpha": 0.0,
         "alpha_bin": "alpha=0",
         "valid_model_rows": 25,
-        "comparable_pairs": 299,
+        "comparable_pairs": 300,
         "flips": 0,
         "rfr": 0.0
       },
@@ -2412,7 +2412,7 @@
       {
         "file_name": "058_SMD_id_2_Facility_tr_1087_1st_1187.csv",
         "collection": "SMD",
-        "alpha": 0.9090909090909092,
+        "alpha": 0.9090909090909091,
         "alpha_bin": "0<alpha<1",
         "valid_model_rows": 25,
         "comparable_pairs": 300,
@@ -2562,7 +2562,7 @@
       {
         "file_name": "075_SMD_id_19_Facility_tr_564_1st_664.csv",
         "collection": "SMD",
-        "alpha": 0.1999999999999999,
+        "alpha": 0.19999999999999996,
         "alpha_bin": "0<alpha<1",
         "valid_model_rows": 25,
         "comparable_pairs": 300,
@@ -2582,7 +2582,7 @@
       {
         "file_name": "077_SMD_id_21_Facility_tr_3026_1st_3126.csv",
         "collection": "SMD",
-        "alpha": 0.9090909090909092,
+        "alpha": 0.9090909090909091,
         "alpha_bin": "0<alpha<1",
         "valid_model_rows": 25,
         "comparable_pairs": 300,
@@ -2922,7 +2922,7 @@
       {
         "file_name": "115_PSM_id_1_Facility_tr_50000_1st_129872.csv",
         "collection": "PSM",
-        "alpha": 0.4861111111111111,
+        "alpha": 0.48611111111111116,
         "alpha_bin": "0<alpha<1",
         "valid_model_rows": 25,
         "comparable_pairs": 300,

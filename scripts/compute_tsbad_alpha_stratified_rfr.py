@@ -103,7 +103,9 @@ def main() -> int:
     rows_path = canonical_dir / "tsbad_sae_rows.csv"
     if not rows_path.exists():
         raise FileNotFoundError(rows_path)
-    df = pd.read_csv(rows_path)
+    # Exact float parsing: the default converter collapses values such as
+    # 0.9999999999999999 to 1.0, inventing ties the exact-equality rule drops.
+    df = pd.read_csv(rows_path, float_precision="round_trip")
     try:
         canonical_dir_public = str(canonical_dir.relative_to(ROOT))
     except ValueError:

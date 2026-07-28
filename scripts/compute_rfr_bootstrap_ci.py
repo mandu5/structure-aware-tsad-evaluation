@@ -65,7 +65,9 @@ def main() -> None:
         raise FileNotFoundError(
             f"{sae_rows_path} not found. Provide --canonical-dir with a directory containing tsbad_sae_rows.csv."
         )
-    df = pd.read_csv(sae_rows_path)
+    # Exact float parsing: the default converter collapses values such as
+    # 0.9999999999999999 to 1.0, inventing ties the exact-equality rule drops.
+    df = pd.read_csv(sae_rows_path, float_precision="round_trip")
 
     # Accept both legacy and current column names.
     rename_map = {}
