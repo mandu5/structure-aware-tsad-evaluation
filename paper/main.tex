@@ -80,8 +80,8 @@ independent when they are not, and that this invalidates the standard
 $\alpha$-based structural explanation built on top of the statistic. The
 covariate most often invoked to
 explain disagreement, the short-anomaly ratio $\alpha$, is constant within
-\ConstAlpha{} of our \TsbadCollections{} collections: it is a collection label
-rather than a series-level variable. Its rank correlation with the flip rate
+\ConstMultiAlpha{} of the \NMultiCollections{} collections that contain more
+than one series: it is a collection label rather than a series-level variable. Its rank correlation with the flip rate
 falls from $\SerAlphaRho$ at the series level to $\ColAlphaRho$
 ($p = \ColAlphaP$) with collections as the unit, and to $\LocoAlphaMin$ when one
 collection is removed. Interval estimates move the same way, from
@@ -94,9 +94,9 @@ percentages are reported without stating the chance level, which is $0.5$ and
 not $0$: our observed \TsbadFlipAff{} against a permutation null of
 \TsbadNull{} means the metrics agree on \TsbadAgreePct\% of pairs. And flips are
 pooled across margins: among the \TsbadJointShareTwoZero\% of pairs that both
-metrics separate by at least $0.20$, only \TsbadJointTwoZero{} are ordered
-differently, so confident disagreement is roughly two percent rather than the
-\TsbadFlipAff{} that gets reported. We apply
+metrics separate by at least $0.20$, a fraction of \TsbadJointTwoZero{} are
+ordered differently, so confident disagreement is roughly two percent rather
+than the \TsbadFlipAff{} that gets reported. We apply
 the audit to a composite metric we previously proposed ourselves and show it is
 uninformative by construction at both ends of the regime it was built to span.
 Applying the same corrections to our own positive findings leaves one covariate
