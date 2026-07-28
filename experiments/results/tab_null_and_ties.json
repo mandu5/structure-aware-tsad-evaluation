@@ -500,6 +500,274 @@
       }
     }
   },
+  "near_random_exclusion": {
+    "auc_roc_vs_aff_f1": [
+      {
+        "delta": 0.0,
+        "pairs": 126,
+        "flips": 44,
+        "flip_rate": 0.3492063492063492,
+        "n_rows_excluded": 0,
+        "n_deep_excluded": 0,
+        "n_classical_excluded": 0,
+        "excluded": [],
+        "ci_cluster_over_datasets": [
+          0.21428571428571427,
+          0.49206349206349204
+        ]
+      },
+      {
+        "delta": 0.02,
+        "pairs": 75,
+        "flips": 24,
+        "flip_rate": 0.32,
+        "n_rows_excluded": 9,
+        "n_deep_excluded": 5,
+        "n_classical_excluded": 4,
+        "excluded": [
+          "AT/MSL",
+          "AT/PSM",
+          "AT/SMAP",
+          "AT/SMD",
+          "AT/SWaT",
+          "LOF/PSM",
+          "LOF/SMAP",
+          "LOF/SWaT",
+          "LOF/WADI"
+        ],
+        "ci_cluster_over_datasets": [
+          0.17647058823529413,
+          0.49230769230769234
+        ]
+      },
+      {
+        "delta": 0.05,
+        "pairs": 53,
+        "flips": 20,
+        "flip_rate": 0.37735849056603776,
+        "n_rows_excluded": 14,
+        "n_deep_excluded": 9,
+        "n_classical_excluded": 5,
+        "excluded": [
+          "AT/MSL",
+          "AT/PSM",
+          "AT/SMAP",
+          "AT/SMD",
+          "AT/SWaT",
+          "AT/WADI",
+          "CATCH/WADI",
+          "LOF/MSL",
+          "LOF/PSM",
+          "LOF/SMAP",
+          "LOF/SWaT",
+          "LOF/WADI",
+          "MOMENT/SMAP",
+          "TranAD/MSL"
+        ],
+        "ci_cluster_over_datasets": [
+          0.2,
+          0.5410006830601091
+        ]
+      },
+      {
+        "delta": 0.1,
+        "pairs": 35,
+        "flips": 13,
+        "flip_rate": 0.37142857142857144,
+        "n_rows_excluded": 21,
+        "n_deep_excluded": 16,
+        "n_classical_excluded": 5,
+        "excluded": [
+          "AT/MSL",
+          "AT/PSM",
+          "AT/SMAP",
+          "AT/SMD",
+          "AT/SWaT",
+          "AT/WADI",
+          "CATCH/PSM",
+          "CATCH/SMAP",
+          "CATCH/WADI",
+          "DADA/SMAP",
+          "DADA/WADI",
+          "LOF/MSL",
+          "LOF/PSM",
+          "LOF/SMAP",
+          "LOF/SWaT",
+          "LOF/WADI",
+          "MOMENT/PSM",
+          "MOMENT/SMAP",
+          "MOMENT/WADI",
+          "TranAD/MSL",
+          "TranAD/WADI"
+        ],
+        "ci_cluster_over_datasets": [
+          0.17647058823529413,
+          0.6154761904761892
+        ]
+      }
+    ],
+    "auc_roc_vs_sae_score": [
+      {
+        "delta": 0.0,
+        "pairs": 126,
+        "flips": 36,
+        "flip_rate": 0.2857142857142857,
+        "n_rows_excluded": 0,
+        "n_deep_excluded": 0,
+        "n_classical_excluded": 0,
+        "excluded": [],
+        "ci_cluster_over_datasets": [
+          0.15873015873015872,
+          0.42063492063492064
+        ]
+      },
+      {
+        "delta": 0.02,
+        "pairs": 75,
+        "flips": 20,
+        "flip_rate": 0.26666666666666666,
+        "n_rows_excluded": 9,
+        "n_deep_excluded": 5,
+        "n_classical_excluded": 4,
+        "excluded": [
+          "AT/MSL",
+          "AT/PSM",
+          "AT/SMAP",
+          "AT/SMD",
+          "AT/SWaT",
+          "LOF/PSM",
+          "LOF/SMAP",
+          "LOF/SWaT",
+          "LOF/WADI"
+        ],
+        "ci_cluster_over_datasets": [
+          0.1411764705882353,
+          0.4153846153846154
+        ]
+      },
+      {
+        "delta": 0.05,
+        "pairs": 53,
+        "flips": 16,
+        "flip_rate": 0.3018867924528302,
+        "n_rows_excluded": 14,
+        "n_deep_excluded": 9,
+        "n_classical_excluded": 5,
+        "excluded": [
+          "AT/MSL",
+          "AT/PSM",
+          "AT/SMAP",
+          "AT/SMD",
+          "AT/SWaT",
+          "AT/WADI",
+          "CATCH/WADI",
+          "LOF/MSL",
+          "LOF/PSM",
+          "LOF/SMAP",
+          "LOF/SWaT",
+          "LOF/WADI",
+          "MOMENT/SMAP",
+          "TranAD/MSL"
+        ],
+        "ci_cluster_over_datasets": [
+          0.125,
+          0.5
+        ]
+      },
+      {
+        "delta": 0.1,
+        "pairs": 35,
+        "flips": 10,
+        "flip_rate": 0.2857142857142857,
+        "n_rows_excluded": 21,
+        "n_deep_excluded": 16,
+        "n_classical_excluded": 5,
+        "excluded": [
+          "AT/MSL",
+          "AT/PSM",
+          "AT/SMAP",
+          "AT/SMD",
+          "AT/SWaT",
+          "AT/WADI",
+          "CATCH/PSM",
+          "CATCH/SMAP",
+          "CATCH/WADI",
+          "DADA/SMAP",
+          "DADA/WADI",
+          "LOF/MSL",
+          "LOF/PSM",
+          "LOF/SMAP",
+          "LOF/SWaT",
+          "LOF/WADI",
+          "MOMENT/PSM",
+          "MOMENT/SMAP",
+          "MOMENT/WADI",
+          "TranAD/MSL",
+          "TranAD/WADI"
+        ],
+        "ci_cluster_over_datasets": [
+          0.10714285714285714,
+          0.6153846153846154
+        ]
+      }
+    ]
+  },
+  "auc_by_model_dataset": {
+    "MSL": {
+      "AT": 0.4874,
+      "CATCH": 0.6271,
+      "DADA": 0.7465,
+      "IForest": 0.6043,
+      "LOF": 0.525,
+      "MOMENT": 0.6607,
+      "TranAD": 0.5394
+    },
+    "PSM": {
+      "AT": 0.5002,
+      "CATCH": 0.5993,
+      "DADA": 0.6032,
+      "IForest": 0.6762,
+      "LOF": 0.5181,
+      "MOMENT": 0.5693,
+      "TranAD": 0.6312
+    },
+    "SMAP": {
+      "AT": 0.513,
+      "CATCH": 0.4313,
+      "DADA": 0.4258,
+      "IForest": 0.6378,
+      "LOF": 0.5135,
+      "MOMENT": 0.4679,
+      "TranAD": 0.3974
+    },
+    "SMD": {
+      "AT": 0.508,
+      "CATCH": 0.7828,
+      "DADA": 0.7186,
+      "IForest": 0.6799,
+      "LOF": 0.6476,
+      "MOMENT": 0.7258,
+      "TranAD": 0.6467
+    },
+    "SWaT": {
+      "AT": 0.4833,
+      "CATCH": 0.2286,
+      "DADA": 0.798,
+      "IForest": 0.8623,
+      "LOF": 0.4874,
+      "MOMENT": 0.2871,
+      "TranAD": 0.8144
+    },
+    "WADI": {
+      "AT": 0.5267,
+      "CATCH": 0.4543,
+      "DADA": 0.4213,
+      "IForest": 0.7147,
+      "LOF": 0.5001,
+      "MOMENT": 0.403,
+      "TranAD": 0.415
+    }
+  },
   "structure_support": {
     "n_datasets_with_alpha_lt_1": 2,
     "n_datasets": 6,

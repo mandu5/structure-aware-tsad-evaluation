@@ -84,6 +84,19 @@ IForest and LOF) and adds:
 - **Tie sensitivity is underpowered here.** Gap-stratified rates are non-monotone
   with 12-19 pairs per bucket; the 180-series TSB-AD snapshot is where this
   check has power.
+- **Near-random exclusion.** Dropping model-dataset rows with `|AUC-ROC - 0.5| < delta`
+  gives 44/126 = 0.349 at delta = 0, then 0.320, 0.377 and 13/35 = 0.371 at
+  delta = 0.02, 0.05 and 0.10. The flip rate is not an artifact of uninformative
+  detectors. Cluster CIs widen sharply as the sample shrinks: [0.177, 0.616] at
+  delta = 0.10.
+
+Note that excluding by *measured* discriminative power is not the same as
+excluding by architecture, and the two point in different directions here.
+IForest is the strongest detector by AUC-ROC on four of the six datasets
+(SWaT 0.862, WADI 0.715, PSM 0.676, SMAP 0.638), while AT sits within 0.03 of
+chance on all six. At delta = 0.10 the exclusion drops 16 deep rows and only 5
+classical ones. The elevated deep-classical pair flip rate is therefore
+attributable to LOF rather than to classical methods as a class.
 
 ## Scope of this public artifact
 

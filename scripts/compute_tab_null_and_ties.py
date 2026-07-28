@@ -161,6 +161,52 @@ def _by_model_class(by_dataset: dict[str, list[dict]], secondary: str) -> dict:
             for k, v in buckets.items()}
 
 
+def _near_random_exclusion(by_dataset: dict[str, list[dict]], secondary: str,
+                           deltas: tuple[float, ...], n_boot: int, ci_level: float,
+                           rng: np.random.Generator) -> list[dict]:
+    """Flip rate after dropping model-dataset rows with AUC-ROC near 0.5.
+
+    Excluding by *measured* discriminative power is not the same as excluding by
+    architecture: IForest is the strongest detector on several of these datasets
+    while AT sits at chance on all of them.
+    """
+    out = []
+    for delta in deltas:
+        per_ds, excluded = {}, []
+        for ds in sorted(by_dataset):
+            keep = [r for r in by_dataset[ds] if abs(r["auc_roc"] - 0.5) >= delta]
+            excluded += [f"{r['model']}/{ds}" for r in by_dataset[ds] if abs(r["auc_roc"] - 0.5) < delta]
+            if len(keep) < 2:
+                per_ds[ds] = (0, 0)
+                continue
+            _, flipped = pairwise_flips(
+                np.array([r["auc_roc"] for r in keep], dtype=float),
+                np.array([r[secondary] for r in keep], dtype=float),
+            )
+            per_ds[ds] = (int(flipped.size), int(flipped.sum()))
+        pairs = sum(p for p, _ in per_ds.values())
+        flips = sum(f for _, f in per_ds.values())
+        names = list(per_ds)
+        cb = np.empty(n_boot)
+        for b in range(n_boot):
+            pick = rng.choice(names, size=len(names), replace=True)
+            p = sum(per_ds[c][0] for c in pick)
+            cb[b] = sum(per_ds[c][1] for c in pick) / p if p else np.nan
+        q = (1 - ci_level) / 2
+        out.append({
+            "delta": float(delta),
+            "pairs": pairs,
+            "flips": flips,
+            "flip_rate": flips / pairs if pairs else None,
+            "n_rows_excluded": len(excluded),
+            "n_deep_excluded": sum(1 for e in excluded if e.split("/")[0] in DEEP_MODELS),
+            "n_classical_excluded": sum(1 for e in excluded if e.split("/")[0] in CLASSICAL_MODELS),
+            "excluded": sorted(excluded),
+            "ci_cluster_over_datasets": [float(np.nanquantile(cb, q)), float(np.nanquantile(cb, 1 - q))],
+        })
+    return out
+
+
 def main() -> None:
     args = _parse_args()
     src = Path(args.input).expanduser().resolve()
@@ -191,6 +237,17 @@ def main() -> None:
             )
     for secondary in ("aff_f1", "sae_score"):
         out["by_model_class"][f"auc_roc_vs_{secondary}"] = _by_model_class(by_dataset, secondary)
+
+    out["near_random_exclusion"] = {
+        f"auc_roc_vs_{secondary}": _near_random_exclusion(
+            by_dataset, secondary, (0.0, 0.02, 0.05, 0.10), args.n_boot, args.ci_level, rng
+        )
+        for secondary in ("aff_f1", "sae_score")
+    }
+    out["auc_by_model_dataset"] = {
+        ds: {r["model"]: float(r["auc_roc"]) for r in sorted(rs, key=lambda r: r["model"])}
+        for ds, rs in sorted(by_dataset.items())
+    }
 
     n_alpha_lt1 = sum(1 for v in out["alpha_by_dataset"].values() if v < 1.0)
     out["structure_support"] = {
@@ -234,6 +291,16 @@ def main() -> None:
         for k in ("deep-deep", "deep-classical", "classical-classical"):
             if k in d:
                 print(f"    {k:22s} {d[k]['flips']:3d}/{d[k]['pairs']:3d} = {d[k]['flip_rate']:.4f}")
+    print()
+    print("--- excluding near-random rows by measured AUC-ROC (not by architecture) ---")
+    for metric, entries in out["near_random_exclusion"].items():
+        print(f"  {metric}")
+        for e in entries:
+            ci = e["ci_cluster_over_datasets"]
+            print(f"    drop |AUC-0.5|<{e['delta']:.2f}: {e['flips']:3d}/{e['pairs']:3d} = "
+                  f"{e['flip_rate']:.4f}  95% CI [{ci[0]:.4f}, {ci[1]:.4f}]  "
+                  f"(dropped {e['n_rows_excluded']:2d} rows: {e['n_deep_excluded']} deep, "
+                  f"{e['n_classical_excluded']} classical)")
 
 
 if __name__ == "__main__":
