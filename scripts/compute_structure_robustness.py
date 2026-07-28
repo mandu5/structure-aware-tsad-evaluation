@@ -39,6 +39,16 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from src.evaluation.robustness import (  # noqa: E402
+    flip_rate_null,
+    pairwise_flips,
+    spearman,
+    spearman_perm_p,
+)
+
 DEFAULT_CANONICAL = ROOT / "experiments" / "results" / "tsbad_scaleup_canonical_0000_0200"
 
 GAP_EDGES = [0.0, 0.01, 0.02, 0.05, 0.10, 0.20, np.inf]
@@ -60,79 +70,6 @@ def _parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
-# --------------------------------------------------------------------------
-# statistics (numpy only; scipy is deliberately not a dependency of this repo)
-# --------------------------------------------------------------------------
-
-def _rankdata(a: np.ndarray) -> np.ndarray:
-    """Average ranks, matching scipy.stats.rankdata(method='average')."""
-    a = np.asarray(a, dtype=float)
-    order = np.argsort(a, kind="mergesort")
-    ranks = np.empty(len(a), dtype=float)
-    ranks[order] = np.arange(1, len(a) + 1, dtype=float)
-    # average ranks within tie groups
-    sorted_a = a[order]
-    i = 0
-    while i < len(a):
-        j = i
-        while j + 1 < len(a) and sorted_a[j + 1] == sorted_a[i]:
-            j += 1
-        if j > i:
-            ranks[order[i:j + 1]] = ranks[order[i:j + 1]].mean()
-        i = j + 1
-    return ranks
-
-
-def _spearman(x: np.ndarray, y: np.ndarray) -> float:
-    """Spearman rho = Pearson correlation of average ranks."""
-    x = np.asarray(x, dtype=float)
-    y = np.asarray(y, dtype=float)
-    ok = np.isfinite(x) & np.isfinite(y)
-    if ok.sum() < 3:
-        return float("nan")
-    rx, ry = _rankdata(x[ok]), _rankdata(y[ok])
-    sx, sy = rx.std(), ry.std()
-    if sx == 0 or sy == 0:
-        return float("nan")
-    return float(((rx - rx.mean()) * (ry - ry.mean())).mean() / (sx * sy))
-
-
-def _spearman_perm_p(x: np.ndarray, y: np.ndarray, n_perm: int, rng: np.random.Generator) -> float:
-    """Two-sided permutation p-value for Spearman rho.
-
-    Preferred over the asymptotic p-value here because the collection-level
-    tests have n = 17.
-    """
-    obs = _spearman(x, y)
-    if not np.isfinite(obs):
-        return float("nan")
-    x = np.asarray(x, dtype=float)
-    y = np.asarray(y, dtype=float)
-    ok = np.isfinite(x) & np.isfinite(y)
-    x, y = x[ok], y[ok]
-    count = 0
-    for _ in range(n_perm):
-        if abs(_spearman(x, rng.permutation(y))) >= abs(obs) - 1e-12:
-            count += 1
-    return float((count + 1) / (n_perm + 1))
-
-
-# --------------------------------------------------------------------------
-# pairwise flip machinery
-# --------------------------------------------------------------------------
-
-def _series_pairs(auc: np.ndarray, other: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    """Return (auc_gap, flipped) over all non-tied model pairs within one series."""
-    n = len(auc)
-    if n < 2:
-        return np.empty(0), np.empty(0, dtype=bool)
-    i, j = np.triu_indices(n, k=1)
-    da = auc[i] - auc[j]
-    do = other[i] - other[j]
-    keep = (da != 0) & (do != 0)
-    return np.abs(da[keep]), (np.sign(da[keep]) != np.sign(do[keep]))
-
-
 def _collect(groups: list[tuple[str, str, np.ndarray, np.ndarray]]) -> dict:
     """Aggregate pairwise stats across series.
 
@@ -141,7 +78,7 @@ def _collect(groups: list[tuple[str, str, np.ndarray, np.ndarray]]) -> dict:
     per_series = []
     gaps_all, flip_all = [], []
     for series, collection, auc, other in groups:
-        gap, flipped = _series_pairs(auc, other)
+        gap, flipped = pairwise_flips(auc, other)
         per_series.append({
             "series": series,
             "collection": collection,
@@ -204,10 +141,9 @@ def main() -> None:
     obs_sae = float(sae["flip"].mean())
 
     # ---------------- (1) random-ranking null ----------------
-    null_rates = np.empty(args.n_perm)
-    for b in range(args.n_perm):
-        shuffled = [(s, c, auc, rng.permutation(other)) for s, c, auc, other in groups_aff]
-        null_rates[b] = float(_collect(shuffled)["flip"].mean())
+    null_rates = flip_rate_null(
+        [(auc, other) for _, _, auc, other in groups_aff], args.n_perm, rng
+    )
 
     # ---------------- (2) gap stratification ----------------
     gap, flip = aff["gap"], aff["flip"]
@@ -258,18 +194,18 @@ def main() -> None:
         loco = []
         for drop in collections:
             sub = ps[ps["collection"] != drop]
-            loco.append({"dropped": drop, "rho": _spearman(sub[name], sub["rfr"])})
+            loco.append({"dropped": drop, "rho": spearman(sub[name], sub["rfr"])})
         finite = [d["rho"] for d in loco if np.isfinite(d["rho"])]
         predictors[name] = {
             "series_level": {
                 "n": int(len(ps)),
-                "rho": _spearman(ps[name], ps["rfr"]),
-                "perm_p": _spearman_perm_p(ps[name].to_numpy(), ps["rfr"].to_numpy(), args.n_perm_rho, rng),
+                "rho": spearman(ps[name], ps["rfr"]),
+                "perm_p": spearman_perm_p(ps[name].to_numpy(), ps["rfr"].to_numpy(), args.n_perm_rho, rng),
             },
             "collection_level": {
                 "n": int(len(coll)),
-                "rho": _spearman(coll[name], coll["flip_rate"]),
-                "perm_p": _spearman_perm_p(coll[name].to_numpy(), coll["flip_rate"].to_numpy(),
+                "rho": spearman(coll[name], coll["flip_rate"]),
+                "perm_p": spearman_perm_p(coll[name].to_numpy(), coll["flip_rate"].to_numpy(),
                                            args.n_perm_rho, rng),
             },
             "leave_one_collection_out": {

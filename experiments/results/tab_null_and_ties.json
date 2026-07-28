@@ -1,0 +1,508 @@
+{
+  "source": "sae_metrics_canonical.json",
+  "n_datasets": 6,
+  "seed": 42,
+  "alpha_by_dataset": {
+    "MSL": 1.0,
+    "PSM": 0.4861,
+    "SMAP": 1.0,
+    "SMD": 0.6147,
+    "SWaT": 1.0,
+    "WADI": 1.0
+  },
+  "results": {
+    "deep_only__auc_roc_vs_aff_f1": {
+      "n_models": 5,
+      "n_pairs": 60,
+      "n_flips": 14,
+      "flip_rate": 0.23333333333333334,
+      "agreement_share": 0.7666666666666666,
+      "random_ranking_null": {
+        "mean": 0.5004416666666666,
+        "sd": 0.08449136637975849,
+        "n_perm": 2000
+      },
+      "per_dataset": [
+        {
+          "dataset": "MSL",
+          "alpha": 1.0,
+          "pairs": 10,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "dataset": "PSM",
+          "alpha": 0.4861,
+          "pairs": 10,
+          "flips": 6,
+          "flip_rate": 0.6
+        },
+        {
+          "dataset": "SMAP",
+          "alpha": 1.0,
+          "pairs": 10,
+          "flips": 1,
+          "flip_rate": 0.1
+        },
+        {
+          "dataset": "SMD",
+          "alpha": 0.6147,
+          "pairs": 10,
+          "flips": 1,
+          "flip_rate": 0.1
+        },
+        {
+          "dataset": "SWaT",
+          "alpha": 1.0,
+          "pairs": 10,
+          "flips": 5,
+          "flip_rate": 0.5
+        },
+        {
+          "dataset": "WADI",
+          "alpha": 1.0,
+          "pairs": 10,
+          "flips": 1,
+          "flip_rate": 0.1
+        }
+      ],
+      "gap_stratified": [
+        {
+          "lo": 0.0,
+          "hi": 0.05,
+          "pairs": 19,
+          "flip_rate": 0.21052631578947367
+        },
+        {
+          "lo": 0.05,
+          "hi": 0.1,
+          "pairs": 16,
+          "flip_rate": 0.25
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "pairs": 13,
+          "flip_rate": 0.15384615384615385
+        },
+        {
+          "lo": 0.2,
+          "hi": null,
+          "pairs": 12,
+          "flip_rate": 0.3333333333333333
+        }
+      ],
+      "noise_band_sensitivity": [
+        {
+          "excluded_below": 0.02,
+          "pairs_retained": 53,
+          "share_retained": 0.8833333333333333,
+          "flip_rate": 0.20754716981132076
+        },
+        {
+          "excluded_below": 0.05,
+          "pairs_retained": 41,
+          "share_retained": 0.6833333333333333,
+          "flip_rate": 0.24390243902439024
+        },
+        {
+          "excluded_below": 0.1,
+          "pairs_retained": 25,
+          "share_retained": 0.4166666666666667,
+          "flip_rate": 0.24
+        }
+      ],
+      "ci": {
+        "level": 0.95,
+        "cluster_over_datasets": [
+          0.06666666666666667,
+          0.4166666666666667
+        ],
+        "pair_level": [
+          0.13333333333333333,
+          0.35
+        ]
+      }
+    },
+    "deep_only__auc_roc_vs_sae_score": {
+      "n_models": 5,
+      "n_pairs": 60,
+      "n_flips": 8,
+      "flip_rate": 0.13333333333333333,
+      "agreement_share": 0.8666666666666667,
+      "random_ranking_null": {
+        "mean": 0.5017916666666666,
+        "sd": 0.08344072411664129,
+        "n_perm": 2000
+      },
+      "per_dataset": [
+        {
+          "dataset": "MSL",
+          "alpha": 1.0,
+          "pairs": 10,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "dataset": "PSM",
+          "alpha": 0.4861,
+          "pairs": 10,
+          "flips": 1,
+          "flip_rate": 0.1
+        },
+        {
+          "dataset": "SMAP",
+          "alpha": 1.0,
+          "pairs": 10,
+          "flips": 1,
+          "flip_rate": 0.1
+        },
+        {
+          "dataset": "SMD",
+          "alpha": 0.6147,
+          "pairs": 10,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "dataset": "SWaT",
+          "alpha": 1.0,
+          "pairs": 10,
+          "flips": 5,
+          "flip_rate": 0.5
+        },
+        {
+          "dataset": "WADI",
+          "alpha": 1.0,
+          "pairs": 10,
+          "flips": 1,
+          "flip_rate": 0.1
+        }
+      ],
+      "gap_stratified": [
+        {
+          "lo": 0.0,
+          "hi": 0.05,
+          "pairs": 19,
+          "flip_rate": 0.15789473684210525
+        },
+        {
+          "lo": 0.05,
+          "hi": 0.1,
+          "pairs": 16,
+          "flip_rate": 0.0625
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "pairs": 13,
+          "flip_rate": 0.0
+        },
+        {
+          "lo": 0.2,
+          "hi": null,
+          "pairs": 12,
+          "flip_rate": 0.3333333333333333
+        }
+      ],
+      "noise_band_sensitivity": [
+        {
+          "excluded_below": 0.02,
+          "pairs_retained": 53,
+          "share_retained": 0.8833333333333333,
+          "flip_rate": 0.09433962264150944
+        },
+        {
+          "excluded_below": 0.05,
+          "pairs_retained": 41,
+          "share_retained": 0.6833333333333333,
+          "flip_rate": 0.12195121951219512
+        },
+        {
+          "excluded_below": 0.1,
+          "pairs_retained": 25,
+          "share_retained": 0.4166666666666667,
+          "flip_rate": 0.16
+        }
+      ],
+      "ci": {
+        "level": 0.95,
+        "cluster_over_datasets": [
+          0.03333333333333333,
+          0.2833333333333333
+        ],
+        "pair_level": [
+          0.05,
+          0.23333333333333334
+        ]
+      }
+    },
+    "all_models__auc_roc_vs_aff_f1": {
+      "n_models": 7,
+      "n_pairs": 126,
+      "n_flips": 44,
+      "flip_rate": 0.3492063492063492,
+      "agreement_share": 0.6507936507936508,
+      "random_ranking_null": {
+        "mean": 0.5021428571428571,
+        "sd": 0.06384892801855403,
+        "n_perm": 2000
+      },
+      "per_dataset": [
+        {
+          "dataset": "MSL",
+          "alpha": 1.0,
+          "pairs": 21,
+          "flips": 3,
+          "flip_rate": 0.14285714285714285
+        },
+        {
+          "dataset": "PSM",
+          "alpha": 0.4861,
+          "pairs": 21,
+          "flips": 12,
+          "flip_rate": 0.5714285714285714
+        },
+        {
+          "dataset": "SMAP",
+          "alpha": 1.0,
+          "pairs": 21,
+          "flips": 10,
+          "flip_rate": 0.47619047619047616
+        },
+        {
+          "dataset": "SMD",
+          "alpha": 0.6147,
+          "pairs": 21,
+          "flips": 5,
+          "flip_rate": 0.23809523809523808
+        },
+        {
+          "dataset": "SWaT",
+          "alpha": 1.0,
+          "pairs": 21,
+          "flips": 11,
+          "flip_rate": 0.5238095238095238
+        },
+        {
+          "dataset": "WADI",
+          "alpha": 1.0,
+          "pairs": 21,
+          "flips": 3,
+          "flip_rate": 0.14285714285714285
+        }
+      ],
+      "gap_stratified": [
+        {
+          "lo": 0.0,
+          "hi": 0.05,
+          "pairs": 35,
+          "flip_rate": 0.4
+        },
+        {
+          "lo": 0.05,
+          "hi": 0.1,
+          "pairs": 32,
+          "flip_rate": 0.34375
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "pairs": 30,
+          "flip_rate": 0.26666666666666666
+        },
+        {
+          "lo": 0.2,
+          "hi": null,
+          "pairs": 29,
+          "flip_rate": 0.3793103448275862
+        }
+      ],
+      "noise_band_sensitivity": [
+        {
+          "excluded_below": 0.02,
+          "pairs_retained": 114,
+          "share_retained": 0.9047619047619048,
+          "flip_rate": 0.32456140350877194
+        },
+        {
+          "excluded_below": 0.05,
+          "pairs_retained": 91,
+          "share_retained": 0.7222222222222222,
+          "flip_rate": 0.32967032967032966
+        },
+        {
+          "excluded_below": 0.1,
+          "pairs_retained": 59,
+          "share_retained": 0.46825396825396826,
+          "flip_rate": 0.3220338983050847
+        }
+      ],
+      "ci": {
+        "level": 0.95,
+        "cluster_over_datasets": [
+          0.21428571428571427,
+          0.48412698412698413
+        ],
+        "pair_level": [
+          0.2698412698412698,
+          0.42857142857142855
+        ]
+      }
+    },
+    "all_models__auc_roc_vs_sae_score": {
+      "n_models": 7,
+      "n_pairs": 126,
+      "n_flips": 36,
+      "flip_rate": 0.2857142857142857,
+      "agreement_share": 0.7142857142857143,
+      "random_ranking_null": {
+        "mean": 0.4991388888888889,
+        "sd": 0.06440154716010227,
+        "n_perm": 2000
+      },
+      "per_dataset": [
+        {
+          "dataset": "MSL",
+          "alpha": 1.0,
+          "pairs": 21,
+          "flips": 3,
+          "flip_rate": 0.14285714285714285
+        },
+        {
+          "dataset": "PSM",
+          "alpha": 0.4861,
+          "pairs": 21,
+          "flips": 7,
+          "flip_rate": 0.3333333333333333
+        },
+        {
+          "dataset": "SMAP",
+          "alpha": 1.0,
+          "pairs": 21,
+          "flips": 10,
+          "flip_rate": 0.47619047619047616
+        },
+        {
+          "dataset": "SMD",
+          "alpha": 0.6147,
+          "pairs": 21,
+          "flips": 2,
+          "flip_rate": 0.09523809523809523
+        },
+        {
+          "dataset": "SWaT",
+          "alpha": 1.0,
+          "pairs": 21,
+          "flips": 11,
+          "flip_rate": 0.5238095238095238
+        },
+        {
+          "dataset": "WADI",
+          "alpha": 1.0,
+          "pairs": 21,
+          "flips": 3,
+          "flip_rate": 0.14285714285714285
+        }
+      ],
+      "gap_stratified": [
+        {
+          "lo": 0.0,
+          "hi": 0.05,
+          "pairs": 35,
+          "flip_rate": 0.34285714285714286
+        },
+        {
+          "lo": 0.05,
+          "hi": 0.1,
+          "pairs": 32,
+          "flip_rate": 0.21875
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "pairs": 30,
+          "flip_rate": 0.2
+        },
+        {
+          "lo": 0.2,
+          "hi": null,
+          "pairs": 29,
+          "flip_rate": 0.3793103448275862
+        }
+      ],
+      "noise_band_sensitivity": [
+        {
+          "excluded_below": 0.02,
+          "pairs_retained": 114,
+          "share_retained": 0.9047619047619048,
+          "flip_rate": 0.2543859649122807
+        },
+        {
+          "excluded_below": 0.05,
+          "pairs_retained": 91,
+          "share_retained": 0.7222222222222222,
+          "flip_rate": 0.26373626373626374
+        },
+        {
+          "excluded_below": 0.1,
+          "pairs_retained": 59,
+          "share_retained": 0.46825396825396826,
+          "flip_rate": 0.288135593220339
+        }
+      ],
+      "ci": {
+        "level": 0.95,
+        "cluster_over_datasets": [
+          0.15079365079365079,
+          0.42063492063492064
+        ],
+        "pair_level": [
+          0.20634920634920634,
+          0.36507936507936506
+        ]
+      }
+    }
+  },
+  "by_model_class": {
+    "auc_roc_vs_aff_f1": {
+      "deep-deep": {
+        "pairs": 60,
+        "flips": 14,
+        "flip_rate": 0.23333333333333334
+      },
+      "deep-classical": {
+        "pairs": 60,
+        "flips": 27,
+        "flip_rate": 0.45
+      },
+      "classical-classical": {
+        "pairs": 6,
+        "flips": 3,
+        "flip_rate": 0.5
+      }
+    },
+    "auc_roc_vs_sae_score": {
+      "deep-deep": {
+        "pairs": 60,
+        "flips": 8,
+        "flip_rate": 0.13333333333333333
+      },
+      "deep-classical": {
+        "pairs": 60,
+        "flips": 26,
+        "flip_rate": 0.43333333333333335
+      },
+      "classical-classical": {
+        "pairs": 6,
+        "flips": 2,
+        "flip_rate": 0.3333333333333333
+      }
+    }
+  },
+  "structure_support": {
+    "n_datasets_with_alpha_lt_1": 2,
+    "n_datasets": 6,
+    "note": "Any structure-conditioned claim in this study is supported by the datasets with alpha < 1, of which there are 2 of 6. With SAEScore reducing to Aff-F1 at alpha = 1, the remaining datasets carry no blend information."
+  }
+}
