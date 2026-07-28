@@ -91,6 +91,20 @@ def main() -> None:
         M[f"TsbadDrop{key}"] = _fmt(b["flip_rate"])
         M[f"TsbadDropShare{key}"] = _fmt(100 * b["share_retained"], 1)
 
+    # symmetric stratification on the secondary metric's margin
+    for b in sr["gap_stratified_secondary"]:
+        lo = f"{b['lo']:.2f}".replace("0.", "").replace(".", "")
+        hi = "Inf" if b["hi"] is None else f"{b['hi']:.2f}".replace("0.", "").replace(".", "")
+        M[f"TsbadSec{_macroname(lo)}To{_macroname(hi)}"] = _fmt(b["flip_rate"])
+        M[f"TsbadSecPairs{_macroname(lo)}To{_macroname(hi)}"] = _fmt(b["pairs"])
+
+    # both metrics separate the pair
+    for b in sr["gap_stratified_joint"]:
+        key = _macroname(f"{b['both_at_least']:.2f}".replace("0.", ""))
+        M[f"TsbadJoint{key}"] = _fmt(b["flip_rate"])
+        M[f"TsbadJointPairs{key}"] = _fmt(b["pairs"])
+        M[f"TsbadJointShare{key}"] = _fmt(100 * b["share_of_pairs"], 1)
+
     # ---------- TSB-AD predictors ----------
     label = {"alpha": "Alpha", "mean_segment_duration": "Dur", "segment_count": "Nseg",
              "anomaly_density": "Dens", "series_length": "Len"}

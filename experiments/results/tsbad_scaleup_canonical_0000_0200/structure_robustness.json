@@ -62,6 +62,70 @@
       "flip_rate": 0.201495793081957
     }
   ],
+  "gap_stratified_secondary": [
+    {
+      "lo": 0.0,
+      "hi": 0.02,
+      "pairs": 12883,
+      "share_of_pairs": 0.2673931091739311,
+      "flip_rate": 0.49988356749204377
+    },
+    {
+      "lo": 0.02,
+      "hi": 0.05,
+      "pairs": 8601,
+      "share_of_pairs": 0.17851805728518058,
+      "flip_rate": 0.36751540518544357
+    },
+    {
+      "lo": 0.05,
+      "hi": 0.1,
+      "pairs": 7404,
+      "share_of_pairs": 0.15367372353673722,
+      "flip_rate": 0.30524041058887086
+    },
+    {
+      "lo": 0.1,
+      "hi": 0.2,
+      "pairs": 7628,
+      "share_of_pairs": 0.15832295558322956,
+      "flip_rate": 0.22718930256948086
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.4,
+      "pairs": 6417,
+      "share_of_pairs": 0.13318804483188046,
+      "flip_rate": 0.1732896992364033
+    },
+    {
+      "lo": 0.4,
+      "hi": null,
+      "pairs": 5247,
+      "share_of_pairs": 0.10890410958904109,
+      "flip_rate": 0.08481036782923575
+    }
+  ],
+  "gap_stratified_joint": [
+    {
+      "both_at_least": 0.05,
+      "pairs": 20214,
+      "share_of_pairs": 0.41955168119551683,
+      "flip_rate": 0.13055308202236074
+    },
+    {
+      "both_at_least": 0.1,
+      "pairs": 12796,
+      "share_of_pairs": 0.2655873806558738,
+      "flip_rate": 0.0650984682713348
+    },
+    {
+      "both_at_least": 0.2,
+      "pairs": 6412,
+      "share_of_pairs": 0.13308426733084266,
+      "flip_rate": 0.021990018714909545
+    }
+  ],
   "noise_band_sensitivity": [
     {
       "excluded_below": 0.01,

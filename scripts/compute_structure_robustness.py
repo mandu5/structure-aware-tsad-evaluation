@@ -52,7 +52,9 @@ from src.evaluation.robustness import (  # noqa: E402
 DEFAULT_CANONICAL = ROOT / "experiments" / "results" / "tsbad_scaleup_canonical_0000_0200"
 
 GAP_EDGES = [0.0, 0.01, 0.02, 0.05, 0.10, 0.20, np.inf]
+SEC_GAP_EDGES = [0.0, 0.02, 0.05, 0.10, 0.20, 0.40, np.inf]
 NOISE_BANDS = [0.01, 0.02, 0.05]
+JOINT_THRESHOLDS = [0.05, 0.10, 0.20]
 
 
 def _parse_args() -> argparse.Namespace:
@@ -74,11 +76,18 @@ def _collect(groups: list[tuple[str, str, np.ndarray, np.ndarray]]) -> dict:
     """Aggregate pairwise stats across series.
 
     groups: list of (series, collection, auc, other).
+
+    Records the margin on *both* metrics for every pair. Stratifying on the
+    primary margin alone is one-sided: it selects pairs the primary metric
+    separates confidently while saying nothing about whether the secondary
+    metric separates them at all, so the surviving "flips" are concentrated
+    where the secondary margin is negligible.
     """
     per_series = []
-    gaps_all, flip_all = [], []
+    gaps_all, gaps_b_all, flip_all = [], [], []
     for series, collection, auc, other in groups:
         gap, flipped = pairwise_flips(auc, other)
+        gap_b, _ = pairwise_flips(other, auc)  # same pair set, margin on the secondary metric
         per_series.append({
             "series": series,
             "collection": collection,
@@ -87,10 +96,12 @@ def _collect(groups: list[tuple[str, str, np.ndarray, np.ndarray]]) -> dict:
             "rfr": float(flipped.mean()) if gap.size else float("nan"),
         })
         gaps_all.append(gap)
+        gaps_b_all.append(gap_b)
         flip_all.append(flipped)
     return {
         "per_series": per_series,
         "gap": np.concatenate(gaps_all) if gaps_all else np.empty(0),
+        "gap_secondary": np.concatenate(gaps_b_all) if gaps_b_all else np.empty(0),
         "flip": np.concatenate(flip_all) if flip_all else np.empty(0, dtype=bool),
     }
 
@@ -163,6 +174,28 @@ def main() -> None:
             "excluded_below": float(thr),
             "pairs_retained": int(m.sum()),
             "share_retained": float(m.mean()),
+            "flip_rate": float(flip[m].mean()) if m.any() else None,
+        })
+
+    # Stratifying on the primary margin alone is one-sided. Repeat on the
+    # secondary margin, and then require both metrics to separate the pair.
+    gap_b = aff["gap_secondary"]
+    sec_buckets = []
+    for lo, hi in zip(SEC_GAP_EDGES[:-1], SEC_GAP_EDGES[1:]):
+        m = (gap_b >= lo) & (gap_b < hi)
+        sec_buckets.append({
+            "lo": float(lo), "hi": (None if np.isinf(hi) else float(hi)),
+            "pairs": int(m.sum()),
+            "share_of_pairs": float(m.mean()),
+            "flip_rate": float(flip[m].mean()) if m.any() else None,
+        })
+    joint = []
+    for thr in JOINT_THRESHOLDS:
+        m = (gap >= thr) & (gap_b >= thr)
+        joint.append({
+            "both_at_least": float(thr),
+            "pairs": int(m.sum()),
+            "share_of_pairs": float(m.mean()),
             "flip_rate": float(flip[m].mean()) if m.any() else None,
         })
 
@@ -273,6 +306,8 @@ def main() -> None:
             "agreement_share": 1.0 - obs_aff,
         },
         "gap_stratified": gap_buckets,
+        "gap_stratified_secondary": sec_buckets,
+        "gap_stratified_joint": joint,
         "noise_band_sensitivity": noise_band,
         "predictors": predictors,
         "identifiability": identifiability,
@@ -299,6 +334,16 @@ def main() -> None:
     for b in gap_buckets:
         hi = "inf" if b["hi"] is None else f"{b['hi']:.2f}"
         print(f"  [{b['lo']:.2f}, {hi:>4})  pairs={b['pairs']:6d} ({100 * b['share_of_pairs']:5.1f}%)  flip={b['flip_rate']:.4f}")
+    print()
+    print("Flip rate by |dAff-F1| (the symmetric check):")
+    for b in sec_buckets:
+        hi = "inf" if b["hi"] is None else f"{b['hi']:.2f}"
+        print(f"  [{b['lo']:.2f}, {hi:>4})  pairs={b['pairs']:6d}  flip={b['flip_rate']:.4f}")
+    print()
+    print("Flip rate when BOTH metrics separate the pair (the two-sided check):")
+    for b in joint:
+        print(f"  both margins >= {b['both_at_least']:.2f}:  pairs={b['pairs']:6d} "
+              f"({100 * b['share_of_pairs']:4.1f}% of pairs)  flip={b['flip_rate']:.4f}")
     print()
     print("Excluding near-tied pairs:")
     for b in noise_band:

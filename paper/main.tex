@@ -92,10 +92,10 @@ claim about magnitude. Two further omissions point the same way. Raw flip
 percentages are reported without stating the chance level, which is $0.5$ and
 not $0$: our observed \TsbadFlipAff{} against a permutation null of
 \TsbadNull{} means the metrics agree on \TsbadAgreePct\% of pairs. And flips are
-pooled across margins, though they run from
-\TsbadGapZeroZeroToZeroOne{} for pairs within $0.01$ \auc{} to
-\TsbadGapTwoZeroToInf{} for pairs separated by at least $0.20$---the residual
-disagreement is real but far smaller than the pooled figure suggests. We apply
+pooled across margins: among the \TsbadJointShareTwoZero\% of pairs that both
+metrics separate by at least $0.20$, only \TsbadJointTwoZero{} are ordered
+differently, so confident disagreement is roughly two percent rather than the
+\TsbadFlipAff{} that gets reported. We apply
 the audit to a composite metric we previously proposed ourselves and show it is
 uninformative by construction at both ends of the regime it was built to span.
 Mean segment duration and segment count do survive clustering. We give a
@@ -146,9 +146,10 @@ as a contribution of ours.
 \paragraph{A margin treatment.} Whether two metrics order a pair of models
 differently is only meaningful if the models are actually distinguishable. Pairs
 separated by a negligible margin flip at close to the chance rate by
-construction, and they make up a substantial share of every grid. Stratifying by
-margin separates the part of the disagreement that is an artifact of pooling
-near-ties from the part that is not.
+construction, and they make up a substantial share of every grid. The margin
+must moreover be taken on both metrics: conditioning only on the primary one
+selects pairs it separates confidently while leaving the secondary margin free,
+which is exactly where the flips turn out to be.
 
 \paragraph{A cluster unit.} Evaluation series are routinely treated as
 independent replicates. They are not: benchmark suites are assembled from source
@@ -168,7 +169,8 @@ case of the null, partly concurrent with work in another field.
   \TsbadCollections{} source collections, and a \TabDatasets-dataset,
   seven-detector study on TAB-style benchmarks (Section~\ref{sec:setup}).
 \item We show that reported flip rates describe agreement once the chance level
-  is stated, but that the residual disagreement is not a margin artifact
+  is stated, and that most of the residual is a margin artifact that survives
+  only under one-sided conditioning
   (Sections~\ref{sec:null}--\ref{sec:margin}).
 \item \textbf{We show that structure-conditioned explanations of disagreement
   are confounded with collection identity}, and that the standard thresholded
@@ -284,7 +286,7 @@ available in the form of Kendall's $\tau$ \citep{lyu2026didwe}. The point is
 that the raw percentage is what circulates, and it circulates without its
 baseline.
 
-\section{The disagreement is not a margin artifact}
+\section{Most of the disagreement is a margin artifact}
 \label{sec:margin}
 
 Two models separated by $0.001$ \auc{} are not meaningfully ordered by \auc{},
@@ -294,14 +296,71 @@ such pairs are numerous, they can carry a flip rate on their own.
 Table~\ref{tab:margin} stratifies the TSB-AD-M pairs by $|\Delta\auc{}|$. The
 pattern is monotone and steep: pairs separated by less than $0.01$ flip at
 \TsbadGapZeroZeroToZeroOne{}, essentially the chance rate, while pairs separated
-by at least $0.20$ flip at \TsbadGapTwoZeroToInf{}. Near-ties therefore do
-inflate the pooled statistic.
+by at least $0.20$ flip at \TsbadGapTwoZeroToInf{}. Excluding every pair within
+$0.05$ \auc{} retains \TsbadDropShareZeroFive\% of pairs and gives
+\TsbadDropZeroFive{}.
 
-They do not explain it. Excluding every pair within $0.05$ \auc{} retains
-\TsbadDropShareZeroFive\% of pairs and still gives \TsbadDropZeroFive{}. Among
-pairs separated by at least $0.20$ \auc{}---a margin no one would call
-ambiguous---about one in five still reverses under \afff{}. This is the part of
-the phenomenon that survives, and in our view it is the part worth reporting.
+\paragraph{One-sided conditioning is not enough.} It is tempting to stop here
+and report that roughly one pair in five still reverses at a margin no one would
+call ambiguous. That reading is wrong, and the error is instructive. Conditioning
+on $|\Delta\auc{}|$ selects pairs that the \emph{primary} metric separates
+confidently while saying nothing about whether \afff{} separates them at all, so
+the surviving flips concentrate where the secondary margin is negligible. The
+symmetric stratification confirms the asymmetry: pairs with
+$|\Delta\afff{}| < 0.02$ flip at \TsbadSecZeroZeroToZeroTwo{}---the chance
+rate---and pairs with $|\Delta\afff{}| \geq 0.40$ flip at
+\TsbadSecFourZeroToInf{}.
+
+Requiring both metrics to separate the pair gives the two-sided statistic
+(Table~\ref{tab:joint}). Among the \TsbadJointShareTwoZero\% of pairs that
+\emph{both} metrics separate by at least $0.20$, only \TsbadJointTwoZero{} are
+ordered differently. The corresponding figures at joint margins of $0.05$ and
+$0.10$ are \TsbadJointZeroFive{} and \TsbadJointOneZero{}.
+
+We regard the two-sided number as the answer to the question the literature is
+actually asking. ``How often do two metrics confidently disagree about which of
+two detectors is better?'' is not \TsbadFlipAff{}, and it is not
+\TsbadGapTwoZeroToInf{}. On this grid it is about two percent.
+
+\begin{table}[t]
+\centering
+\caption{TSB-AD-M flip rate by \auc{} margin. Disagreement falls steeply with
+margin, but conditioning on the primary metric alone is one-sided; see
+Table~\ref{tab:joint}.}
+\label{tab:margin}
+\begin{tabular}{lrrr}
+\toprule
+$|\Delta\auc{}|$ & Pairs & Share & Flip rate \\
+\midrule
+$< 0.01$        & \TsbadGapPairsZeroZeroToZeroOne   & \TsbadGapShareZeroZeroToZeroOne\%   & \TsbadGapZeroZeroToZeroOne \\
+$0.01$--$0.02$  & \TsbadGapPairsZeroOneToZeroTwo    & \TsbadGapShareZeroOneToZeroTwo\%    & \TsbadGapZeroOneToZeroTwo \\
+$0.02$--$0.05$  & \TsbadGapPairsZeroTwoToZeroFive   & \TsbadGapShareZeroTwoToZeroFive\%   & \TsbadGapZeroTwoToZeroFive \\
+$0.05$--$0.10$  & \TsbadGapPairsZeroFiveToOneZero   & \TsbadGapShareZeroFiveToOneZero\%   & \TsbadGapZeroFiveToOneZero \\
+$0.10$--$0.20$  & \TsbadGapPairsOneZeroToTwoZero    & \TsbadGapShareOneZeroToTwoZero\%    & \TsbadGapOneZeroToTwoZero \\
+$\geq 0.20$     & \TsbadGapPairsTwoZeroToInf        & \TsbadGapShareTwoZeroToInf\%        & \TsbadGapTwoZeroToInf \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Two-sided margin conditioning on TSB-AD-M. Left: stratified by the
+secondary metric's margin. Right: both margins required to exceed a threshold.
+Confident disagreement is rare.}
+\label{tab:joint}
+\begin{tabular}{lrr@{\hskip 2.5em}lrr}
+\toprule
+$|\Delta\afff{}|$ & Pairs & Flip & Both margins $\geq$ & Pairs & Flip \\
+\midrule
+$< 0.02$       & \TsbadSecPairsZeroZeroToZeroTwo  & \TsbadSecZeroZeroToZeroTwo  & $0.05$ & \TsbadJointPairsZeroFive & \TsbadJointZeroFive \\
+$0.02$--$0.05$ & \TsbadSecPairsZeroTwoToZeroFive  & \TsbadSecZeroTwoToZeroFive  & $0.10$ & \TsbadJointPairsOneZero  & \TsbadJointOneZero \\
+$0.05$--$0.10$ & \TsbadSecPairsZeroFiveToOneZero  & \TsbadSecZeroFiveToOneZero  & $0.20$ & \TsbadJointPairsTwoZero  & \TsbadJointTwoZero \\
+$0.10$--$0.20$ & \TsbadSecPairsOneZeroToTwoZero   & \TsbadSecOneZeroToTwoZero   &        &                          & \\
+$0.20$--$0.40$ & \TsbadSecPairsTwoZeroToFourZero  & \TsbadSecTwoZeroToFourZero  &        &                          & \\
+$\geq 0.40$    & \TsbadSecPairsFourZeroToInf      & \TsbadSecFourZeroToInf      &        &                          & \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{table}[t]
 \centering
@@ -609,11 +668,11 @@ substantially agree. Stratified by margin, a real residual disagreement remains
 that near-ties do not explain. Clustered at the source collection, the structural
 account of that disagreement does not survive, and neither does the composite
 metric we built on it. What we can defend is narrower than what we previously
-claimed, and we think it is more useful: point and segment metrics disagree on
-roughly one in five clearly separated model pairs, that disagreement is
-heterogeneous across benchmark collections to a degree that dwarfs any
-anomaly-structure effect we can identify, and the structural covariates that do
-track it are continuous ones the field has not been using.
+claimed, and we think it is more useful: point and segment metrics confidently
+disagree on about two percent of model pairs, what disagreement there is varies
+across benchmark collections to a degree that dwarfs any anomaly-structure
+effect we can identify, and the structural covariates that do track it are
+continuous ones the field has not been using.
 
 \subsubsection*{Broader Impact Statement}
 
@@ -624,9 +683,10 @@ time-series anomaly detection will be restated more conservatively, including
 our own. We see one indirect risk worth naming. Showing that a widely cited
 instability figure overstates disagreement could be read as licence to keep
 reporting single point-wise metrics on benchmarks whose anomalies are sustained
-segments. That reading would be wrong: our margin-stratified result shows that
-substantive disagreement persists among clearly separated detectors, and the
-labeling mismatch documented in prior work is unaffected by anything here. The
+segments. That reading would be wrong, though our results make the point less forcefully
+than the ones they replace: the labeling mismatch documented in prior work is
+untouched by anything we show, and a metric can be misaligned with a task even
+when it happens to rank detectors much as another metric does. The
 benchmarks we use are public industrial and infrastructure datasets containing
 no personal data.
 

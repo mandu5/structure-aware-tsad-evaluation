@@ -62,6 +62,24 @@ def test_series_pairs_drops_ties_on_either_metric() -> None:
     assert len(gap) == 1
 
 
+def test_pairwise_flips_keeps_the_same_pairs_when_arguments_are_swapped() -> None:
+    """The two-sided margin analysis depends on this.
+
+    Swapping the arguments must return the margins of the other metric over the
+    SAME pairs in the SAME order, so that a mask built from one call can index
+    the flip vector from the other. Ties are excluded symmetrically, so this
+    holds, but it is load-bearing enough to pin down.
+    """
+    rng = np.random.default_rng(3)
+    for _ in range(20):
+        a = rng.integers(0, 4, size=7).astype(float)  # small range -> many ties
+        b = rng.integers(0, 4, size=7).astype(float)
+        gap_ab, flip_ab = _MOD.pairwise_flips(a, b)
+        gap_ba, flip_ba = _MOD.pairwise_flips(b, a)
+        assert len(gap_ab) == len(gap_ba)
+        assert np.array_equal(flip_ab, flip_ba)
+
+
 def test_perm_pvalue_is_bounded_and_small_for_perfect_correlation() -> None:
     rng = np.random.default_rng(0)
     x = np.arange(12.0)
