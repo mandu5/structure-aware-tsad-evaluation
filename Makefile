@@ -9,6 +9,10 @@
 PYTHON ?= python3
 CANON  := experiments/results/tsbad_scaleup_canonical_0000_0200
 
+# Pin the timestamp tectonic embeds so an unchanged manuscript rebuilds
+# byte-identically and does not show up as a spurious diff.
+export SOURCE_DATE_EPOCH ?= 1700000000
+
 .PHONY: all analysis numbers paper verify test clean
 
 all: paper
@@ -35,7 +39,10 @@ verify: test
 	git diff --exit-code -- experiments/results
 	$(PYTHON) scripts/export_paper_numbers.py
 	git diff --exit-code -- paper/numbers.tex
-	@echo "verify: artifacts and manuscript numbers are consistent"
+	tectonic -X compile paper/main.tex
+	$(PYTHON) scripts/check_anonymity.py
+	git diff --exit-code -- paper/main.pdf
+	@echo "verify: artifacts, manuscript numbers and PDF are consistent"
 
 clean:
 	rm -f paper/*.aux paper/*.log paper/*.blg paper/*.bbl paper/*.out
