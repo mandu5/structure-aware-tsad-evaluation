@@ -129,6 +129,110 @@
   "gap_stratified_joint_instrumented": [
     {
       "both_at_least": 0.05,
+      "per_collection": [
+        {
+          "collection": "Genesis",
+          "pairs": 79,
+          "flips": 25,
+          "flip_rate": 0.31645569620253167
+        },
+        {
+          "collection": "CATSv2",
+          "pairs": 548,
+          "flips": 158,
+          "flip_rate": 0.28832116788321166
+        },
+        {
+          "collection": "MSL",
+          "pairs": 1932,
+          "flips": 450,
+          "flip_rate": 0.2329192546583851
+        },
+        {
+          "collection": "SWaT",
+          "pairs": 298,
+          "flips": 68,
+          "flip_rate": 0.22818791946308725
+        },
+        {
+          "collection": "SMAP",
+          "pairs": 2530,
+          "flips": 552,
+          "flip_rate": 0.21818181818181817
+        },
+        {
+          "collection": "SMD",
+          "pairs": 3217,
+          "flips": 458,
+          "flip_rate": 0.14236866645943425
+        },
+        {
+          "collection": "OPPORTUNITY",
+          "pairs": 666,
+          "flips": 88,
+          "flip_rate": 0.13213213213213212
+        },
+        {
+          "collection": "PSM",
+          "pairs": 105,
+          "flips": 12,
+          "flip_rate": 0.11428571428571428
+        },
+        {
+          "collection": "Exathlon",
+          "pairs": 4039,
+          "flips": 418,
+          "flip_rate": 0.10349096310968062
+        },
+        {
+          "collection": "LTDB",
+          "pairs": 526,
+          "flips": 50,
+          "flip_rate": 0.09505703422053231
+        },
+        {
+          "collection": "GHL",
+          "pairs": 294,
+          "flips": 26,
+          "flip_rate": 0.08843537414965986
+        },
+        {
+          "collection": "Daphnet",
+          "pairs": 187,
+          "flips": 16,
+          "flip_rate": 0.0855614973262032
+        },
+        {
+          "collection": "MITDB",
+          "pairs": 724,
+          "flips": 60,
+          "flip_rate": 0.08287292817679558
+        },
+        {
+          "collection": "SVDB",
+          "pairs": 2695,
+          "flips": 153,
+          "flip_rate": 0.056771799628942486
+        },
+        {
+          "collection": "TAO",
+          "pairs": 2164,
+          "flips": 97,
+          "flip_rate": 0.044824399260628464
+        },
+        {
+          "collection": "CreditCard",
+          "pairs": 77,
+          "flips": 3,
+          "flip_rate": 0.03896103896103896
+        },
+        {
+          "collection": "GECCO",
+          "pairs": 133,
+          "flips": 5,
+          "flip_rate": 0.03759398496240601
+        }
+      ],
       "random_ranking_null_mean": 0.5013686981301073,
       "random_ranking_null_sd": 0.011450097116815838,
       "ci_cluster_over_collections": [
@@ -140,6 +244,110 @@
     },
     {
       "both_at_least": 0.1,
+      "per_collection": [
+        {
+          "collection": "CATSv2",
+          "pairs": 213,
+          "flips": 33,
+          "flip_rate": 0.15492957746478872
+        },
+        {
+          "collection": "MSL",
+          "pairs": 1203,
+          "flips": 167,
+          "flip_rate": 0.13881961762261014
+        },
+        {
+          "collection": "SMAP",
+          "pairs": 1488,
+          "flips": 196,
+          "flip_rate": 0.13172043010752688
+        },
+        {
+          "collection": "SWaT",
+          "pairs": 172,
+          "flips": 14,
+          "flip_rate": 0.08139534883720931
+        },
+        {
+          "collection": "SMD",
+          "pairs": 1844,
+          "flips": 129,
+          "flip_rate": 0.06995661605206074
+        },
+        {
+          "collection": "Exathlon",
+          "pairs": 3135,
+          "flips": 193,
+          "flip_rate": 0.06156299840510367
+        },
+        {
+          "collection": "OPPORTUNITY",
+          "pairs": 480,
+          "flips": 26,
+          "flip_rate": 0.05416666666666667
+        },
+        {
+          "collection": "PSM",
+          "pairs": 28,
+          "flips": 1,
+          "flip_rate": 0.03571428571428571
+        },
+        {
+          "collection": "GHL",
+          "pairs": 156,
+          "flips": 5,
+          "flip_rate": 0.03205128205128205
+        },
+        {
+          "collection": "CreditCard",
+          "pairs": 66,
+          "flips": 2,
+          "flip_rate": 0.030303030303030304
+        },
+        {
+          "collection": "Daphnet",
+          "pairs": 128,
+          "flips": 3,
+          "flip_rate": 0.0234375
+        },
+        {
+          "collection": "TAO",
+          "pairs": 1810,
+          "flips": 36,
+          "flip_rate": 0.019889502762430938
+        },
+        {
+          "collection": "LTDB",
+          "pairs": 273,
+          "flips": 5,
+          "flip_rate": 0.018315018315018316
+        },
+        {
+          "collection": "SVDB",
+          "pairs": 1466,
+          "flips": 22,
+          "flip_rate": 0.015006821282401092
+        },
+        {
+          "collection": "MITDB",
+          "pairs": 264,
+          "flips": 1,
+          "flip_rate": 0.003787878787878788
+        },
+        {
+          "collection": "GECCO",
+          "pairs": 55,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "Genesis",
+          "pairs": 15,
+          "flips": 0,
+          "flip_rate": 0.0
+        }
+      ],
       "random_ranking_null_mean": 0.4988256553517876,
       "random_ranking_null_sd": 0.015156244481153965,
       "ci_cluster_over_collections": [
@@ -151,6 +359,104 @@
     },
     {
       "both_at_least": 0.2,
+      "per_collection": [
+        {
+          "collection": "SMAP",
+          "pairs": 675,
+          "flips": 49,
+          "flip_rate": 0.0725925925925926
+        },
+        {
+          "collection": "MSL",
+          "pairs": 492,
+          "flips": 29,
+          "flip_rate": 0.05894308943089431
+        },
+        {
+          "collection": "SMD",
+          "pairs": 606,
+          "flips": 16,
+          "flip_rate": 0.026402640264026403
+        },
+        {
+          "collection": "CATSv2",
+          "pairs": 46,
+          "flips": 1,
+          "flip_rate": 0.021739130434782608
+        },
+        {
+          "collection": "Exathlon",
+          "pairs": 1958,
+          "flips": 32,
+          "flip_rate": 0.01634320735444331
+        },
+        {
+          "collection": "SVDB",
+          "pairs": 441,
+          "flips": 6,
+          "flip_rate": 0.013605442176870748
+        },
+        {
+          "collection": "TAO",
+          "pairs": 1542,
+          "flips": 8,
+          "flip_rate": 0.005188067444876783
+        },
+        {
+          "collection": "CreditCard",
+          "pairs": 34,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "Daphnet",
+          "pairs": 34,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "GECCO",
+          "pairs": 18,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "GHL",
+          "pairs": 63,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "Genesis",
+          "pairs": 14,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "LTDB",
+          "pairs": 129,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "MITDB",
+          "pairs": 68,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "OPPORTUNITY",
+          "pairs": 231,
+          "flips": 0,
+          "flip_rate": 0.0
+        },
+        {
+          "collection": "SWaT",
+          "pairs": 61,
+          "flips": 0,
+          "flip_rate": 0.0
+        }
+      ],
       "random_ranking_null_mean": 0.4990592635629552,
       "random_ranking_null_sd": 0.021851678854107416,
       "ci_cluster_over_collections": [

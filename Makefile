@@ -22,6 +22,7 @@ numbers: analysis
 
 paper: numbers
 	tectonic -X compile paper/main.tex
+	$(PYTHON) scripts/check_anonymity.py
 
 test:
 	$(PYTHON) -m pytest -q

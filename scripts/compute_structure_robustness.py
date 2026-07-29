@@ -346,8 +346,18 @@ def main() -> None:
             pick = rng.choice(names_j, size=len(names_j), replace=True)
             pp = sum(int(bycj[c][f"pairs_joint{key}"].sum()) for c in pick)
             cb[b] = sum(int(bycj[c][f"flips_joint{key}"].sum()) for c in pick) / pp if pp else np.nan
+        per_coll = sorted(
+            ({"collection": c,
+              "pairs": int(g[f"pairs_joint{key}"].sum()),
+              "flips": int(g[f"flips_joint{key}"].sum()),
+              "flip_rate": (int(g[f"flips_joint{key}"].sum()) / int(g[f"pairs_joint{key}"].sum()))
+                           if int(g[f"pairs_joint{key}"].sum()) else None}
+             for c, g in sub.groupby("collection")),
+            key=lambda d: -(d["flip_rate"] if d["flip_rate"] is not None else -1),
+        )
         joint_instrumented.append({
             "both_at_least": float(thr),
+            "per_collection": per_coll,
             "random_ranking_null_mean": float(np.nanmean(nulls)),
             "random_ranking_null_sd": float(np.nanstd(nulls, ddof=1)),
             "ci_cluster_over_collections": [float(np.nanquantile(cb, lo_q)),

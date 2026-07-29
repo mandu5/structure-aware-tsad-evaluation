@@ -147,6 +147,19 @@ def main() -> None:
         M[f"JointCiHi{k}"] = _fmt(e["ci_cluster_over_collections"][1])
         M[f"JointZeroColl{k}"] = _fmt(e["n_collections_with_zero_flips"])
         M[f"JointNColl{k}"] = _fmt(e["n_collections"])
+        top = [d for d in e["per_collection"] if d["pairs"]][:2]
+        for rank, d in enumerate(top, start=1):
+            w = ["", "First", "Second"][rank]
+            M[f"Joint{w}Coll{k}"] = str(d["collection"])
+            M[f"Joint{w}CollRate{k}"] = _fmt(d["flip_rate"])
+            M[f"Joint{w}CollFlips{k}"] = _fmt(d["flips"])
+            M[f"Joint{w}CollPairs{k}"] = _fmt(d["pairs"])
+        # GHL has the highest one-sided pooled rate; track it explicitly to
+        # contrast the two estimands on the same collection.
+        by_name = {d["collection"]: d for d in e["per_collection"]}
+        if "GHL" in by_name:
+            M[f"JointGhlFlips{k}"] = _fmt(by_name["GHL"]["flips"])
+            M[f"JointGhlPairs{k}"] = _fmt(by_name["GHL"]["pairs"])
 
     # ---------- SAEScore reduction identity ----------
     ident = sr["saescore_reduction_identity"]
