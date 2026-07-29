@@ -706,10 +706,12 @@ move under a change of protocol is now common practice across ML evaluation,
 from preference-data perturbations in language model leaderboards
 \citep{dropping2025preferences} to protocol axes in computational biology
 \citep{kendiukhov2026quantifying}. The latter is the closest methodological
-neighbour to our Section~\ref{sec:null}, and reaches the same conclusion in a
-different domain. It does not address clustering; its own limitations section
-lists confounding with tissue identity as unresolved, which is the analogue of
-the problem we take up in Section~\ref{sec:cluster}.
+neighbour to our Section~\ref{sec:null}: it permutes method scores within each
+condition over $5{,}000$ replicates and reports an observed reversal rate of
+$0.163$ against a null mean of $0.500$, reaching the same conclusion in a
+different domain. It does not take up the question of Section~\ref{sec:cluster}
+--- its rate estimates use Wilson binomial intervals, which treat the
+constituent pairs as independent draws.
 
 \paragraph{Statistical practice in benchmark evaluation.} The concern that
 evaluation units are not independent replicates is old outside machine learning
