@@ -105,7 +105,11 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 - **업로드 PDF**: `paper/main.pdf` — SHA256 `59520383a374ddfab6437a3c597529a565fee6f4f6db1506a3bc30c1f1665de0` (커밋본과 동일)
 - **Submission Type**: Regular submission (본문 12p 이하)
 - **License**: CC BY 4.0
-- Submission ID / URL: (author console 활성화 후 기입)
+- **Submission Number**: 11830
+- **Forum URL**: https://openreview.net/forum?id=xHEQJedMZ9 (forum id `xHEQJedMZ9`)
+- **Author console**: https://openreview.net/group?id=TMLR/Authors
+- **상태 확인 2026-08-31**: 포럼에 "Submitted to TMLR" 표시, 공개 범위 `TMLR / Action Editors / Authors`, License `CC BY 4.0`. Author console 기준 `0 Reviews Submitted / 0 Recommendations`, Decision Status `No Recommendation` — AE 배정 전 정상 대기 상태이며 결함 신호가 아니다.
+- **주의**: OpenReview 계정 이메일이 `mandu00005@gmail.com`이 아니다(해당 Gmail에 OpenReview 메일 이력 0건). 제출 확인·심사 통보 메일은 다른 주소로 가므로 그 계정을 확인할 것.
 
 ### 폼에서 실제로 확인된 것 — README 체크리스트 보완
 
