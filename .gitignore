@@ -20,6 +20,10 @@ dist/
 *.hdf5
 논문
 
+# arXiv preprint build (regenerate with `make arxiv`; the tracked deliverable
+# is paper/main.pdf, the anonymous PDF that went to TMLR)
+paper/arxiv/
+
 # LaTeX build intermediates (paper/main.pdf is tracked as the deliverable)
 paper/*.aux
 paper/*.log

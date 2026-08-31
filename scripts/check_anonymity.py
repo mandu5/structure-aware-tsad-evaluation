@@ -44,8 +44,9 @@ def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Check the built manuscript for anonymity leaks.")
     p.add_argument("--pdf", default=str(DEFAULT_PDF))
     p.add_argument("--allow-identified", action="store_true",
-                   help="For camera-ready or preprint builds: skip the required "
-                        "anonymous markers but still report identifying strings.")
+                   help="For camera-ready or preprint builds: report which strings "
+                        "identify the paper but do not fail on them, and skip the "
+                        "anonymous-marker check.")
     return p.parse_args()
 
 
@@ -71,9 +72,23 @@ def main() -> int:
     ]
 
     for s, why in leaks:
-        print(f"  LEAK    {why}: {s!r} appears in {pdf.name}")
+        label = "ident   " if args.allow_identified else "LEAK    "
+        print(f"  {label}{why}: {s!r} appears in {pdf.name}")
     for s, why in missing:
         print(f"  MISSING {why}: expected {s!r} in {pdf.name}")
+
+    # A preprint or camera-ready build is supposed to name its author, so the
+    # identifying strings are the expected outcome there, not a failure. The
+    # build is still worth checking: a preprint that names nobody means the
+    # option did not take effect and the wrong PDF is about to be posted.
+    if args.allow_identified:
+        if not leaks:
+            print(f"\ncheck_anonymity: FAILED -- {pdf.name} identifies no author, "
+                  "so this is not a de-anonymised build. Was [preprint] passed?")
+            return 1
+        print(f"check_anonymity: {pdf.name} is de-anonymised as intended "
+              f"({len(leaks)} identifying string(s) present).")
+        return 0
 
     if leaks or missing:
         print(f"\ncheck_anonymity: FAILED ({len(leaks)} leak(s), {len(missing)} missing marker(s)).")

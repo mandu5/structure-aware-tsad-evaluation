@@ -4,6 +4,7 @@
 #   make analysis   rerun the analysis scripts
 #   make numbers    regenerate paper/numbers.tex from the artifacts
 #   make paper      build paper/main.pdf
+#   make arxiv      build the de-anonymised preprint + arXiv tarball
 #   make verify     tests + prove nothing drifted (what CI runs)
 
 PYTHON ?= python3
@@ -13,7 +14,7 @@ CANON  := experiments/results/tsbad_scaleup_canonical_0000_0200
 # byte-identically and does not show up as a spurious diff.
 export SOURCE_DATE_EPOCH ?= 1700000000
 
-.PHONY: all analysis numbers paper verify test clean
+.PHONY: all analysis numbers paper arxiv verify test clean
 
 all: paper
 
@@ -27,6 +28,14 @@ numbers: analysis
 paper: numbers
 	tectonic -X compile paper/main.tex
 	$(PYTHON) scripts/check_anonymity.py
+
+# The preprint arXiv wants is the same source de-anonymised. It builds into
+# paper/arxiv/ rather than over paper/main.pdf, which verify pins byte-for-byte
+# as the PDF that was submitted. ARXIV_EMAIL overrides the printed contact.
+ARXIV_EMAIL ?= ymk5292@psu.edu
+
+arxiv: numbers
+	$(PYTHON) scripts/build_arxiv.py --email $(ARXIV_EMAIL)
 
 test:
 	$(PYTHON) -m pytest -q

@@ -52,34 +52,55 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 
 ## arXiv 준비 (제출·통보와 무관하게 미리 해둘 수 있음)
 
-### 🔴 먼저 고칠 것 — `\email`이 비어 있다
+### TMLR 심사 중에 arXiv에 올려도 되는가 — 된다
 
-`paper/main.tex:56`:
+TMLR author guide가 명시한다: *"Authors are also allowed to upload their submissions to arXiv or other preprint servers at any time, either anonymously or including their identity"* — **실명으로, 시점 제약 없이** 허용된다.
 
-```latex
-\author{\name Youngmin Ko \email \\ \addr Pennsylvania State University}
+붙어 있는 조건은 하나뿐이다: *"double blind of the TMLR submission itself must be maintained by **not linking to another version that includes the authors' names**."*
+
+즉 제약은 arXiv 쪽이 아니라 **TMLR 제출본 쪽**에 걸린다. 제출본 PDF가 실명 버전(arXiv·저장소)을 링크하면 안 된다. 현재 `check_anonymity.py`가 저장소 URL·프로젝트 페이지 호스트를 금지 문자열로 잡고 있어 이미 지켜지고 있고, arXiv 게시 후에도 **제출본에 arXiv 링크를 추가하지 말 것**. 이 파일이나 README에 링크를 적는 것은 무관하다 — 제약은 제출된 PDF에만 걸린다.
+
+### 빌드는 끝나 있다 — `make arxiv`
+
+`\email`이 비어 있던 문제(과거 🔴 블로커)는 해소됐다. `scripts/build_arxiv.py`가 소스를 복사해 두 곳을 고쳐 빌드한다:
+
+- `\usepackage{tmlr}` → `\usepackage[preprint]{tmlr}` (tmlr.sty가 저자 블록을 드러내는 스위치)
+- 비어 있는 `\email` → 실제 주소
+
+```bash
+make arxiv                                   # 기본 주소
+make arxiv ARXIV_EMAIL=you@example.com       # 주소 교체
 ```
 
-`tmlr.sty:99`가 `\def\email{\hfill\small\it}` — **값을 받는 명령이 아니라 서식 전환 스위치**다. 그래서 인자가 비어 있어도 **컴파일 에러가 나지 않고**, 조용히 이메일 없는 저자 줄이 나온다.
+산출물은 `paper/arxiv/`(gitignore)에 떨어진다:
 
-- 제출본은 익명이라 tmlr.sty가 저자 블록을 숨기므로 **지금은 영향 없다**
-- **`[preprint]`(arXiv) 또는 `[accepted]`(camera-ready)로 전환하는 순간 그대로 노출된다**
-- 2026-08-31에 격리 사본(`/tmp/tsad_preprint`)에서 `[preprint]` 빌드를 실제로 돌려 확인함. 컴파일은 정상
+- `main.pdf` — 탈익명 프리프린트. 2026-08-31 빌드 기준 12p, 첫 장에 `Youngmin Ko ymk5292@psu.edu / Pennsylvania State University` 노출 확인
+- `arxiv-submission.tar.gz` — **업로드는 이걸 쓴다.** arXiv는 PDF가 아니라 LaTeX 소스를 받고 BibTeX를 돌려주지 않으므로 `main.bbl`을 포함시켰다. 내용물: `main.tex`, `main.bbl`, `tmlr.sty`, `tmlr.bst`, `fancyhdr.sty`, `numbers.tex` (`refs.bib`는 제외 — `.bbl`과 어긋날 여지를 없앤다)
 
-**채울 때 주의**: `ymk5292@psu.edu`는 2026-08 졸업한 학교 계정이다. 논문에 박히는 연락처는 수년 뒤에도 살아 있어야 하므로, 졸업생 메일 유지 정책을 확인하거나 영구 주소를 쓸 것.
+**제출본은 건드리지 않는다.** `paper/main.pdf`는 TMLR에 올라간 그 파일이고 `make verify`가 바이트 단위로 고정하고 있으므로, 탈익명 빌드를 그 위에 덮으면 게이트가 깨진다. 그래서 별도 디렉토리다. `make arxiv` 실행 후에도 `git status`에 `paper/` 변경이 없어야 정상이다.
+
+`check_anonymity.py --allow-identified`는 이제 **탈익명 빌드를 통과시키고, 오히려 아무도 식별되지 않으면 실패한다** — `[preprint]` 옵션이 안 먹은 채 잘못된 PDF를 올리는 걸 막는 방향으로 뒤집혀 있다. (예전 문서가 "의도적으로 실패한다"고 적었던 부분은 폐기.)
+
+⚠️ **남은 기술 리스크 1건**: 로컬 빌드는 tectonic(XeTeX)이고 arXiv는 통상 pdflatex로 컴파일한다. 업로드 후 arXiv가 생성한 PDF를 **승인 전에 반드시 눈으로 확인**할 것. 어긋나면 PDF 직접 업로드로 우회할 수 있다.
+
+**남은 결정 1건 — 인쇄될 이메일 주소**: 기본값 `ymk5292@psu.edu`는 2026-08 졸업한 학교 계정이다. arXiv 프리프린트는 영구 공개물이라 수년 뒤에도 닿는 주소여야 한다. 졸업생 계정 유지 정책을 확인하고, 끊긴다면 `make arxiv ARXIV_EMAIL=...`로 영구 주소를 넣을 것.
 
 ### arXiv 제출 순서
 
-1. **endorsement 확보가 선행 조건.** [arXiv 공지(2026-01-21)](https://blog.arxiv.org/2026/01/21/attention-authors-updated-endorsement-policy/): "arXiv will no longer accept institutional email addresses as the sole qualifier of endorsement for new authors."
+1. **endorsement가 유일한 블로커.** [arXiv 공지(2026-01-21)](https://blog.arxiv.org/2026/01/21/attention-authors-updated-endorsement-policy/): "arXiv will no longer accept institutional email addresses as the sole qualifier of endorsement for new authors."
    - 경로 1(기관 이메일 + 해당 domain 기존 논문 저자 이력) — **불가**. 첫 arXiv 제출이라 이력이 없다
    - 경로 2(해당 domain 기존 arXiv 저자에게 개인 endorsement) — **이 길뿐**
-2. **arXiv 계정 생성 후 제출을 시작하면 필요한 endorsement code와 domain을 시스템이 알려준다. 그 화면을 먼저 띄운 뒤 부탁할 것** — 카테고리를 모르는 채 부탁하면 자격 없는 사람에게 묻게 된다
-3. 예상 카테고리: **cs.LG** primary, **stat.ML** cross-list
-4. endorser 후보 우선순위: ① KRAFTON AI 조직 동료(cs.LG 논문 보유 가능성 높음, 유학·이직 신호가 전혀 아님) ② Koderunner 2026 동석 패널 ③ CMPSC 465 교수 ④ 본 논문이 인용한 저자에게 콜드메일(arXiv가 공식 허용하는 방법)
-5. `\email` 채우기 → 프리앰블을 `\usepackage[preprint]{tmlr}`로 전환 → 재빌드 → 업로드
-   ⚠️ 전환 후에는 `check_anonymity.py`가 **의도적으로 실패**한다(탈익명이 목적). 제출본 브랜치/커밋과 분리할 것
+2. **endorser를 먼저 구할 필요가 없다.** arXiv 공식 문서 기준 절차: 계정을 만들고 **제출을 시작하면** endorsement 요청 메일과 **6자리 영숫자 endorsement code**가 발급되고, 그 링크를 후보에게 보내면 된다. 코드 없이 부탁하면 상대가 할 수 있는 일이 없으므로 **화면을 띄워 코드를 받아둔 뒤 연락**할 것
+3. 카테고리: **cs.LG** primary, **stat.ML** cross-list. 라이선스는 TMLR 제출과 맞춰 **CC BY 4.0**
+4. endorser 자격: 해당 domain에 **3개월~5년 전 사이**에 일정 편수 이상 낸 저자(편수는 분야마다 다르고 공개돼 있지 않다). **peer review가 아니다** — arXiv 문서가 명시하듯 "글이 그 카테고리에 속하는가"만 보는 절차이므로, 내용 심사를 부탁하는 것처럼 쓰지 말 것
+5. endorser 후보 우선순위: ① KRAFTON AI 조직 동료(cs.LG 논문 보유 가능성 높음, 유학·이직 신호가 전혀 아님) ② Koderunner 2026 동석 패널 ③ CMPSC 465 교수 ④ 본 논문이 인용한 저자에게 콜드메일(arXiv가 공식 허용하는 방법)
+6. endorsement 승인 후: `make arxiv` → `paper/arxiv/arxiv-submission.tar.gz` 업로드 → arXiv 생성 PDF 확인 → 승인
+7. 게시 후: arXiv ID를 이 파일과 `docs/index.html`에 반영. **제출본 PDF에는 넣지 말 것**(위 TMLR 조건)
 
 ### endorsement 요청 메일 (그대로 사용 가능)
+
+한 줄 보강: 이제 실제 저널 심사 중이므로 그 사실을 넣으면 요청의 무게가 달라진다. 단 **venue 이름(TMLR)은 쓰지 말 것** — 상대가 우연히 이 논문의 심사자일 경우를 배제할 수 없고, 이름을 빼도 문장의 효력은 같다.
+
 
 > **Subject:** arXiv endorsement request (cs.LG)
 >
@@ -87,7 +108,7 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 >
 > I've written a single-author paper on evaluation methodology for time-series anomaly detection — it audits the "rank-flip rate" statistic that's become a standard argument for evaluation reform, and shows the standard structural explanation doesn't survive clustered inference. I'm posting it to arXiv.
 >
-> This is my first arXiv submission, and under the policy that changed in January 2026 an institutional email alone no longer qualifies — I need an endorsement from an existing author in the category.
+> The manuscript is currently under review at a journal; posting the preprint is permitted alongside that. This is my first arXiv submission, and under the policy that changed in January 2026 an institutional email alone no longer qualifies — I need an endorsement from an existing author in the category.
 >
 > Would you be willing to endorse me for **cs.LG**? It's a one-click confirmation on arXiv's side. It isn't a review or a judgment on the work's quality, just a confirmation that the submission belongs in the category.
 >
