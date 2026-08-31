@@ -99,8 +99,27 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 
 ## 제출 기록
 
-(제출 후 기입)
+- **일시**: 2026-08-31 (KST), OpenReview 확인 문구 "Your submission is complete."
+- **Venue**: TMLR (Transactions on Machine Learning Research), rolling submission
+- **저자**: `~YoungminKo1` 단독
+- **업로드 PDF**: `paper/main.pdf` — SHA256 `59520383a374ddfab6437a3c597529a565fee6f4f6db1506a3bc30c1f1665de0` (커밋본과 동일)
+- **Submission Type**: Regular submission (본문 12p 이하)
+- **License**: CC BY 4.0
+- Submission ID / URL: (author console 활성화 후 기입)
 
-- 일시:
-- Submission ID / URL:
-- 업로드 PDF:
+### 폼에서 실제로 확인된 것 — README 체크리스트 보완
+
+README §5는 필수 폼 필드를 `competing_interests`·`human_subjects_reporting` 2개로 적었으나, 실제 폼에는 **필수 필드가 2개 더** 있었다:
+
+- **Submission Type\*** — Regular / Long / Beyond PDF 중 택1
+- **License\*** — CC BY 4.0 (단일 선택지이나 필수)
+
+또한 `Previous TMLR Submission Url`과 `Changes Since Last Submission`은 **TMLR에 이전 제출이 있을 때만** 쓰는 칸이다. NeurIPS 리젝은 여기 해당하지 않으므로 공란으로 두었다.
+
+### Competing Interests — "None"으로 내지 않은 이유
+
+폼 안내문이 명시적으로 요구한다: *"disclose relationships (notably financial) of any author with entities… **during the last 36 months**… This would include **engagements with commercial companies** (sabbaticals, **employments**, stipends)…"*
+
+KRAFTON 재직(2026-06~)과 한화에어로스페이스 인턴(2026-01~02)이 여기 해당하므로 **둘 다 공개**하고, 두 소속이 본 연구를 후원·의뢰·검토하지 않았음을 명시했다.
+
+**익명성 영향 없음**: 이 필드의 공개 범위는 폼에서 `TMLR / TMLR Paper number Action Editors / TMLR Paper number Authors`로 표시된다 — **심사자(Reviewers)는 포함되지 않는다.** 소속을 적어도 이중맹검이 깨지지 않는다. `human_subjects_reporting`도 동일한 범위다.
