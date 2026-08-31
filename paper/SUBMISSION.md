@@ -14,6 +14,7 @@
 | LLM 고지 | `\maketitle`(64) → `\footnotetext[1]`(67) → `\begin{abstract}`(72) → **1페이지 조판 확정** ✅ |
 | 프리앰블 | `\usepackage{tmlr}` submission 모드. `[accepted]`/`[preprint]` 미적용 ✅ |
 | OpenReview 프로필 | `~YoungminKo1` **활성 확인** (RL 논문 2026-08-31 제출로 검증) |
+| **`make verify` 전체 게이트** | **통과 (exit 0)** — pytest → 아티팩트 재계산 → `git diff --exit-code -- experiments/results` → numbers 재생성 → `git diff --exit-code -- paper/numbers.tex` → 컴파일 → 익명성 → `git diff --exit-code -- paper/main.pdf`. 전부 재계산 후에도 커밋본과 **한 바이트도 다르지 않음** |
 
 ## Title (한 줄. 소스의 `\\` 제거)
 
@@ -47,9 +48,54 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 2. **제출 완료 후** 이 파일에 제출 기록(일시·submission ID·PDF 해시)을 남기고 커밋
 3. **그다음** 로컬 12커밋 푸시 — `git pull --rebase origin main && git push origin main`
    - 순서 이유: 지금 푸시하면 이중맹검 심사 중 원고가 실명 저장소에 노출된다. TMLR이 preprint를 허용하므로 규정 위반은 아니지만, 제출 뒤로 미루면 비용 0으로 그 노출 창이 사라진다
-4. **arXiv는 그 뒤** — `\usepackage[preprint]{tmlr}`로 전환하면 탈익명 버전이 나온다.
-   단 **endorsement가 선행 조건**: 2026-01-21 정책 변경으로 기관 이메일만으로는 first-time submitter 자동 endorsement가 안 된다. cs.LG 등 해당 domain의 기존 arXiv 저자에게 개인 endorsement를 받아야 한다.
-   arXiv에서 제출을 시작하면 필요한 endorsement code와 domain을 시스템이 알려주므로, **그 화면을 먼저 띄운 뒤** 부탁할 것
+4. **arXiv는 그 뒤** — 아래 "arXiv 준비" 참조
+
+## arXiv 준비 (제출·통보와 무관하게 미리 해둘 수 있음)
+
+### 🔴 먼저 고칠 것 — `\email`이 비어 있다
+
+`paper/main.tex:56`:
+
+```latex
+\author{\name Youngmin Ko \email \\ \addr Pennsylvania State University}
+```
+
+`tmlr.sty:99`가 `\def\email{\hfill\small\it}` — **값을 받는 명령이 아니라 서식 전환 스위치**다. 그래서 인자가 비어 있어도 **컴파일 에러가 나지 않고**, 조용히 이메일 없는 저자 줄이 나온다.
+
+- 제출본은 익명이라 tmlr.sty가 저자 블록을 숨기므로 **지금은 영향 없다**
+- **`[preprint]`(arXiv) 또는 `[accepted]`(camera-ready)로 전환하는 순간 그대로 노출된다**
+- 2026-08-31에 격리 사본(`/tmp/tsad_preprint`)에서 `[preprint]` 빌드를 실제로 돌려 확인함. 컴파일은 정상
+
+**채울 때 주의**: `ymk5292@psu.edu`는 2026-08 졸업한 학교 계정이다. 논문에 박히는 연락처는 수년 뒤에도 살아 있어야 하므로, 졸업생 메일 유지 정책을 확인하거나 영구 주소를 쓸 것.
+
+### arXiv 제출 순서
+
+1. **endorsement 확보가 선행 조건.** [arXiv 공지(2026-01-21)](https://blog.arxiv.org/2026/01/21/attention-authors-updated-endorsement-policy/): "arXiv will no longer accept institutional email addresses as the sole qualifier of endorsement for new authors."
+   - 경로 1(기관 이메일 + 해당 domain 기존 논문 저자 이력) — **불가**. 첫 arXiv 제출이라 이력이 없다
+   - 경로 2(해당 domain 기존 arXiv 저자에게 개인 endorsement) — **이 길뿐**
+2. **arXiv 계정 생성 후 제출을 시작하면 필요한 endorsement code와 domain을 시스템이 알려준다. 그 화면을 먼저 띄운 뒤 부탁할 것** — 카테고리를 모르는 채 부탁하면 자격 없는 사람에게 묻게 된다
+3. 예상 카테고리: **cs.LG** primary, **stat.ML** cross-list
+4. endorser 후보 우선순위: ① KRAFTON AI 조직 동료(cs.LG 논문 보유 가능성 높음, 유학·이직 신호가 전혀 아님) ② Koderunner 2026 동석 패널 ③ CMPSC 465 교수 ④ 본 논문이 인용한 저자에게 콜드메일(arXiv가 공식 허용하는 방법)
+5. `\email` 채우기 → 프리앰블을 `\usepackage[preprint]{tmlr}`로 전환 → 재빌드 → 업로드
+   ⚠️ 전환 후에는 `check_anonymity.py`가 **의도적으로 실패**한다(탈익명이 목적). 제출본 브랜치/커밋과 분리할 것
+
+### endorsement 요청 메일 (그대로 사용 가능)
+
+> **Subject:** arXiv endorsement request (cs.LG)
+>
+> Hi [NAME],
+>
+> I've written a single-author paper on evaluation methodology for time-series anomaly detection — it audits the "rank-flip rate" statistic that's become a standard argument for evaluation reform, and shows the standard structural explanation doesn't survive clustered inference. I'm posting it to arXiv.
+>
+> This is my first arXiv submission, and under the policy that changed in January 2026 an institutional email alone no longer qualifies — I need an endorsement from an existing author in the category.
+>
+> Would you be willing to endorse me for **cs.LG**? It's a one-click confirmation on arXiv's side. It isn't a review or a judgment on the work's quality, just a confirmation that the submission belongs in the category.
+>
+> My endorsement code is **[CODE]** and the link is [URL]. Happy to send the manuscript first if you'd rather look at it.
+>
+> Thanks either way.
+>
+> Youngmin Ko
 
 ## 제출 기록
 
