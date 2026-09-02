@@ -1,9 +1,9 @@
 """Evaluation modules for anomaly detection research and production."""
 
-from src.evaluation.metrics import evaluate
+from .metrics import evaluate
 try:
     # prts is an optional dependency for affiliation-based metrics.
-    from src.evaluation.affiliation import compute_affiliation_f1, threshold_by_rate
+    from .affiliation import compute_affiliation_f1, threshold_by_rate
 except ModuleNotFoundError:  # pragma: no cover
     def compute_affiliation_f1(*args, **kwargs):  # type: ignore[no-redef]
         raise ModuleNotFoundError(
@@ -14,7 +14,7 @@ except ModuleNotFoundError:  # pragma: no cover
         raise ModuleNotFoundError(
             "prts is required for threshold_by_rate (and affiliation metrics). Install it (e.g., `python3 -m pip install prts`)."
         )
-from src.evaluation.sae_score import (
+from .sae_score import (
     SAEScoreResult,
     compute_alpha_from_counts,
     compute_alpha_from_short_ratio,
@@ -22,10 +22,27 @@ from src.evaluation.sae_score import (
     compute_sae_score,
     rank_by_metric,
 )
-from src.evaluation.saps import SAPSConfig, apply_saps, suggest_saps_config_from_lengths
+from .saps import SAPSConfig, apply_saps, suggest_saps_config_from_lengths
+from .rank_flip_rate import compute_rank_flip_rate_by_dataset
+from .statistical_tests import (
+    ModelScores,
+    average_ranks,
+    build_cd_diagram_data,
+    friedman_test,
+    wilcoxon_pairwise,
+)
+
+__version__ = "0.1.0.dev0"
 
 __all__ = [
+    "__version__",
     "evaluate",
+    "compute_rank_flip_rate_by_dataset",
+    "ModelScores",
+    "average_ranks",
+    "build_cd_diagram_data",
+    "friedman_test",
+    "wilcoxon_pairwise",
     # Optional exports (may be None if prts is not installed).
     "compute_affiliation_f1",
     "threshold_by_rate",
