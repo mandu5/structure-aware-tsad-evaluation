@@ -75,13 +75,13 @@ make arxiv ARXIV_EMAIL=you@example.com       # 주소 교체
 산출물은 `paper/arxiv/`(gitignore)에 떨어진다:
 
 - `main.pdf` — 탈익명 프리프린트. 2026-08-31 빌드 기준 12p, 첫 장에 `Youngmin Ko ymk5292@psu.edu / Pennsylvania State University` 노출 확인
-- `arxiv-submission.tar.gz` — **업로드는 이걸 쓴다.** arXiv는 PDF가 아니라 LaTeX 소스를 받고 BibTeX를 돌려주지 않으므로 `main.bbl`을 포함시켰다. 내용물: `main.tex`, `main.bbl`, `tmlr.sty`, `tmlr.bst`, `fancyhdr.sty`, `numbers.tex` (`refs.bib`는 제외 — `.bbl`과 어긋날 여지를 없앤다)
+- `arxiv-submission.tar.gz` — **업로드는 이걸 쓴다.** arXiv는 PDF가 아니라 LaTeX 소스를 받는다. `main.bbl`을 포함시킨 이유: arXiv 공식 문서 기준 **`.bbl`이 있으면 그걸 쓰고, 없을 때만 자체 BibTeX를 돌린다** — 우리 빌드의 참고문헌을 그대로 고정하려는 것이다 (과거 문서의 "arXiv는 BibTeX를 안 돌린다"는 서술은 현재 정책과 달라 폐기). 내용물: `main.tex`, `main.bbl`, `tmlr.sty`, `tmlr.bst`, `fancyhdr.sty`, `numbers.tex` (`refs.bib`는 제외 — `.bbl`과 어긋날 여지를 없앤다)
 
 **제출본은 건드리지 않는다.** `paper/main.pdf`는 TMLR에 올라간 그 파일이고 `make verify`가 바이트 단위로 고정하고 있으므로, 탈익명 빌드를 그 위에 덮으면 게이트가 깨진다. 그래서 별도 디렉토리다. `make arxiv` 실행 후에도 `git status`에 `paper/` 변경이 없어야 정상이다.
 
 `check_anonymity.py --allow-identified`는 이제 **탈익명 빌드를 통과시키고, 오히려 아무도 식별되지 않으면 실패한다** — `[preprint]` 옵션이 안 먹은 채 잘못된 PDF를 올리는 걸 막는 방향으로 뒤집혀 있다. (예전 문서가 "의도적으로 실패한다"고 적었던 부분은 폐기.)
 
-⚠️ **남은 기술 리스크 1건**: 로컬 빌드는 tectonic(XeTeX)이고 arXiv는 통상 pdflatex로 컴파일한다. 업로드 후 arXiv가 생성한 PDF를 **승인 전에 반드시 눈으로 확인**할 것. 어긋나면 PDF 직접 업로드로 우회할 수 있다.
+⚠️ **남은 기술 리스크 1건**: 로컬 빌드는 tectonic(XeTeX)이고 arXiv 공식 문서는 pdflatex/DVI 모드만 명시한다(XeLaTeX 언급 없음). 이 기계에 pdflatex가 없어 사전 검증은 못 했다. 완화 근거: `main.tex`에 비ASCII 문자 0개, 그림 파일 0개, 패키지는 전부 표준. `\pdfoutput=1`은 arXiv가 쓰지 말라고 명시하므로 넣지 않았다. 업로드 후 arXiv가 생성한 PDF를 **승인 전에 반드시 눈으로 확인**할 것. 어긋나면 PDF 직접 업로드로 우회할 수 있다.
 
 **남은 결정 1건 — 인쇄될 이메일 주소**: 기본값 `ymk5292@psu.edu`는 2026-08 졸업한 학교 계정이다. arXiv 프리프린트는 영구 공개물이라 수년 뒤에도 닿는 주소여야 한다. 졸업생 계정 유지 정책을 확인하고, 끊긴다면 `make arxiv ARXIV_EMAIL=...`로 영구 주소를 넣을 것.
 

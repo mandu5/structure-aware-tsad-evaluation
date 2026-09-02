@@ -14,8 +14,9 @@ Two edits are applied to the copy:
   is suppressed anyway; a preprint has to carry a contact.
 
 The result is packed as ``arxiv-submission.tar.gz`` containing the source,
-because arXiv wants LaTeX rather than a PDF and does not run BibTeX -- the
-``.bbl`` tectonic produces is included for that reason.
+because arXiv wants LaTeX rather than a PDF. The ``.bbl`` tectonic produces is
+included: arXiv uses a ``.bbl`` when one is present and only runs BibTeX itself
+otherwise, so shipping ours pins the bibliography to what was built here.
 
 Usage:
     python3 scripts/build_arxiv.py
@@ -37,9 +38,9 @@ OUT = PAPER / "arxiv"
 # Copied verbatim: the vendored stylefiles, the generated macros, the bibliography.
 SUPPORT = ("tmlr.sty", "tmlr.bst", "fancyhdr.sty", "numbers.tex", "refs.bib")
 
-# What arXiv needs in the upload. refs.bib is deliberately absent: arXiv does not
-# run BibTeX, so main.bbl is the bibliography as far as it is concerned, and
-# shipping both invites the two to disagree.
+# What arXiv needs in the upload. refs.bib is deliberately absent: with main.bbl
+# present arXiv skips its own BibTeX pass and uses ours, and shipping both
+# invites the two to disagree.
 PACKAGE = ("main.tex", "main.bbl", "tmlr.sty", "tmlr.bst", "fancyhdr.sty", "numbers.tex")
 
 ANON_LINE = r"  \usepackage{tmlr}"
