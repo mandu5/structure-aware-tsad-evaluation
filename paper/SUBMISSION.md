@@ -97,6 +97,39 @@ make arxiv ARXIV_EMAIL=you@example.com       # 주소 교체
 6. endorsement 승인 후: `make arxiv` → `paper/arxiv/arxiv-submission.tar.gz` 업로드 → arXiv 생성 PDF 확인 → 승인
 7. 게시 후: arXiv ID를 이 파일과 `docs/index.html`에 반영. **제출본 PDF에는 넣지 말 것**(위 TMLR 조건)
 
+### arXiv 폼 입력값 (그대로 붙여넣기)
+
+`submission_fields`와 같은 원칙: PDF에서 복사하지 말고 아래 블록을 쓴다. 초록은 `main.tex`+`numbers.tex`에서 매크로를 치환해 뽑았고, OpenReview에 낸 초록과 수식 표기만 다르고 본문이 동일함을 스크립트로 대조했다 (2026-08-31).
+
+| 필드 | 값 |
+|---|---|
+| Authors | Youngmin Ko — affiliation: Pennsylvania State University |
+| Title | `How Much Do Time-Series Anomaly Detection Metrics Actually Disagree? Null Models and Cluster-Aware Inference for Rank-Flip Statistics` |
+| Primary category | **cs.LG** (Machine Learning) |
+| Cross-list | **stat.ML** |
+| License | **CC BY 4.0** (TMLR 제출과 동일) |
+| Comments | `12 pages. Code and artifacts that regenerate every reported number: https://github.com/mandu5/structure-aware-tsad-evaluation` — venue명·"under review"는 **쓰지 않는다** (프리프린트에 venue를 적으면 심사자에게 링크를 하나 더 주는 셈) |
+| Journal-ref / DOI / Report-no / MSC / ACM class | 전부 공란 |
+| Upload | `paper/arxiv/arxiv-submission.tar.gz` (`make arxiv` 산출물, 7파일) |
+
+**Abstract** (arXiv는 `$...$` 수식을 렌더링한다):
+
+```
+Reports that point-level and segment-level metrics rank time-series anomaly detectors differently have become a standard argument for evaluation reform. These reports take the form of a rank-flip rate: the fraction of model pairs that two metrics order differently. We audit that statistic on a 180-series, 25-model recomputation of TSB-AD-M spanning 17 source collections, and on a 6-dataset, seven-detector grid. Our main finding is that evaluation series are treated as independent when they are not, and that this invalidates the standard $\alpha$-based structural explanation built on top of the statistic. The covariate most often invoked to explain disagreement, the short-anomaly ratio $\alpha$, is constant within 11 of the 12 collections that contain more than one series: it is a collection label rather than a series-level variable. Its rank correlation with the flip rate falls from $0.3241$ at the series level to $0.0563$ ($p = 0.827$) with collections as the unit, and to $0.0898$ when one collection is removed. Interval estimates move the same way, from $[0.2979, 0.3312]$ resampling series to $[0.2695, 0.3715]$ clustering over collections; on the six-dataset grid the clustered interval spans $[0.0667, 0.4167]$, which cannot resolve its magnitude. Two further omissions point the same way. Raw flip percentages are reported without stating the chance level, which is $0.5$ and not $0$: our observed 0.3145 against a permutation null of 0.5002 means the metrics agree on 68.6% of pairs. And flips are pooled across margins: among the 13.3% of pairs that both metrics separate by at least $0.20$, a fraction of 0.0220 are ordered differently, so confident disagreement is roughly two percent rather than the 0.3145 that gets reported. We apply the audit to a composite metric we previously proposed ourselves and show it is uninformative by construction at both ends of the regime it was built to span. Applying the same corrections to our own positive findings leaves one covariate standing, segment count, at $-0.6225$ ($p = 0.008$) with collections as the unit. We give a reporting protocol and release code that regenerates every number here from committed artifacts.
+```
+
+### endorser 후보 — 본 논문 참고문헌에서 (경로 ④)
+
+전원 최근 5년 내 cs.LG 논문이 있는 현역이라 arXiv 자격 요건은 충족한다. 위 우선순위 ①~③(KRAFTON 동료·Koderunner 패널·교수)이 안 될 때의 보강용이다.
+
+| 후보 | 왜 | 주의 |
+|---|---|---|
+| Rishabh Agarwal (Google DeepMind) | `rliable`·"statistical precipice" 저자 — 이 논문의 추론 엄밀성 논지가 직접 인용하는 작업. 주제 정합성이 가장 높고 이해관계 없음 | 가장 먼저 시도할 만함 |
+| Mononito Goswami (CMU) | MOMENT 저자, TSAD 벤치마킹 현역, cs.LG 활동 활발 | — |
+| Sebastian Schmidl / Thorsten Papenbrock (HPI) | TimeEval — TSAD 평가 방법론 그 자체를 다룸 | — |
+| Alexis Huet / Dario Rossi (Huawei) | Affiliation metrics 저자 — 본 논문이 쓰는 Aff-F1의 원저자 | 본인 지표가 분석 대상이라 반응 예측 어려움 |
+| John Paparrizos / Qinghua Liu / Paul Boniol (TSB-AD) | 감사 대상 벤치마크의 저자 | **비추천을 먼저 고려** — 자기 벤치마크를 감사한 논문의 endorser가 되는 건 어색하다. 다만 endorsement는 심사가 아니므로 요청 자체는 정당함 |
+
 ### endorsement 요청 메일 (그대로 사용 가능)
 
 한 줄 보강: 이제 실제 저널 심사 중이므로 그 사실을 넣으면 요청의 무게가 달라진다. 단 **venue 이름(TMLR)은 쓰지 말 것** — 상대가 우연히 이 논문의 심사자일 경우를 배제할 수 없고, 이름을 빼도 문장의 효력은 같다.
