@@ -151,6 +151,22 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 >
 > Youngmin Ko
 
+### 1순위 후보용 개인화 초안 (Rishabh Agarwal — 소속은 보내기 전 확인)
+
+> **Subject:** arXiv endorsement request (cs.LG) — a paper that leans on rliable's argument
+>
+> Hi Rishabh,
+>
+> I'm writing because a single-author paper of mine applies the argument you made in "Deep RL at the Edge of the Statistical Precipice" to a different literature: time-series anomaly detection evaluation. Its headline claim is that the widely reported "rank-flip rate" between point-level and segment-level metrics has been computed as if evaluation series were independent when they are not — series within a benchmark come from a handful of source collections — and that clustering over collections, stating the chance level, and reporting interval estimates changes what the statistic supports. The paper reads as a re-analysis in the spirit of rliable, and cites it as such.
+>
+> The manuscript is under review at a journal; posting the preprint is permitted alongside that. This is my first arXiv submission, and since the January 2026 policy change an institutional email alone no longer qualifies, so I need an endorsement from an existing cs.LG author.
+>
+> Would you be willing to endorse me for **cs.LG**? It's a one-click confirmation on arXiv's side — not a review, just a confirmation that the paper belongs in the category. My endorsement code is **[CODE]** and the link is [URL]. I'm happy to send the PDF first if you'd like to look at it.
+>
+> Thanks either way,
+>
+> Youngmin Ko
+
 ## 제출 기록
 
 - **일시**: 2026-08-31 (KST), OpenReview 확인 문구 "Your submission is complete."
