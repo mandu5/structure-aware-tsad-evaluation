@@ -75,7 +75,7 @@ make arxiv ARXIV_EMAIL=you@example.com       # 주소 교체
 산출물은 `paper/arxiv/`(gitignore)에 떨어진다:
 
 - `main.pdf` — 탈익명 프리프린트. 2026-08-31 빌드 기준 12p, 첫 장에 `Youngmin Ko ymk5292@psu.edu / Pennsylvania State University` 노출 확인
-- `arxiv-submission.tar.gz` — **업로드는 이걸 쓴다.** arXiv는 PDF가 아니라 LaTeX 소스를 받는다. `main.bbl`을 포함시킨 이유: arXiv 공식 문서 기준 **`.bbl`이 있으면 그걸 쓰고, 없을 때만 자체 BibTeX를 돌린다** — 우리 빌드의 참고문헌을 그대로 고정하려는 것이다 (과거 문서의 "arXiv는 BibTeX를 안 돌린다"는 서술은 현재 정책과 달라 폐기). 내용물: `main.tex`, `main.bbl`, `tmlr.sty`, `tmlr.bst`, `fancyhdr.sty`, `numbers.tex` (`refs.bib`는 제외 — `.bbl`과 어긋날 여지를 없앤다)
+- `arxiv-submission.tar.gz` — **업로드는 이걸 쓴다.** arXiv는 PDF가 아니라 LaTeX 소스를 받는다. `main.bbl`을 포함시킨 이유: arXiv 공식 문서 기준 **`.bbl`이 있으면 그걸 쓰고, 없을 때만 자체 BibTeX를 돌린다** — 우리 빌드의 참고문헌을 그대로 고정하려는 것이다 (과거 문서의 "arXiv는 BibTeX를 안 돌린다"는 서술은 현재 정책과 달라 폐기). 내용물: `main.tex`, `main.bbl`, **`refs.bib`**, `tmlr.sty`, `tmlr.bst`, `fancyhdr.sty`, `numbers.tex`. **`refs.bib`를 빼면 안 된다** — 2026-08-31 실측: `.bib` 없는 패키지를 tectonic으로 빌드하자 BibTeX 재실행이 조용히 실패해 **참고문헌 전체가 사라지고(12p→10p) 인용이 `(?)`로 남았다.** 에러가 아니라 경고로만 나오므로 눈으로 안 보면 모른다. `.bbl`과 `.bib`가 어긋날 일은 없다(같은 `.bib`·`.bst`에서 생성). 업로드 전 **tarball만 풀어서 따로 컴파일해 12p·`(?)` 0개를 확인**할 것
 
 **제출본은 건드리지 않는다.** `paper/main.pdf`는 TMLR에 올라간 그 파일이고 `make verify`가 바이트 단위로 고정하고 있으므로, 탈익명 빌드를 그 위에 덮으면 게이트가 깨진다. 그래서 별도 디렉토리다. `make arxiv` 실행 후에도 `git status`에 `paper/` 변경이 없어야 정상이다.
 

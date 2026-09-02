@@ -14,9 +14,13 @@ Two edits are applied to the copy:
   is suppressed anyway; a preprint has to carry a contact.
 
 The result is packed as ``arxiv-submission.tar.gz`` containing the source,
-because arXiv wants LaTeX rather than a PDF. The ``.bbl`` tectonic produces is
-included: arXiv uses a ``.bbl`` when one is present and only runs BibTeX itself
-otherwise, so shipping ours pins the bibliography to what was built here.
+because arXiv wants LaTeX rather than a PDF. Both ``main.bbl`` and ``refs.bib``
+ship. arXiv says it uses a ``.bbl`` when one is present, but a processor that
+reruns BibTeX regardless -- tectonic does -- needs the ``.bib`` or it silently
+drops the whole bibliography: compiling the package without ``refs.bib`` lost
+two pages and left citations as ``(?)``. With both present either behaviour
+yields the same bibliography, since the ``.bbl`` was generated from this
+``.bib`` with this ``.bst``.
 
 Usage:
     python3 scripts/build_arxiv.py
@@ -38,10 +42,10 @@ OUT = PAPER / "arxiv"
 # Copied verbatim: the vendored stylefiles, the generated macros, the bibliography.
 SUPPORT = ("tmlr.sty", "tmlr.bst", "fancyhdr.sty", "numbers.tex", "refs.bib")
 
-# What arXiv needs in the upload. refs.bib is deliberately absent: with main.bbl
-# present arXiv skips its own BibTeX pass and uses ours, and shipping both
-# invites the two to disagree.
-PACKAGE = ("main.tex", "main.bbl", "tmlr.sty", "tmlr.bst", "fancyhdr.sty", "numbers.tex")
+# What goes in the upload. refs.bib is not optional: a processor that reruns
+# BibTeX ignores the shipped .bbl, and without the .bib it emits an empty
+# bibliography and unresolved citations rather than an error.
+PACKAGE = ("main.tex", "main.bbl", "refs.bib", "tmlr.sty", "tmlr.bst", "fancyhdr.sty", "numbers.tex")
 
 ANON_LINE = r"  \usepackage{tmlr}"
 PREPRINT_LINE = r"  \usepackage[preprint]{tmlr}"
