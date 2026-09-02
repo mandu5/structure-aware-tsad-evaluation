@@ -1,5 +1,5 @@
 # Structure-Aware Evaluation for Time Series Anomaly Detection
-<a href="https://github.com/cocel-postech/genz-icp/tree/master/python/genz_icp"><img src="https://img.shields.io/badge/Python-3670A0?logo=python&logoColor=ffdd54" /></a>
+![Python](https://img.shields.io/badge/Python-3.10%2B-3670A0?logo=python&logoColor=ffdd54)
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 Public artifact for the paper:
@@ -11,6 +11,20 @@ Author: Youngmin Ko
 TL;DR: Point-wise metrics can change TSAD model rankings when benchmark anomalies are sustained segments rather than isolated spikes.
 
 Project page: https://tsad-eval-site.onrender.com/
+
+## Install (toolkit, v0.1 preview)
+
+```bash
+pip install -e ".[affiliation]"   # from a clone; PyPI release planned
+```
+
+```python
+import numpy as np
+from tsad_eval import compute_affiliation_f1, compute_rank_flip_rate_by_dataset
+
+# rows: one dict per (dataset, model) with metric columns, e.g. from your own runs
+rfr = compute_rank_flip_rate_by_dataset(rows, metric_a="auc_roc", metric_b="aff_f1")
+```
 
 ## Preview
 
