@@ -11,15 +11,21 @@ All numbers below are recomputed from the shipped derived outputs; run the scrip
 | Deep + classical | 7 | 126 | 44 | 0.349 | 0.502 ± 0.064 |
 | Deep + classical (AUC-ROC vs SAEScore) | 7 | 126 | 36 | 0.286 | 0.499 ± 0.064 |
 
+Collection-clustered 95 % interval for the deep-only AUC-ROC vs Aff-F1 rate: [0.0667, 0.4167]. Six datasets do not resolve the magnitude; treat the point estimates above accordingly.
+
 Per-dataset α (share of non-short segments; 1.0 = no short anomalies): MSL 1.0, PSM 0.4861, SMAP 1.0, SMD 0.6147, SWaT 1.0, WADI 1.0
 
 ## TSB-AD-M audit — 25 models × 180 multivariate series
 
 - Metric rows: 4498  ·  models: 25  ·  series with α < 1: 27
-- Mean per-series RFR, AUC-ROC vs Aff-F1: **0.343**
-- Overall pairwise flip rate, AUC-ROC vs SAEScore: **0.293** (95% bootstrap CI 0.276–0.312, n_boot=100, seed=42)
+- **Pooled pairwise flip rate, AUC-ROC vs Aff-F1: 0.3145** against a random-ranking null of 0.5002 (the paper's headline statistic). 95 % intervals: [0.2979, 0.3312] resampling series, [0.2695, 0.3715] clustering over the 17 source collections.
+- Among the 13.3 % of pairs that both metrics separate by ≥ 0.20, the flip rate is 0.0220.
+- Pooled pairwise flip rate, AUC-ROC vs SAEScore: 0.2928 — reported for completeness; the paper shows SAEScore is uninformative by construction at both ends of α.
+- Mean of per-series flip rates, AUC-ROC vs Aff-F1: 0.343. This averages series equally and is *not* the pooled statistic above; it is kept because `tsbad_rfr_auc_vs_aff.json` reports it.
 
 ### Per collection (AUC-ROC vs Aff-F1)
+
+Flip rates range from 0.131 to 0.588 across collections, which is why the paper uses the collection, not the series, as the unit of inference.
 
 | Collection | Series | Comparable pairs | Flips | Flip rate |
 |---|---|---|---|---|

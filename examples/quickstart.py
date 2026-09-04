@@ -10,11 +10,22 @@ from __future__ import annotations
 import numpy as np
 from sklearn.metrics import roc_auc_score
 
-from tsad_eval import (
-    compute_affiliation_f1,
-    compute_rank_flip_rate_by_dataset,
-    threshold_by_rate,
-)
+try:
+    from tsad_eval import (
+        compute_affiliation_f1,
+        compute_rank_flip_rate_by_dataset,
+        threshold_by_rate,
+    )
+except ModuleNotFoundError:  # running from a clone without `pip install -e .`
+    import sys
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from src.evaluation import (
+        compute_affiliation_f1,
+        compute_rank_flip_rate_by_dataset,
+        threshold_by_rate,
+    )
 
 
 def make_series(rng: np.random.Generator, n: int = 2000, n_segments: int = 3, seg_len: int = 60):
