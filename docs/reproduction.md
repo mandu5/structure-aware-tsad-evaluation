@@ -50,10 +50,14 @@ supplies three checks the alpha-stratified analysis did not include.
 - **Random-ranking null.** Observed AUC-ROC vs Aff-F1 flip rate is 0.3145 against a
   permutation null of 0.5002; the metrics agree on 68.6% of model pairs. Flip rates
   must be read against this baseline, not against zero.
-- **Tie sensitivity.** Flip rate falls monotonically with the AUC-ROC gap
-  (0.474 below 0.01, 0.202 at or above 0.20) but does not vanish: disagreement
-  persists among clearly separated models and is not a near-tie artifact.
-- **Cluster-aware inference.** `alpha` is constant within 16 of 17 collections, so
+- **Margin treatment.** Flip rate falls monotonically with the AUC-ROC gap
+  (0.474 below 0.01, 0.202 at or above 0.20). Conditioning on one metric's gap is
+  not enough, though: the surviving flips sit where Aff-F1 barely separates the
+  pair. Requiring *both* metrics to separate the pair by at least 0.20 keeps 13.3%
+  of pairs and leaves a flip rate of 0.0220 — confident disagreement is about two
+  percent, not one in five.
+- **Cluster-aware inference.** `alpha` is constant within 11 of the 12 collections
+  that contain more than one series (the other 5 collections are single-series), so
   series are not independent units. Series-level Spearman(alpha, flip rate) = +0.324
   collapses to +0.056 at collection level and to +0.090 when TAO is dropped. Mean
   segment duration (+0.372 series, +0.375 collection) and segment count
