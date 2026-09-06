@@ -159,7 +159,35 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 >
 > Youngmin Ko
 
-### 1순위 후보용 개인화 초안 (Rishabh Agarwal — 소속은 보내기 전 확인)
+### 발송 상태 (2026-09-06)
+
+| 후보 | 연락처 (공개 출처) | 자격 근거 | 상태 |
+|---|---|---|---|
+| **Rishabh Agarwal** — Periodic Labs 창립 멤버, McGill 겸임교수 (agarwl.github.io) | `rishabhagarwal.467@gmail.com` (본인 홈페이지) | 2024년 cs.LG 논문 다수 (2408.15240, 2410.11325, 2410.18252) → 3편·3개월~5년 조건 충족 | **Gmail 임시보관함에 완성 초안 있음** (`mandu00005@gmail.com`, 받는 사람·제목·본문·코드 전부 채움) — **보내기 버튼만 누르면 됨** |
+| **Mononito Goswami** — Amazon Applied Scientist, 전 CMU (mononito.com) | `mononitogoswami98@gmail.com` (본인 홈페이지) | MOMENT(2402.03885)·In-context FT(2410.24087)·Foundation Model Forecasts(2510.19345) 등 cs.LG → 충족. ICLR'23 TSAD 모델선택 논문이라 주제 인접 | 아래 본문 완성 — Gmail 초안 생성은 권한 분류기에 차단됨, 직접 붙여넣어 발송 |
+
+발송 자체는 Claude Code 권한 분류기가 막았다(외부 발신). 두 통 동시에 보내도 문제없다 — arXiv는 한 명만 승인하면 되고, 두 번째 사람이 링크를 눌러도 "이미 endorsed" 안내만 뜬다.
+
+### 2순위 후보용 초안 (Mononito Goswami)
+
+> **Subject:** arXiv endorsement request (cs.LG) — time-series anomaly detection evaluation
+>
+> Hi Mononito,
+>
+> I'm writing because of your ICLR 2023 work on unsupervised model selection for time-series anomaly detection — my paper sits next to it. It audits the "rank-flip rate" commonly reported between point-level and segment-level metrics (AUC-ROC vs Affiliation-F1) on TSB-AD-M and TAB, and finds that the number is usually read without its chance level (which is 0.5, not 0), that most of the residual disagreement is a margin artifact, and that the series-level covariate normally blamed for it (the short-anomaly ratio) is really a collection-level label — so the usual structural explanation does not survive cluster-aware inference. If detector rankings are the object one selects over, the paper is about how much of their instability across metrics is real.
+>
+> It is a single-author manuscript, currently under review at a journal (posting a preprint is permitted). This is my first arXiv submission and, since the January 2026 policy change, an institutional email alone no longer qualifies — I need an endorsement from an existing cs.LG author.
+>
+> Would you be willing to endorse me for cs.LG? It's a one-click confirmation on arXiv's side, not a review — just that the paper belongs in the category. My endorsement code is **KQOI4O** and the link is https://arxiv.org/auth/endorse?x=KQOI4O
+>
+> The manuscript (anonymized journal-submission build) and the code that regenerates every reported number are here: https://github.com/mandu5/structure-aware-tsad-evaluation (paper/main.pdf). Happy to send the named preprint build directly if that's easier.
+>
+> Thanks either way,
+>
+> Youngmin Ko
+> Pennsylvania State University
+
+### 1순위 후보용 개인화 초안 (Rishabh Agarwal) — Gmail 임시보관함과 동일 본문
 
 > **Subject:** arXiv endorsement request (cs.LG) — a paper that leans on rliable's argument
 >
@@ -169,7 +197,9 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 >
 > The manuscript is under review at a journal; posting the preprint is permitted alongside that. This is my first arXiv submission, and since the January 2026 policy change an institutional email alone no longer qualifies, so I need an endorsement from an existing cs.LG author.
 >
-> Would you be willing to endorse me for **cs.LG**? It's a one-click confirmation on arXiv's side — not a review, just a confirmation that the paper belongs in the category. My endorsement code is **KQOI4O** and the link is https://arxiv.org/auth/endorse?x=KQOI4O. I'm happy to send the PDF first if you'd like to look at it.
+> Would you be willing to endorse me for **cs.LG**? It's a one-click confirmation on arXiv's side — not a review, just a confirmation that the paper belongs in the category. My endorsement code is **KQOI4O** and the link is https://arxiv.org/auth/endorse?x=KQOI4O
+>
+> The manuscript (anonymized journal-submission build) and the code that regenerates every reported number are here: https://github.com/mandu5/structure-aware-tsad-evaluation (paper/main.pdf). I'm happy to send the named preprint build directly if that's easier.
 >
 > Thanks either way,
 >
