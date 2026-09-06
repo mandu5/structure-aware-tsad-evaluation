@@ -231,7 +231,8 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 - **업로드 PDF**: `paper/main.pdf` @ `8785ec0` — sha256 `7a8e7b3b2cc1e9d3c76c49dc639700305f01269dea1a4478d078e88c3ecb955b`, 16p (서버 경로 `/pdf/c8f2703ab31c2d40e670ea7095b4944ff7266ca1.pdf`)
 - **License**: CC BY-SA 4.0 (폼 고정)
 - **입력값**: 위 패킷과 동일 (Title / Abstract TeX 수식 포함 / Keywords 7개 / Competing Interests·Human Subjects는 TMLR 때 문구)
-- Submission ID / URL: (author console 활성화 후 기입)
+- **Submission Number: 252** — forum `5pcDaNOVvR`, https://openreview.net/forum?id=5pcDaNOVvR (상태 "Submitted to DMLR", 공개 범위 `DMLR / Action Editors / Authors`)
+- Author console: https://openreview.net/group?id=DMLR/Authors (제출 직후엔 미활성, OpenReview 검색으로 forum 확인)
 - 확인 메일은 OpenReview Preferred 주소(네이버)로 감
 
 ## 제출 기록
