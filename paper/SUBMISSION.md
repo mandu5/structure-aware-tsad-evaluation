@@ -85,6 +85,14 @@ make arxiv ARXIV_EMAIL=you@example.com       # 주소 교체
 
 **남은 결정 1건 — 인쇄될 이메일 주소**: 기본값 `ymk5292@psu.edu`는 2026-08 졸업한 학교 계정이다. arXiv 프리프린트는 영구 공개물이라 수년 뒤에도 닿는 주소여야 한다. 졸업생 계정 유지 정책을 확인하고, 끊긴다면 `make arxiv ARXIV_EMAIL=...`로 영구 주소를 넣을 것.
 
+### arXiv 실측 상태 (2026-09-06)
+
+- **계정 있음**: username `Youngmin05`, 계정 이메일 **`rhdudals0505@naver.com`**(Gmail·PSU 아님), 소속 PSU, 기본 카테고리 cs.LG. arXiv의 모든 메일(endorsement code, 처리 결과)은 **네이버로 간다**
+- **제출 레코드 있음**: `submit/7545844` (incomplete, **2026-09-20 만료** — 그 전에 endorsement가 안 되면 새로 시작해야 함). 2026-09-06에 Start 단계 완료: 연락처 확인, Submittal Agreement 수락, 저자 본인, **CC BY 4.0**, primary **cs.LG**
+- **endorsement 벽에서 정지**: "You are not endorsed for this archive." 파일 업로드·메타데이터는 endorsement 후에만 진행 가능
+- **endorsement code 발급됨: `KQOI4O`** — 같은 코드가 네이버 메일로도 감. endorser에게 줄 링크: `https://arxiv.org/auth/endorse?x=KQOI4O` (네이버 메일의 링크가 정본)
+- **endorser 자격(cs.LG, arXiv 명시)**: 최근 **3개월~5년 사이에 cs.* 아무 카테고리에 논문 3편 이상** 제출한 사람. 특정인이 자격이 있는지는 그 사람 논문 abstract 페이지 하단 "Which of the authors of this article can endorse?" 링크로 확인 가능
+
 ### arXiv 제출 순서
 
 1. **endorsement가 유일한 블로커.** [arXiv 공지(2026-01-21)](https://blog.arxiv.org/2026/01/21/attention-authors-updated-endorsement-policy/): "arXiv will no longer accept institutional email addresses as the sole qualifier of endorsement for new authors."
@@ -145,7 +153,7 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 >
 > Would you be willing to endorse me for **cs.LG**? It's a one-click confirmation on arXiv's side. It isn't a review or a judgment on the work's quality, just a confirmation that the submission belongs in the category.
 >
-> My endorsement code is **[CODE]** and the link is [URL]. Happy to send the manuscript first if you'd rather look at it.
+> My endorsement code is **KQOI4O** and the link is https://arxiv.org/auth/endorse?x=KQOI4O. Happy to send the manuscript first if you'd rather look at it.
 >
 > Thanks either way.
 >
@@ -161,7 +169,7 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 >
 > The manuscript is under review at a journal; posting the preprint is permitted alongside that. This is my first arXiv submission, and since the January 2026 policy change an institutional email alone no longer qualifies, so I need an endorsement from an existing cs.LG author.
 >
-> Would you be willing to endorse me for **cs.LG**? It's a one-click confirmation on arXiv's side — not a review, just a confirmation that the paper belongs in the category. My endorsement code is **[CODE]** and the link is [URL]. I'm happy to send the PDF first if you'd like to look at it.
+> Would you be willing to endorse me for **cs.LG**? It's a one-click confirmation on arXiv's side — not a review, just a confirmation that the paper belongs in the category. My endorsement code is **KQOI4O** and the link is https://arxiv.org/auth/endorse?x=KQOI4O. I'm happy to send the PDF first if you'd like to look at it.
 >
 > Thanks either way,
 >
