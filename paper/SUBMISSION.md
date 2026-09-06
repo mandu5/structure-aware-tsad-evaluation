@@ -1,4 +1,4 @@
-# TMLR 제출 패킷
+# TMLR 제출 패킷 — ⚠️ 2026-09-06 데스크 리젝, 아래 "결과" 절 참조
 
 작성 2026-08-31. 사전 검증은 전부 통과한 상태이며, 남은 것은 폼 입력과 업로드뿐이다.
 
@@ -218,6 +218,22 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 - **Author console**: https://openreview.net/group?id=TMLR/Authors
 - **상태 확인 2026-08-31**: 포럼에 "Submitted to TMLR" 표시, 공개 범위 `TMLR / Action Editors / Authors`, License `CC BY 4.0`. Author console 기준 `0 Reviews Submitted / 0 Recommendations`, Decision Status `No Recommendation` — AE 배정 전 정상 대기 상태이며 결함 신호가 아니다.
 - **주의**: OpenReview 계정 이메일이 `mandu00005@gmail.com`이 아니다(해당 Gmail에 OpenReview 메일 이력 0건). 제출 확인·심사 통보 메일은 다른 주소로 가므로 그 계정을 확인할 것.
+
+### 🔴 결과: 데스크 리젝 (2026-09-06 19:35 KST)
+
+- 포럼 상태 `Desk rejected by TMLR`. 노트 "Desk Rejection by Editors In Chief (Gautam Kamath, Naila Murray, Nihar B Shah, Laurent Charlin, +1 more)", **본문 비어 있음**. AE·리뷰어 배정 전 편집장단 단계에서 걸러짐 (제출 6일 만). TSAD 세션이 2026-09-06 포럼에서 직접 확인.
+- 통보 메일(네이버) 요지: "rejected without further review. It was deemed to be unlikely to meet one or both of TMLR criterion and could not be sent for further review due to high volume of submissions and scarce bandwidth of the volunteer reviewers and AEs." 개별 사유 없음.
+- TMLR 기준 2개: ① 주장이 정확·설득력 있는 근거로 뒷받침되는가 ② TMLR 독자 일부라도 관심을 가질 결과인가. 어느 쪽에 걸렸는지는 알 수 없다.
+- TMLR 정책상 재투고는 가능(새 제출 + 이전 제출 링크 + 변경 내역)하나, 볼륨 사유 데스크 리젝을 같은 원고로 다시 넣는 건 의미 없다.
+- 부수 사실: 이 제출 때문에 걸어 둔 익명성 제약(공개 페이지에 새 제목 병기 금지)은 **재투고처가 정해질 때까지 유지**. 단 DMLR처럼 single-blind 저널로 가면 제약이 사라진다.
+
+**재투고 후보 (2026-09-06 조사)**
+
+| 후보 | 근거 | 제약 |
+|---|---|---|
+| **DMLR** (Journal of Data-centric ML Research, JMLR 계열) — **권고** | 명시 범위에 "Benchmarking tools and methods", "dataset audits", "Systematic analyses of existing systems on … benchmarks that yield important new insight" — 이 논문 그 자체. OpenReview 롤링, **single-blind**, arXiv 병행 허용, 페이지 제한 없음 | 전용 LaTeX 템플릿 필수(`github.com/JmlrOrg/dmlr-style-file`) → 재조판. 결정까지 4~6개월 |
+| ICLR 2027 | 평가 방법론·통계 엄밀성 논문 수요 있음 | **abstract 9/18, paper 9/25 AoE** — 12일. 본문 9p로 압축 필요. 결정 12/16이라 석사 원서(12/1~15)에는 "under review"로만 |
+| TMLR 재투고 | 정책상 가능 | 같은 원고면 같은 결과. 실질적 재구성이 없으면 비추 |
 
 ### 폼에서 실제로 확인된 것 — README 체크리스트 보완
 
