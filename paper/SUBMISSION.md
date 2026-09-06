@@ -1,4 +1,4 @@
-# TMLR 제출 패킷 — ⚠️ 2026-09-06 데스크 리젝, 아래 "결과" 절 참조
+# 제출 패킷 — TMLR #11830 데스크 리젝(9/6) → **DMLR 제출 완료(9/6)**, "DMLR 제출 기록" 절 참조
 
 작성 2026-08-31. 사전 검증은 전부 통과한 상태이며, 남은 것은 폼 입력과 업로드뿐이다.
 
@@ -222,6 +222,17 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 | PDF | `paper/main.pdf` @ `8785ec0`, sha256 `7a8e7b3b2cc1e9d3c76c49dc639700305f01269dea1a4478d078e88c3ecb955b`, 16p |
 
 **원고에서 DMLR 템플릿 요구로 추가된 것**: `\begin{keywords}`, `\impact{}`(Broader Impact Statement), `\acks{}`(무자금·이해관계·LLM 보조 고지). 본문 수치·주장은 TMLR 제출본과 동일(`numbers.tex` 매크로 340개 그대로).
+
+## DMLR 제출 기록
+
+- **일시**: 2026-09-06 (KST, 밤), OpenReview 확인 문구 "Your submission is complete. Check your inbox for a confirmation email. The author console page for managing your submissions will be available soon."
+- **Venue**: DMLR (Journal of Data-centric Machine Learning Research), rolling, single-blind
+- **저자**: `~YoungminKo1` 단독 (폼 자동 등록)
+- **업로드 PDF**: `paper/main.pdf` @ `8785ec0` — sha256 `7a8e7b3b2cc1e9d3c76c49dc639700305f01269dea1a4478d078e88c3ecb955b`, 16p (서버 경로 `/pdf/c8f2703ab31c2d40e670ea7095b4944ff7266ca1.pdf`)
+- **License**: CC BY-SA 4.0 (폼 고정)
+- **입력값**: 위 패킷과 동일 (Title / Abstract TeX 수식 포함 / Keywords 7개 / Competing Interests·Human Subjects는 TMLR 때 문구)
+- Submission ID / URL: (author console 활성화 후 기입)
+- 확인 메일은 OpenReview Preferred 주소(네이버)로 감
 
 ## 제출 기록
 

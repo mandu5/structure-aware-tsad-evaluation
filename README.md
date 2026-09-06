@@ -19,9 +19,9 @@ views honestly, plus the audited results so you can check ours.
 > Paper: **When Point Metrics Mislead: Structure-Aware Evaluation Reveals
 > Conditional Ranking Shifts in Time Series Anomaly Detection** — Youngmin Ko
 > (sole author), conference version. A reframed manuscript that audits this
-> statistic (chance level, margin treatment, cluster-aware inference) is being
-> submitted to the Journal of Data-centric Machine Learning Research (DMLR);
-> the numbers below come from that audit.
+> statistic (chance level, margin treatment, cluster-aware inference) is under
+> review at the Journal of Data-centric Machine Learning Research (DMLR),
+> submitted September 2026; the numbers below come from that audit.
 > Project page: https://tsad-eval-site.onrender.com/
 
 ## Install
@@ -179,7 +179,7 @@ comply with the upstream licences. Details in [`docs/dataset_access.md`](docs/da
   title  = {When Point Metrics Mislead: Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection},
   author = {Ko, Youngmin},
   year   = {2026},
-  note   = {Conference version. A reframed audit of this statistic is being submitted to DMLR. Code: https://github.com/mandu5/structure-aware-tsad-evaluation}
+  note   = {Conference version. A reframed audit of this statistic is under review at DMLR (submitted September 2026). Code: https://github.com/mandu5/structure-aware-tsad-evaluation}
 }
 ```
 
