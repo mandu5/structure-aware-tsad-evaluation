@@ -205,6 +205,24 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 >
 > Youngmin Ko
 
+## DMLR 제출 패킷 (2026-09-06)
+
+**venue 사실 (실측)**: DMLR = Journal of Data-centric Machine Learning Research, JMLR 계열. OpenReview `https://openreview.net/group?id=DMLR` → "Add: DMLR Submission". **single-blind** (data.mlr.press 명시: "single-blind review process with open reviewing") → PDF에 저자 실명·소속·저장소 URL 있음이 정상. 라이선스는 폼에 고정: **CC BY-SA 4.0**. 결정까지 통상 4~6개월. 페이지 제한 없음(현재 16p).
+
+**필수 필드 (API 실측 `DMLR/-/Submission`)**: `title` · `abstract` · `authors` · `authorids`(OpenReview 프로필 검색, 전 저자 프로필 필수) · `pdf`(≤50MB) · `competing_interests` · `human_subjects_reporting`. 선택: `keywords` · `supplementary_material`(zip, 익명화 요구 — 안 냄) · `previous_DMLR_submission_url`/`changes_since_last_submission`(**DMLR에서** 리젝된 적 있을 때만 — TMLR 리젝은 해당 없음, 공란) · `previous_publication_url`(공란).
+
+| 필드 | 값 |
+|---|---|
+| Title | (위 Title 절과 동일) |
+| Abstract | (위 Abstract 절과 동일 — 본문 변경 없음) |
+| Authors / Authorids | Youngmin Ko / `~YoungminKo1` |
+| Keywords | `time-series anomaly detection, evaluation metrics, benchmark audit, rank-flip rate, cluster-robust inference, TSB-AD, TAB` |
+| Competing Interests | TMLR 제출 때와 동일 문구 (KRAFTON 재직·한화 인턴 공개, 본 연구 무관) |
+| Human Subjects Reporting | TMLR 제출 때와 동일 문구 (N/A, 공개 벤치마크 재분석) |
+| PDF | `paper/main.pdf` @ `8785ec0`, sha256 `7a8e7b3b2cc1e9d3c76c49dc639700305f01269dea1a4478d078e88c3ecb955b`, 16p |
+
+**원고에서 DMLR 템플릿 요구로 추가된 것**: `\begin{keywords}`, `\impact{}`(Broader Impact Statement), `\acks{}`(무자금·이해관계·LLM 보조 고지). 본문 수치·주장은 TMLR 제출본과 동일(`numbers.tex` 매크로 340개 그대로).
+
 ## 제출 기록
 
 - **일시**: 2026-08-31 (KST), OpenReview 확인 문구 "Your submission is complete."
