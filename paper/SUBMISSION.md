@@ -93,6 +93,12 @@ make arxiv ARXIV_EMAIL=you@example.com       # 주소 교체
 - **endorsement code 발급됨: `KQOI4O`** — 같은 코드가 네이버 메일로도 감. endorser에게 줄 링크: `https://arxiv.org/auth/endorse?x=KQOI4O` (네이버 메일의 링크가 정본)
 - **endorser 자격(cs.LG, arXiv 명시)**: 최근 **3개월~5년 사이에 cs.* 아무 카테고리에 논문 3편 이상** 제출한 사람. 특정인이 자격이 있는지는 그 사람 논문 abstract 페이지 하단 "Which of the authors of this article can endorse?" 링크로 확인 가능
 
+### 발송 후 절차
+
+- endorsement가 이뤄지면 arXiv가 **네이버**로 통지한다. 그 뒤 `submit/7545844`를 resume → Add Files에 `make arxiv` tarball 업로드 → Process → Metadata(위 폼 입력값) → Preview → Submit. **레코드 만료 2026-09-20.**
+- 9/12까지 두 사람 모두 무응답이면 3순위(Schmidl/HPI, Huet·Rossi/Huawei) 발송. 리마인더는 1회만.
+- 회신이 오면 endorser에게 짧게 감사 메일. 게시 후 arXiv ID를 README·`docs/index.html`·DMLR 포럼(코멘트 아님, 필요 시 revision)에 반영.
+
 ### arXiv 제출 순서
 
 1. **endorsement가 유일한 블로커.** [arXiv 공지(2026-01-21)](https://blog.arxiv.org/2026/01/21/attention-authors-updated-endorsement-policy/): "arXiv will no longer accept institutional email addresses as the sole qualifier of endorsement for new authors."
@@ -163,10 +169,10 @@ Reports that point-level and segment-level metrics rank time-series anomaly dete
 
 | 후보 | 연락처 (공개 출처) | 자격 근거 | 상태 |
 |---|---|---|---|
-| **Rishabh Agarwal** — Periodic Labs 창립 멤버, McGill 겸임교수 (agarwl.github.io) | `rishabhagarwal.467@gmail.com` (본인 홈페이지) | 2024년 cs.LG 논문 다수 (2408.15240, 2410.11325, 2410.18252) → 3편·3개월~5년 조건 충족 | **Gmail 임시보관함에 완성 초안 있음** (`mandu00005@gmail.com`, 받는 사람·제목·본문·코드 전부 채움) — **보내기 버튼만 누르면 됨** |
-| **Mononito Goswami** — Amazon Applied Scientist, 전 CMU (mononito.com) | `mononitogoswami98@gmail.com` (본인 홈페이지) | MOMENT(2402.03885)·In-context FT(2410.24087)·Foundation Model Forecasts(2510.19345) 등 cs.LG → 충족. ICLR'23 TSAD 모델선택 논문이라 주제 인접 | 아래 본문 완성 — Gmail 초안 생성은 권한 분류기에 차단됨, 직접 붙여넣어 발송 |
+| **Rishabh Agarwal** — Periodic Labs 창립 멤버, McGill 겸임교수 (agarwl.github.io) | `rishabhagarwal.467@gmail.com` (본인 홈페이지) | 2024년 cs.LG 논문 다수 (2408.15240, 2410.11325, 2410.18252) → 3편·3개월~5년 조건 충족 | ✅ **발송 2026-09-06 21:51 KST** (`mandu00005@gmail.com`, Gmail thread `1a075316bdba2826`) |
+| **Mononito Goswami** — Amazon Applied Scientist, 전 CMU (mononito.com) | `mononitogoswami98@gmail.com` (본인 홈페이지) | MOMENT(2402.03885)·In-context FT(2410.24087)·Foundation Model Forecasts(2510.19345) 등 cs.LG → 충족. ICLR'23 TSAD 모델선택 논문이라 주제 인접 | ✅ **발송 2026-09-06 21:52 KST** (`mandu00005@gmail.com`, message `1a076c6aca7ab9b6`) |
 
-발송 자체는 Claude Code 권한 분류기가 막았다(외부 발신). 두 통 동시에 보내도 문제없다 — arXiv는 한 명만 승인하면 되고, 두 번째 사람이 링크를 눌러도 "이미 endorsed" 안내만 뜬다.
+두 통 모두 2026-09-06 발송됨(사용자 지시). 두 통 동시에 보내도 문제없다 — arXiv는 한 명만 승인하면 되고, 두 번째 사람이 링크를 눌러도 "이미 endorsed" 안내만 뜬다.
 
 ### 2순위 후보용 초안 (Mononito Goswami)
 
