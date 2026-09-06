@@ -27,15 +27,13 @@ numbers: analysis
 
 paper: numbers
 	tectonic -X compile paper/main.tex
-	$(PYTHON) scripts/check_anonymity.py
+	$(PYTHON) scripts/check_anonymity.py --allow-identified
 
-# The preprint arXiv wants is the same source de-anonymised. It builds into
-# paper/arxiv/ rather than over paper/main.pdf, which verify pins byte-for-byte
-# as the PDF that was submitted. ARXIV_EMAIL overrides the printed contact.
-ARXIV_EMAIL ?= ymk5292@psu.edu
-
+# The arXiv package is the same source (DMLR is single-blind and the build
+# already uses the template's [preprint] mode), packed with its .bbl into
+# paper/arxiv/ without touching paper/main.pdf.
 arxiv: numbers
-	$(PYTHON) scripts/build_arxiv.py --email $(ARXIV_EMAIL)
+	$(PYTHON) scripts/build_arxiv.py
 
 test:
 	$(PYTHON) -m pytest -q
@@ -49,7 +47,7 @@ verify: test
 	$(PYTHON) scripts/export_paper_numbers.py
 	git diff --exit-code -- paper/numbers.tex
 	tectonic -X compile paper/main.tex
-	$(PYTHON) scripts/check_anonymity.py
+	$(PYTHON) scripts/check_anonymity.py --allow-identified
 	git diff --exit-code -- paper/main.pdf
 	@echo "verify: artifacts, manuscript numbers and PDF are consistent"
 

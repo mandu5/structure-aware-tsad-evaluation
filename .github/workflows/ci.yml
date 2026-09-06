@@ -67,10 +67,10 @@ jobs:
             exit 1
           fi
 
-      - name: Manuscript must be anonymous
+      - name: Manuscript names its author (DMLR is single-blind)
         run: |
           pip install pypdf
-          python scripts/check_anonymity.py
+          python scripts/check_anonymity.py --allow-identified
 
       - name: Upload PDF
         uses: actions/upload-artifact@v4

@@ -1,30 +1,17 @@
-"""Build the de-anonymised preprint arXiv wants, without touching the submission.
+"""Pack the manuscript source for arXiv.
 
-``paper/main.pdf`` is pinned byte-for-byte by ``make verify``: it is the file
-that went to TMLR, and rebuilding it with the author block revealed would break
-that gate and leave the repository unable to prove the submitted PDF is the
-committed one. So the preprint is built from a rewritten *copy* of the source in
-``paper/arxiv/`` and nothing under ``paper/`` is modified.
+Since the move to DMLR (single-blind) the manuscript is built with the DMLR
+template's own [preprint] option and names its author, so the arXiv version is
+the same source: this script copies it into paper/arxiv/, compiles it there so
+the .bbl exists, and packs a tarball. paper/main.pdf is never touched.
 
-Two edits are applied to the copy:
-
-* ``\\usepackage{tmlr}`` gains the ``preprint`` option, which is what makes
-  tmlr.sty emit the real author block instead of "Anonymous authors".
-* ``\\email`` gets an address. The submission leaves it empty because the block
-  is suppressed anyway; a preprint has to carry a contact.
-
-The result is packed as ``arxiv-submission.tar.gz`` containing the source,
-because arXiv wants LaTeX rather than a PDF. Both ``main.bbl`` and ``refs.bib``
-ship. arXiv says it uses a ``.bbl`` when one is present, but a processor that
-reruns BibTeX regardless -- tectonic does -- needs the ``.bib`` or it silently
-drops the whole bibliography: compiling the package without ``refs.bib`` lost
-two pages and left citations as ``(?)``. With both present either behaviour
-yields the same bibliography, since the ``.bbl`` was generated from this
-``.bib`` with this ``.bst``.
+Both main.bbl and refs.bib ship. arXiv uses a .bbl when present, but a
+processor that reruns BibTeX regardless (tectonic does) needs the .bib or it
+silently drops the whole bibliography; with both present either behaviour
+yields the same bibliography.
 
 Usage:
     python3 scripts/build_arxiv.py
-    python3 scripts/build_arxiv.py --email you@example.com
 """
 from __future__ import annotations
 
@@ -39,43 +26,29 @@ ROOT = Path(__file__).resolve().parents[1]
 PAPER = ROOT / "paper"
 OUT = PAPER / "arxiv"
 
-# Copied verbatim: the vendored stylefiles, the generated macros, the bibliography.
-SUPPORT = ("tmlr.sty", "tmlr.bst", "fancyhdr.sty", "numbers.tex", "refs.bib")
+# Copied verbatim: the vendored stylefile, the generated macros, the bibliography.
+SUPPORT = ("dmlr2e.sty", "numbers.tex", "refs.bib")
 
 # What goes in the upload. refs.bib is not optional: a processor that reruns
 # BibTeX ignores the shipped .bbl, and without the .bib it emits an empty
 # bibliography and unresolved citations rather than an error.
-PACKAGE = ("main.tex", "main.bbl", "refs.bib", "tmlr.sty", "tmlr.bst", "fancyhdr.sty", "numbers.tex")
+PACKAGE = ("main.tex", "main.bbl", "refs.bib", "dmlr2e.sty", "numbers.tex")
 
-ANON_LINE = r"  \usepackage{tmlr}"
-PREPRINT_LINE = r"  \usepackage[preprint]{tmlr}"
-EMPTY_EMAIL = r"\email \\"
+PREPRINT_LINE = r"\usepackage[preprint]{dmlr2e}"
 
 
-def rewrite(source: str, email: str) -> str:
-    """Turn the anonymous submission source into a de-anonymised preprint source."""
-    if source.count(ANON_LINE + " ") != 1:
+def check_source(source: str) -> str:
+    """The source must already be the preprint build; nothing is rewritten."""
+    if source.count(PREPRINT_LINE) != 1:
         raise SystemExit(
-            f"build_arxiv: expected exactly one uncommented {ANON_LINE.strip()!r} in main.tex. "
-            "The stylefile invocation moved; re-read main.tex before trusting this script."
+            f"build_arxiv: expected exactly one {PREPRINT_LINE!r} in main.tex; "
+            "the stylefile invocation changed, re-read main.tex before trusting this script."
         )
-    source = source.replace(ANON_LINE + " ", PREPRINT_LINE + " ", 1)
-
-    if source.count(EMPTY_EMAIL) != 1:
-        raise SystemExit(
-            f"build_arxiv: expected exactly one empty {EMPTY_EMAIL!r} in main.tex. "
-            "The author block changed; fill the address by hand instead."
-        )
-    return source.replace(EMPTY_EMAIL, rf"\email {email} \\", 1)
+    return source
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument(
-        "--email",
-        default="ymk5292@psu.edu",
-        help="contact address printed under the title (default: %(default)s)",
-    )
     ap.add_argument("--skip-package", action="store_true", help="build the PDF but skip the tarball")
     args = ap.parse_args()
 
@@ -86,7 +59,7 @@ def main() -> int:
     for name in SUPPORT:
         shutil.copy2(PAPER / name, OUT / name)
     (OUT / "main.tex").write_text(
-        rewrite((PAPER / "main.tex").read_text(encoding="utf-8"), args.email), encoding="utf-8"
+        check_source((PAPER / "main.tex").read_text(encoding="utf-8")), encoding="utf-8"
     )
 
     # --keep-intermediates is what leaves main.bbl behind for the upload.

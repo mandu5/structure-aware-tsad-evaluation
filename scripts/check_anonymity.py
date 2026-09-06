@@ -1,4 +1,11 @@
-"""Fail if the built manuscript leaks author identity.
+"""Check whether the built manuscript names its author.
+
+History: written for the TMLR submission (double-blind), where the default mode
+fails on any identifying string. Since the 2026-09 move to DMLR (single-blind)
+the build runs this with --allow-identified, which inverts the gate: the PDF
+must name the author, and a build that names nobody fails.
+
+Original rationale follows.
 
 TMLR is double blind and states that non-anonymous submissions are rejected
 without review. The submission build relies on tmlr.sty suppressing the author
