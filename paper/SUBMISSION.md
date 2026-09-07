@@ -93,6 +93,14 @@ make arxiv ARXIV_EMAIL=you@example.com       # 주소 교체
 - **endorsement code 발급됨: `KQOI4O`** — 같은 코드가 네이버 메일로도 감. endorser에게 줄 링크: `https://arxiv.org/auth/endorse?x=KQOI4O` (네이버 메일의 링크가 정본)
 - **endorser 자격(cs.LG, arXiv 명시)**: 최근 **3개월~5년 사이에 cs.* 아무 카테고리에 논문 3편 이상** 제출한 사람. 특정인이 자격이 있는지는 그 사람 논문 abstract 페이지 하단 "Which of the authors of this article can endorse?" 링크로 확인 가능
 
+### ✅ arXiv 제출 완료 (2026-09-07 09:3x KST)
+
+- **endorsement**: Mononito Goswami가 2026-09-07 03:35 KST 회신 "Done!" → cs 도메인 endorsement 완료(cs.* 전 카테고리에 적용). Agarwal 미회신(불필요해짐)
+- **제출 레코드** `submit/7545844`, 상태 `submitted` ("Article submitted"). primary **cs.LG**, 라이선스 **CC BY 4.0**, 저자 Youngmin Ko, 소속 PSU, 계정 이메일 네이버
+- **소스**: `make arxiv` tarball(dmlr2e 빌드, `8785ec0` 기준) — arXiv 스캔이 `main.bbl` 삭제를 권해 수락, arXiv가 `refs.bib`로 BibTeX 재실행. **pdflatex + TeX Live 2025로 컴파일 SUCCEEDED, 16p**, 심각 경고 없음(overfull hbox 1건, 수식 줄 527)
+- **메타데이터**: 제목·저자 동일. **초록은 arXiv 상한 1,920자에 맞춰 1,813자로 축약**(수치 전부 유지, 문장만 압축; PDF 초록은 원문 그대로). Comments: `16 pages. Code and artifacts that regenerate every reported number: https://github.com/mandu5/structure-aware-tsad-evaluation`. Cross-list: 이 계정은 cs 그룹만 등록돼 있어 stat.ML 선택 불가 → 미지정
+- **다음**: 모더레이션 후 공지. 일요일 저녁(ET) 제출이라 **빠르면 9/8(화) 09:00 KST 공지**, 신규 투고자는 hold로 하루이틀 늦어질 수 있음. arXiv ID가 나오면 README·`docs/index.html`·DMLR 포럼(revision)·블로그(커리어 세션)에 반영. Goswami에게 감사 메일(사용자)
+
 ### 발송 후 절차
 
 - endorsement가 이뤄지면 arXiv가 **네이버**로 통지한다. 그 뒤 `submit/7545844`를 resume → Add Files에 `make arxiv` tarball 업로드 → Process → Metadata(위 폼 입력값) → Preview → Submit. **레코드 만료 2026-09-20.**
