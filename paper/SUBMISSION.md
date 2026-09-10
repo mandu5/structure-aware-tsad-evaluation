@@ -295,3 +295,27 @@ README §5는 필수 폼 필드를 `competing_interests`·`human_subjects_report
 KRAFTON 재직(2026-06~)과 한화에어로스페이스 인턴(2026-01~02)이 여기 해당하므로 **둘 다 공개**하고, 두 소속이 본 연구를 후원·의뢰·검토하지 않았음을 명시했다.
 
 **익명성 영향 없음**: 이 필드의 공개 범위는 폼에서 `TMLR / TMLR Paper number Action Editors / TMLR Paper number Authors`로 표시된다 — **심사자(Reviewers)는 포함되지 않는다.** 소속을 적어도 이중맹검이 깨지지 않는다. `human_subjects_reporting`도 동일한 범위다.
+
+---
+
+## arXiv ID 반영 지점 (hold 해제 후 한 번에 실행)
+
+`submit/7545844`는 **2026-09-10 기준 on hold**(모더레이션). arXiv 공식 안내상 저자가 할 일은 없고 며칠 걸릴 수 있으며, **hold 중 중복 제출은 금지**다. ID(`2609.NNNNN`)가 나오면 아래를 한 번에 처리한다. 확인 명령:
+
+```
+curl -s 'http://export.arxiv.org/api/query?search_query=ti:%22Rank-Flip+Statistics%22&max_results=5' | grep -E '<id>|<published>'
+```
+
+| # | 파일 | 위치 | 지금 문구 → 바꿀 것 |
+|---|---|---|---|
+| 1 | `README.md` | 23행 | "under review at ... DMLR" 문장에 `arXiv:2609.NNNNN` 링크 추가 |
+| 2 | `README.md` | 182행 | bib `note` — "Code: ..." 앞에 arXiv ID 추가 |
+| 3 | `docs/index.html` | 332행 | bib `note` — 같은 방식으로 추가 |
+| 4 | `paper/README.md` | 3행 부근 | 빌드 설명의 상태 문구 |
+| 5 | mandu_blog | `src/app/now/page.tsx` 19·36행 | KR/EN 두 줄 모두 — "심사 대응(DMLR)"에 arXiv 링크 |
+| 6 | mandu_blog | `src/components/home/HomeResearch.tsx` | 홈 연구 카드 |
+| 7 | DMLR 포럼 `5pcDaNOVvR` | — | **코멘트가 아니라 revision**으로 arXiv 링크 반영 |
+| 8 | CV PDF 3곳 | 커리어 자료 폴더 | "DMLR 심사 중" → arXiv ID 병기 |
+
+주의: 본문 PDF는 건드리지 않는다(DMLR 제출본은 그대로). 표현 규칙은 메모리 `research-paper-deadlines.md`의 공통 규칙을 따른다 — TSAD는 "채택/게재"뿐 아니라 **"심사 중"도 금지**, arXiv 게시는 preprint 공개일 뿐 심사 상태가 아니다.
+
