@@ -1,340 +1,188 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1f4e79" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <title>When Point Metrics Mislead: Structure-Aware Evaluation</title>
-    <style>
-      :root {
-        --bg: #fafafa;
-        --paper: #ffffff;
-        --text: #1f2937;
-        --muted: #6b7280;
-        --line: #e5e7eb;
-        --accent: #1f4e79;
-      }
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Much Do TSAD Metrics Disagree?</title>
+<meta name="description" content="An audit of the rank-flip statistic behind time-series anomaly detection evaluation reform: against a chance level of 0.50 the metrics mostly agree, and confident disagreement is about two percent.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --bg:#f7f5f0; --paper:#fffdf8; --ink:#1c1b19; --ink2:#46433d; --muted:#7a756b;
+  --line:#e3ded3; --line2:#efebe2; --accent:#8a2d1f; --accent-soft:#f3e3dd; --ok:#2f5d50; --code:#f1ede4;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#141311; --paper:#1b1a17; --ink:#ece8df; --ink2:#c9c3b6; --muted:#8f887b;
+    --line:#34312b; --line2:#2a2824; --accent:#e08a74; --accent-soft:#3a2520; --ok:#8fc2b0; --code:#23211d;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;overflow-x:clip}
+main{max-width:780px;margin:0 auto;padding:48px 20px 72px}
+a{color:var(--accent);text-underline-offset:3px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.15;letter-spacing:-.02em;margin:10px 0 8px}
+.sub{font-size:18px;color:var(--ink2);margin:0 0 14px}
+.meta{font-size:14px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.links a{font-size:14px;text-decoration:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:6px 12px;border-radius:999px}
+.links a:hover{border-color:var(--accent)}
+.lede{margin:36px 0 8px;padding:22px 24px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;font-size:19px;line-height:1.55}
+.lede b{color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:22px 0 0;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.stats div{padding:16px 18px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:none}
+.stats b{display:block;font:600 26px/1.1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:-.02em}
+.stats span{font-size:13px;color:var(--muted);line-height:1.4;display:block;margin-top:6px}
+h2{font-size:22px;letter-spacing:-.01em;margin:56px 0 6px}
+h2 small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+p{margin:10px 0;color:var(--ink2)}
+figure{margin:18px 0 8px;padding:18px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.5}
+svg text{font-family:inherit;fill:var(--ink2)}
+svg .num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.axis{stroke:var(--line)} .grid{stroke:var(--line2)}
+.bar{fill:var(--muted);opacity:.55} .bar-hi{fill:var(--accent)} .ci{stroke:var(--ink2);stroke-width:2}
+.null{stroke:var(--accent);stroke-dasharray:4 4;stroke-width:1.5}
+ol.protocol{padding-left:22px;margin:14px 0}
+ol.protocol li{margin:0 0 10px;color:var(--ink2)} ol.protocol b{color:var(--ink)}
+pre{background:var(--code);border:1px solid var(--line);border-radius:6px;padding:14px 16px;overflow-x:auto;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink)}
+details{margin:14px 0;color:var(--muted);font-size:14px} summary{cursor:pointer}
+footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media (max-width:620px){ .stats{grid-template-columns:1fr} .stats div{border-right:none;border-bottom:1px solid var(--line)} .stats div:last-child{border-bottom:none} .lede{font-size:17px;padding:18px} }
+</style>
+</head>
+<body>
+<main>
 
-      * {
-        box-sizing: border-box;
-      }
+<div class="eyebrow">Evaluation audit · time-series anomaly detection</div>
+<h1>How Much Do Time-Series Anomaly Detection Metrics Actually Disagree?</h1>
+<p class="sub">Null Models and Cluster-Aware Inference for Rank-Flip Statistics</p>
+<div class="meta">Youngmin Ko · Under review at the Journal of Data-centric Machine Learning Research (DMLR), submitted September 2026</div>
+<nav class="links" aria-label="Project links">
+  <a href="https://github.com/mandu5/structure-aware-tsad-evaluation">Code and artifacts</a>
+  <a href="https://github.com/mandu5/structure-aware-tsad-evaluation/blob/main/docs/reproduction.md">Reproduce</a>
+  <a href="https://github.com/mandu5/structure-aware-tsad-evaluation/blob/main/docs/benchmarks.md">Full tables</a>
+  <a href="#cite">Cite</a>
+</nav>
 
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
-        line-height: 1.6;
-      }
+<div class="lede">
+  Point-level and segment-level metrics are said to rank anomaly detectors differently about a third of the time. That number is usually read against zero. Read against its chance level of 0.50, the two metrics <b>agree on 68.6% of model pairs</b>, and where both metrics clearly separate a pair they disagree on about <b>2%</b>.
+</div>
 
-      .wrap {
-        width: min(920px, 92vw);
-        margin: 0 auto;
-        padding: 28px 0 48px;
-      }
+<div class="stats">
+  <div><b>0.31 vs 0.50</b><span>Observed rank-flip rate against a random-ranking null</span></div>
+  <div><b>2.2%</b><span>Flip rate among pairs both metrics separate by at least 0.20</span></div>
+  <div><b>11 of 12</b><span>Multi-series collections where the usual explanatory covariate never varies</span></div>
+</div>
 
-      .paper {
-        background: var(--paper);
-        border: 1px solid var(--line);
-        padding: 28px;
-      }
+<p style="margin-top:22px">The audit recomputes TSB-AD-M, 25 models on 180 series drawn from 17 source collections, and a six-dataset, seven-detector grid. Every number on this page is regenerated from committed artifacts by one command.</p>
 
-      .title-block {
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 20px;
-        margin-bottom: 22px;
-      }
+<h2><small>Finding 1</small>Against its chance level, the metrics mostly agree</h2>
+<p>A pairwise flip rate compares two orderings of the same models. Two metrics that share no information at all would disagree on half the pairs, so the reference point is 0.50, not 0. Permuting one metric across models 200 times gives a null of 0.5002.</p>
+<figure>
+  <svg viewBox="0 0 640 150" role="img" aria-label="Number line from 0 to 0.6: observed flip rate 0.3145 with a clustered interval from 0.2695 to 0.3715, the permutation null at 0.5002, and confident disagreement at 0.0220.">
+    <line class="axis" x1="40" y1="100" x2="600" y2="100"/>
+    <g class="num" font-size="11">
+      <text x="40" y="126" text-anchor="middle">0</text><text x="133" y="126" text-anchor="middle">0.1</text><text x="227" y="126" text-anchor="middle">0.2</text><text x="320" y="126" text-anchor="middle">0.3</text><text x="413" y="126" text-anchor="middle">0.4</text><text x="507" y="126" text-anchor="middle">0.5</text><text x="600" y="126" text-anchor="middle">0.6</text>
+    </g>
+    <rect x="291.5" y="91" width="95.2" height="18" fill="var(--accent-soft)"/>
+    <line class="ci" x1="291.5" y1="100" x2="386.7" y2="100"/>
+    <circle cx="333.5" cy="100" r="6" class="bar-hi"/>
+    <text x="333.5" y="70" text-anchor="middle" font-size="13">observed <tspan class="num">0.3145</tspan></text>
+    <line class="null" x1="506.9" y1="40" x2="506.9" y2="112"/>
+    <text x="506.9" y="32" text-anchor="middle" font-size="13">chance <tspan class="num">0.5002</tspan></text>
+    <circle cx="60.5" cy="100" r="5" fill="var(--ok)"/>
+    <text x="60.5" y="70" text-anchor="start" font-size="13">confident <tspan class="num">0.022</tspan></text>
+    <text x="339" y="142" text-anchor="middle" font-size="11" fill="var(--muted)">shaded: 95% interval clustered over source collections</text>
+  </svg>
+  <figcaption>TSB-AD-M, AUC-ROC against Affiliation-F1: 15,151 of 48,180 model pairs flip. The observed rate sits well below chance.</figcaption>
+</figure>
 
-      h1 {
-        margin: 0 0 10px;
-        font-size: clamp(1.5rem, 2.5vw, 2rem);
-        line-height: 1.3;
-        letter-spacing: -0.01em;
-      }
+<h2><small>Finding 2</small>Most of the disagreement is near-ties</h2>
+<p>Flips are usually pooled across all pairs, including pairs the metrics can barely tell apart. Conditioning on one metric's gap is not enough: the flips that survive sit where the other metric barely separates the pair. Requiring both metrics to separate a pair by 0.20 keeps 13.3% of pairs, and 2.2% of those flip.</p>
+<figure>
+  <svg viewBox="0 0 640 210" role="img" aria-label="Flip rate by margin: all pairs 0.3145, AUC-ROC gap under 0.01 0.4743, AUC-ROC gap at least 0.20 0.2015, both metrics at least 0.20 apart 0.0220, with chance at 0.50.">
+    <g font-size="13">
+      <text x="0" y="40">All pairs</text>
+      <text x="0" y="85">AUC-ROC gap &lt; 0.01</text>
+      <text x="0" y="130">AUC-ROC gap ≥ 0.20</text>
+      <text x="0" y="175">Both metrics ≥ 0.20 apart</text>
+    </g>
+    <rect class="bar" x="200" y="26" width="220.2" height="20"/><text class="num" x="572" y="41" font-size="12">0.3145</text>
+    <rect class="bar" x="200" y="71" width="332.0" height="20"/><text class="num" x="572" y="86" font-size="12">0.4743</text>
+    <rect class="bar" x="200" y="116" width="141.1" height="20"/><text class="num" x="572" y="131" font-size="12">0.2015</text>
+    <rect class="bar-hi" x="200" y="161" width="15.4" height="20"/><text class="num" x="572" y="176" font-size="12" fill="var(--accent)">0.0220</text>
+    <line class="null" x1="550" y1="14" x2="550" y2="190"/>
+    <text x="550" y="206" text-anchor="middle" font-size="11" fill="var(--muted)">chance 0.50</text>
+  </svg>
+  <figcaption>Flip rate within margin strata on TSB-AD-M. Near-ties flip at close to chance; confidently separated pairs almost never do.</figcaption>
+</figure>
 
-      .paper-subtitle {
-        margin: 0 0 10px;
-        color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.5;
-      }
+<h2><small>Finding 3</small>Evaluation series are not independent</h2>
+<p>The short-anomaly ratio, the covariate most often used to explain disagreement, takes one value inside 11 of the 12 collections that hold more than one series. It is a collection label, so a series-level correlation counts the same collection many times. With collections as the unit, the correlation disappears and the interval widens.</p>
+<figure>
+  <svg viewBox="0 0 640 230" role="img" aria-label="Rank correlation of the short-anomaly ratio with flip rate: 0.3241 by series, 0.0563 by collection, 0.0898 leaving one collection out. Ninety-five percent intervals: series resampling 0.2979 to 0.3312, collection clustering 0.2695 to 0.3715, six-dataset grid 0.0667 to 0.4167.">
+    <text x="0" y="16" font-size="12" fill="var(--muted)">Correlation of the short-anomaly ratio with the flip rate</text>
+    <g font-size="13"><text x="0" y="46">by series</text><text x="0" y="76">by collection</text><text x="0" y="106">one collection left out</text></g>
+    <rect class="bar" x="200" y="33" width="162.1" height="18"/><text class="num" x="368" y="47" font-size="12">0.324</text>
+    <rect class="bar-hi" x="200" y="63" width="28.2" height="18"/><text class="num" x="234" y="77" font-size="12">0.056 (p = 0.827)</text>
+    <rect class="bar-hi" x="200" y="93" width="44.9" height="18"/><text class="num" x="251" y="107" font-size="12">0.090</text>
+    <text x="0" y="146" font-size="12" fill="var(--muted)">95% interval for the flip rate</text>
+    <line class="axis" x1="200" y1="212" x2="600" y2="212"/>
+    <g class="num" font-size="11"><text x="200" y="226" text-anchor="middle">0</text><text x="300" y="226" text-anchor="middle">0.1</text><text x="400" y="226" text-anchor="middle">0.2</text><text x="500" y="226" text-anchor="middle">0.3</text><text x="600" y="226" text-anchor="middle">0.4</text></g>
+    <g font-size="13"><text x="0" y="168">resampling series</text><text x="0" y="186">clustering collections</text><text x="0" y="204">six-dataset grid</text></g>
+    <line class="ci" x1="497.9" y1="164" x2="531.2" y2="164"/>
+    <line x1="469.5" y1="182" x2="571.5" y2="182" stroke="var(--accent)" stroke-width="3"/>
+    <line x1="266.7" y1="200" x2="616.7" y2="200" stroke="var(--accent)" stroke-width="3" stroke-dasharray="2 3"/>
+  </svg>
+  <figcaption>Clustering over collections is the honest unit here. On the six-dataset grid the clustered interval runs from 0.07 to 0.42, too wide to state a magnitude.</figcaption>
+</figure>
 
-      .author {
-        margin: 0;
-        color: var(--muted);
-      }
+<h2><small>Finding 4</small>The same test, applied to our own metric</h2>
+<p>We had earlier proposed a composite metric that interpolates between the point and segment scores. At both ends of its weight it collapses to one of its inputs, so stratifying results by that weight measures the definition rather than the data. We report it as uninformative by construction. After the same corrections, one covariate still stands with collections as the unit: segment count, ρ = −0.62 (p = 0.008).</p>
 
-      .link-row {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 12px;
-      }
+<h2><small>Protocol</small>Six checks that cost no new experiments</h2>
+<ol class="protocol">
+  <li><b>Report the null.</b> State the random-ranking baseline next to any disagreement statistic. For pairwise flip rates it is 0.5.</li>
+  <li><b>Stratify by both margins.</b> Report the flip rate among pairs both metrics separate by a stated threshold, and the share of pairs that keeps.</li>
+  <li><b>Cluster at the source.</b> Resample source collections or datasets, not series, and report the clustered interval.</li>
+  <li><b>Check identifiability first.</b> Before explaining disagreement with a covariate, check that it varies within clusters.</li>
+  <li><b>Leave one collection out.</b> Report how a structural association moves when each collection is removed in turn.</li>
+  <li><b>Do not stratify a composite by its own weight.</b> At the extremes it is one of its inputs.</li>
+</ol>
 
-      .btn {
-        text-decoration: none;
-        color: var(--accent);
-        background: #f8fbff;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 6px 12px;
-        font-size: 13px;
-      }
+<h2><small>Reproduce</small>Every number from committed artifacts</h2>
+<p>No dataset download is needed. The command below recomputes the audit, regenerates the manuscript's numbers, and fails if anything drifts from what is committed.</p>
+<pre>git clone https://github.com/mandu5/structure-aware-tsad-evaluation
+cd structure-aware-tsad-evaluation
+pip install -e .
+make verify</pre>
+<p>Raw access-controlled datasets are not redistributed; see <a href="https://github.com/mandu5/structure-aware-tsad-evaluation/blob/main/docs/dataset_access.md">data access</a>.</p>
 
-      section {
-        margin-top: 22px;
-      }
-
-      h2 {
-        margin: 0 0 10px;
-        font-size: 1.1rem;
-      }
-
-      p {
-        margin: 0;
-      }
-
-      .abstract {
-        color: var(--text);
-      }
-
-      .teaser {
-        margin-top: 10px;
-      }
-
-      figure {
-        margin: 0;
-        border: 1px solid var(--line);
-        background: #fcfcfc;
-        padding: 12px;
-      }
-
-      figure img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border: 1px solid var(--line);
-        background: #fff;
-      }
-
-      figcaption {
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .meta-link {
-        margin-top: 6px;
-        display: inline-block;
-        color: var(--accent);
-        text-decoration: none;
-        font-size: 0.85rem;
-      }
-
-      .meta-link:hover {
-        text-decoration: underline;
-      }
-
-      .findings-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.95rem;
-      }
-
-      .findings-table th,
-      .findings-table td {
-        border: 1px solid var(--line);
-        padding: 10px 12px;
-        text-align: left;
-        vertical-align: top;
-      }
-
-      .findings-table th {
-        background: #f9fafb;
-        font-weight: 600;
-      }
-
-      .figure-stack {
-        display: grid;
-        gap: 14px;
-      }
-
-      .figure-item {
-        border: 1px solid var(--line);
-        background: #fff;
-        padding: 12px;
-      }
-
-      .figure-item h3 {
-        margin: 0 0 8px;
-        font-size: 1rem;
-        font-weight: 600;
-      }
-
-      .figure-item p {
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .artifact-list {
-        margin: 0;
-        padding-left: 18px;
-      }
-
-      pre {
-        margin: 10px 0 0;
-        overflow-x: auto;
-        border: 1px solid var(--line);
-        background: #f9fafb;
-        padding: 10px;
-        font-size: 0.9rem;
-      }
-
-      footer {
-        margin-top: 24px;
-        border-top: 1px solid var(--line);
-        padding-top: 14px;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      @media (min-width: 980px) {
-        .figure-stack {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      @media (max-width: 700px) {
-        .paper {
-          padding: 18px;
-        }
-
-        h1 {
-          font-size: 1.35rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="wrap">
-      <article class="paper">
-        <header class="title-block">
-          <h1>When Point Metrics Mislead</h1>
-          <p class="paper-subtitle">Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection</p>
-          <p class="author">Youngmin Ko</p>
-          <div class="link-row">
-            <a class="btn" href="#">Paper: Coming Soon</a>
-            <a class="btn" href="https://github.com/mandu5/structure-aware-tsad-evaluation">Code: GitHub</a>
-            <a class="btn" href="https://github.com/mandu5/structure-aware-tsad-evaluation/blob/main/docs/artifact_manifest.md">Artifact: Manifest</a>
-            <a class="btn" href="#citation">Citation</a>
-          </div>
-        </header>
-
-        <section id="abstract">
-          <h2>Abstract</h2>
-          <p class="abstract">
-            Time series anomaly detection is commonly reported with point-wise metrics such as AUC-ROC, while many benchmark anomalies are sustained temporal segments. This project evaluates when point-level and segment-aware metrics induce different pairwise model rankings, and provides a lightweight reproducibility artifact for validating the reported ranking-shift observations.
-          </p>
-        </section>
-
-        <section id="findings">
-          <h2>Key Findings</h2>
-          <table class="findings-table">
-            <thead>
-              <tr>
-                <th>Finding</th>
-                <th>Summary</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Ranking flips</td>
-                <td>Pairwise orderings differ between AUC-ROC and Aff-F1 in 14/60 deep-model comparisons and 44/126 comparisons when classical baselines are included.</td>
-              </tr>
-              <tr>
-                <td>Benchmark structure</td>
-                <td>Under the processed labels used in this artifact, four industrial benchmarks contain no short anomaly segments.</td>
-              </tr>
-              <tr>
-                <td>SAEScore usage</td>
-                <td>SAEScore is reported as a composite summary to expose reporting regimes, not as a universal replacement for constituent metrics.</td>
-              </tr>
-              <tr>
-                <td>TSB-AD-M audit scale</td>
-                <td>The TSB-AD-M replication audit covers 25 models, 180 multivariate series, and 4,498 recomputed model-series rows.</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section id="figures">
-          <h2>Figures</h2>
-          <div class="figure-stack">
-            <article class="figure-item">
-              <h3>Figure 1. Anomaly-duration taxonomy</h3>
-              <figure>
-                <img src="./assets/taxonomy.png" alt="Paper Figure 1 anomaly-duration taxonomy" loading="lazy" decoding="async" />
-              </figure>
-              <p>Paper Figure 1 shows duration-stratified anomaly taxonomy across SWaT, MSL, SMAP, and WADI, computed using the processed label definitions retained in this artifact.</p>
-              <a class="meta-link" href="./assets/taxonomy.pdf">Open vector PDF</a>
-            </article>
-
-            <article class="figure-item">
-              <h3>Figure 4. AUC-ROC versus Aff-F1</h3>
-              <figure>
-                <img src="./assets/metric_disagreement.png" alt="Paper Figure 4 metric disagreement" loading="lazy" decoding="async" />
-              </figure>
-              <p>Paper Figure 4 compares AUC-ROC and Aff-F1, highlighting pairwise ranking discrepancies between point-level reporting and segment-aware evaluation across benchmark configurations.</p>
-              <a class="meta-link" href="./assets/metric_disagreement.pdf">Open vector PDF</a>
-            </article>
-
-            <article class="figure-item">
-              <h3>Figure 5. TSB-AD-M replication audit</h3>
-              <figure>
-                <img src="./assets/tsbad_audit.png" alt="Paper Figure 5 TSB-AD-M replication audit" loading="lazy" decoding="async" />
-              </figure>
-              <p>Paper Figure 5 presents the TSB-AD-M replication audit, showing taxonomy-weight distributions and the AUC-ROC versus SAEScore relationship across recomputed model-series rows.</p>
-              <a class="meta-link" href="./assets/tsbad_audit.pdf">Open vector PDF</a>
-            </article>
-
-            <article class="figure-item">
-              <h3>Figure 13. Bootstrap rank comparison</h3>
-              <figure>
-                <img src="./assets/bootstrap_rank.png" alt="Paper Figure 13 bootstrap rank comparison" loading="lazy" decoding="async" />
-              </figure>
-              <p>Paper Figure 13 reports bootstrap-based rank comparisons between AUC-ROC and SAEScore, estimated under repeated resampling to characterize ranking uncertainty and stability.</p>
-              <a class="meta-link" href="./assets/bootstrap_rank.pdf">Open vector PDF</a>
-            </article>
-          </div>
-        </section>
-
-        <section id="artifact">
-          <h2>Reproducibility Artifact</h2>
-          <ul class="artifact-list">
-            <li>Derived summaries required to reproduce the reported evaluation tables and checks.</li>
-            <li>Validation scripts for rank-flip counting, alpha-stratified analysis, and bootstrap comparison.</li>
-            <li>Lightweight tests for consistency checks on retained artifact outputs.</li>
-            <li>No raw access-controlled datasets are redistributed; users must obtain upstream datasets independently.</li>
-          </ul>
-          <pre>python scripts/validate_tab_rfr_counts.py
-python scripts/compute_tsbad_alpha_stratified_rfr.py
-python scripts/compute_rfr_bootstrap_ci.py --n-boot 100</pre>
-        </section>
-
-        <section id="citation">
-          <h2>Citation</h2>
-          <pre>@misc{ko2026pointmetricsmislead,
+<h2 id="cite"><small>Cite</small>Citation</h2>
+<pre>@misc{ko2026metricsdisagree,
+  title  = {How Much Do Time-Series Anomaly Detection Metrics Actually Disagree?
+            Null Models and Cluster-Aware Inference for Rank-Flip Statistics},
+  author = {Ko, Youngmin},
+  year   = {2026},
+  note   = {Under review at the Journal of Data-centric Machine Learning Research (DMLR).
+            Code: https://github.com/mandu5/structure-aware-tsad-evaluation}
+}</pre>
+<details>
+  <summary>Earlier version</summary>
+  <pre>@misc{ko2026pointmetricsmislead,
   title={When Point Metrics Mislead: Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection},
   author={Ko, Youngmin},
   year={2026},
   note={Manuscript. Submitted to NeurIPS 2026 Evaluations and Datasets Track. Superseded by a reframed manuscript under review at DMLR (Journal of Data-centric Machine Learning Research), submitted September 2026}
 }</pre>
-        </section>
+</details>
 
-        <footer>&copy; 2026 Youngmin Ko · Code and artifact released under Apache-2.0.</footer>
-      </article>
-    </main>
-  </body>
+<footer>© 2026 Youngmin Ko · Code and artifacts under Apache-2.0 · <a href="https://mandu05.com">mandu05.com</a></footer>
+</main>
+</body>
 </html>

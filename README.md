@@ -16,12 +16,12 @@ near-ties. `tsad-eval` gives you the metrics, the rank-flip statistic with its
 chance level, cluster-aware intervals and the significance tests to report both
 views honestly, plus the audited results so you can check ours.
 
-> Paper: **When Point Metrics Mislead: Structure-Aware Evaluation Reveals
-> Conditional Ranking Shifts in Time Series Anomaly Detection** — Youngmin Ko
-> (sole author), conference version. A reframed manuscript that audits this
-> statistic (chance level, margin treatment, cluster-aware inference) is under
-> review at the Journal of Data-centric Machine Learning Research (DMLR),
-> submitted September 2026; the numbers below come from that audit.
+> Paper: **How Much Do Time-Series Anomaly Detection Metrics Actually Disagree?
+> Null Models and Cluster-Aware Inference for Rank-Flip Statistics** — Youngmin Ko
+> (sole author). Under review at the Journal of Data-centric Machine Learning
+> Research (DMLR), submitted September 2026; the numbers below come from it.
+> An earlier conference version, *When Point Metrics Mislead*, reported the raw
+> flip counts that this audit re-reads.
 > Project page: https://tsad-eval-site.onrender.com/
 
 ## Install
@@ -173,6 +173,17 @@ Raw SWaT/WADI and other access-controlled datasets are not redistributed here;
 comply with the upstream licences. Details in [`docs/dataset_access.md`](docs/dataset_access.md).
 
 ## Citation
+
+```bibtex
+@misc{ko2026metricsdisagree,
+  title  = {How Much Do Time-Series Anomaly Detection Metrics Actually Disagree? Null Models and Cluster-Aware Inference for Rank-Flip Statistics},
+  author = {Ko, Youngmin},
+  year   = {2026},
+  note   = {Under review at the Journal of Data-centric Machine Learning Research (DMLR). Code: https://github.com/mandu5/structure-aware-tsad-evaluation}
+}
+```
+
+Earlier version:
 
 ```bibtex
 @misc{ko2026pointmetrics,

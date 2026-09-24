@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "If you use this artifact, please cite the paper."
-title: "When Point Metrics Mislead: Structure-Aware Evaluation Reveals Conditional Ranking Shifts in Time Series Anomaly Detection"
+title: "How Much Do Time-Series Anomaly Detection Metrics Actually Disagree? Null Models and Cluster-Aware Inference for Rank-Flip Statistics"
 type: software
 authors:
   - family-names: "Ko"
     given-names: "Youngmin"
 year: 2026
 repository-code: "https://github.com/mandu5/structure-aware-tsad-evaluation"
-abstract: "Public reproducibility artifact for a structure-aware evaluation audit of ranking shifts in time series anomaly detection."
+abstract: "Code and committed artifacts that regenerate every number in an audit of the rank-flip statistic used to compare point-level and segment-level anomaly-detection metrics: chance level, margin strata, and cluster-aware intervals."
 keywords:
   - time series anomaly detection
   - evaluation
