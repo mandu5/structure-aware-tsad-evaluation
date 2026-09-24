@@ -317,5 +317,5 @@ curl -s 'http://export.arxiv.org/api/query?search_query=ti:%22Rank-Flip+Statisti
 | 7 | DMLR 포럼 `5pcDaNOVvR` | — | **코멘트가 아니라 revision**으로 arXiv 링크 반영 |
 | 8 | CV PDF 3곳 | 커리어 자료 폴더 | "DMLR 심사 중" → arXiv ID 병기 |
 
-주의: 본문 PDF는 건드리지 않는다(DMLR 제출본은 그대로). 표현 규칙은 메모리 `research-paper-deadlines.md`의 공통 규칙을 따른다 — TSAD는 "채택/게재"뿐 아니라 **"심사 중"도 금지**, arXiv 게시는 preprint 공개일 뿐 심사 상태가 아니다.
+주의: 본문 PDF는 건드리지 않는다(DMLR 제출본은 그대로). 표현 규칙: DMLR #252 제출(2026-09-06) 이후 "under review at DMLR" / "DMLR 심사 중"은 사실이므로 쓴다. "채택·게재·accepted·published"는 금지. arXiv 게시는 preprint 공개일 뿐 심사 상태가 아니므로 "arXiv 심사 중" 같은 표현은 쓰지 않는다. (9/10판의 "심사 중도 금지"는 DMLR 제출 이전 규칙이라 틀렸다.)
 
