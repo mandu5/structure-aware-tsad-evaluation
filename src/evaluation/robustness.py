@@ -21,6 +21,7 @@ __all__ = [
     "spearman_perm_p",
     "pairwise_flips",
     "flip_rate_null",
+    "rank_retention",
 ]
 
 
@@ -117,3 +118,58 @@ def flip_rate_null(
             total += int(flipped.size)
         out[b] = flips / total if total else np.nan
     return out
+
+
+def rank_retention(
+    scores: np.ndarray,
+    clusters: np.ndarray,
+    n_boot: int,
+    rng: np.random.Generator,
+    *,
+    ci_level: float = 0.95,
+) -> dict[str, np.ndarray]:
+    """Per-model rank retention under a cluster bootstrap.
+
+    ``scores`` is ``(n_units, n_models)`` with higher = better and NaN for a
+    missing cell; ``clusters`` labels the source collection of each unit. Each
+    resample draws collections with replacement, keeps all their units, ranks
+    the models on their mean score over the resampled units (NaN skipped), and
+    records whether each model lands on the rank it holds on the full data.
+
+    Ranks are 1 + the number of models with a strictly higher mean, so tied
+    models share a rank. Returns arrays over models:
+
+    ``point_rank``   rank on the full data
+    ``retention``    share of resamples in which the model keeps ``point_rank``
+    ``rank_lo/hi``   ``ci_level`` percentile interval of the resampled rank
+    ``top1_freq``    share of resamples in which the model is ranked first
+    """
+    scores = np.asarray(scores, dtype=float)
+    clusters = np.asarray(clusters)
+    if scores.ndim != 2 or len(clusters) != len(scores):
+        raise ValueError("scores must be (n_units, n_models) with one cluster label per unit")
+    _, inverse = np.unique(clusters, return_inverse=True)
+    n_c, n_m = inverse.max() + 1, scores.shape[1]
+    ok = np.isfinite(scores)
+    sums = np.zeros((n_c, n_m))
+    counts = np.zeros((n_c, n_m))
+    np.add.at(sums, inverse, np.where(ok, scores, 0.0))
+    np.add.at(counts, inverse, ok.astype(float))
+
+    def _ranks(total: np.ndarray, n: np.ndarray) -> np.ndarray:
+        mean = np.where(n > 0, total / np.maximum(n, 1), -np.inf)
+        return 1 + (mean[None, :] > mean[:, None]).sum(axis=1)
+
+    point = _ranks(sums.sum(axis=0), counts.sum(axis=0))
+    ranks = np.empty((n_boot, n_m), dtype=int)
+    for b in range(n_boot):
+        pick = rng.integers(0, n_c, size=n_c)
+        ranks[b] = _ranks(sums[pick].sum(axis=0), counts[pick].sum(axis=0))
+    lo_q = 100 * (1 - ci_level) / 2
+    return {
+        "point_rank": point,
+        "retention": (ranks == point[None, :]).mean(axis=0),
+        "rank_lo": np.percentile(ranks, lo_q, axis=0),
+        "rank_hi": np.percentile(ranks, 100 - lo_q, axis=0),
+        "top1_freq": (ranks == 1).mean(axis=0),
+    }

@@ -34,6 +34,7 @@ jobs:
         run: |
           python scripts/compute_structure_robustness.py
           python scripts/compute_tab_null_and_ties.py
+          python scripts/compute_rank_retention.py
 
       - name: Committed artifacts match a fresh run
         run: |

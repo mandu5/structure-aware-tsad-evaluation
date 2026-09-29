@@ -86,3 +86,52 @@ def test_perm_pvalue_is_bounded_and_small_for_perfect_correlation() -> None:
     p = _MOD.spearman_perm_p(x, x, 200, rng)
     assert 0.0 < p <= 1.0
     assert p < 0.05
+
+
+def _retention(scores, clusters, n_boot=200, seed=0):
+    return _MOD.rank_retention(
+        np.asarray(scores, dtype=float), np.asarray(clusters), n_boot, np.random.default_rng(seed)
+    )
+
+
+def test_rank_retention_clean_separation_is_always_kept() -> None:
+    scores = np.tile([3.0, 2.0, 1.0], (6, 1)) + np.random.default_rng(1).normal(0, 0.01, (6, 3))
+    out = _retention(scores, list("aabbcc"))
+    assert list(out["point_rank"]) == [1, 2, 3]
+    assert list(out["retention"]) == [1.0, 1.0, 1.0]
+    assert list(out["top1_freq"]) == [1.0, 0.0, 0.0]
+    assert list(out["rank_lo"]) == [1.0, 2.0, 3.0]
+
+
+def test_rank_retention_resamples_collections_not_series() -> None:
+    # Model 0 wins in collection "a" only; model 1 wins in "b" and "c" and leads
+    # overall (3.67 vs 3.0). Drawing "a" twice out of three collections makes
+    # model 0 the leader, so the leader cannot be kept in every resample.
+    scores = [[9.0, 1.0], [9.0, 1.0], [0.0, 5.0], [0.0, 5.0], [0.0, 5.0], [0.0, 5.0]]
+    out = _retention(scores, list("aabbcc"), n_boot=2000)
+    assert list(out["point_rank"]) == [2, 1]
+    assert 0.0 < out["retention"][1] < 1.0
+    # Only two models and no exact ties: the two rank-1 frequencies sum to 1.
+    assert abs(out["top1_freq"].sum() - 1.0) < 1e-12
+    # Series-level resampling would almost never flip this; collection-level
+    # resampling flips whenever "a" is drawn at least twice, P = 7/27.
+    assert abs(out["top1_freq"][0] - 7 / 27) < 0.03
+
+
+def test_rank_retention_skips_missing_cells() -> None:
+    scores = [[3.0, 1.0], [3.0, np.nan], [3.0, 1.0], [3.0, 1.0]]
+    out = _retention(scores, list("abcd"))
+    assert list(out["point_rank"]) == [1, 2]
+    assert list(out["retention"]) == [1.0, 1.0]
+
+
+def test_rank_retention_ties_share_a_rank() -> None:
+    out = _retention([[1.0, 1.0, 0.0], [1.0, 1.0, 0.0]], list("ab"))
+    assert list(out["point_rank"]) == [1, 1, 3]
+
+
+def test_rank_retention_rejects_mismatched_clusters() -> None:
+    import pytest
+
+    with pytest.raises(ValueError):
+        _retention([[1.0, 2.0]], list("ab"))

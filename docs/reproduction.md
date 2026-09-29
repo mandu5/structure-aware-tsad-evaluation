@@ -27,6 +27,7 @@ python scripts/compute_tsbad_alpha_stratified_rfr.py
 python scripts/compute_rfr_bootstrap_ci.py --n-boot 100
 python scripts/compute_structure_robustness.py
 python scripts/compute_tab_null_and_ties.py
+python scripts/compute_rank_retention.py
 pytest -q
 ```
 

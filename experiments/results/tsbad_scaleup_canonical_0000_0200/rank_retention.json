@@ -1,0 +1,492 @@
+{
+  "ci_level": 0.95,
+  "metrics": {
+    "aff_f1": {
+      "bottom": {
+        "model": "AT",
+        "point_rank": 25,
+        "retention": 0.7903
+      },
+      "models": [
+        {
+          "mean_score": 0.276963,
+          "model": "USAD",
+          "point_rank": 1,
+          "rank_hi": 11.0,
+          "rank_lo": 1.0,
+          "retention": 0.5744,
+          "top1_frequency": 0.5744
+        },
+        {
+          "mean_score": 0.259698,
+          "model": "xLSTMAD",
+          "point_rank": 2,
+          "rank_hi": 11.0,
+          "rank_lo": 1.0,
+          "retention": 0.4852,
+          "top1_frequency": 0.0986
+        },
+        {
+          "mean_score": 0.245802,
+          "model": "OFA",
+          "point_rank": 3,
+          "rank_hi": 11.0,
+          "rank_lo": 2.0,
+          "retention": 0.4648,
+          "top1_frequency": 0.0019
+        },
+        {
+          "mean_score": 0.220428,
+          "model": "RobustPCA",
+          "point_rank": 4,
+          "rank_hi": 24.0,
+          "rank_lo": 1.0,
+          "retention": 0.1291,
+          "top1_frequency": 0.1167
+        },
+        {
+          "mean_score": 0.219227,
+          "model": "MCD",
+          "point_rank": 5,
+          "rank_hi": 21.0,
+          "rank_lo": 2.0,
+          "retention": 0.1772,
+          "top1_frequency": 0.0248
+        },
+        {
+          "mean_score": 0.208724,
+          "model": "CNN",
+          "point_rank": 6,
+          "rank_hi": 16.0,
+          "rank_lo": 1.0,
+          "retention": 0.0827,
+          "top1_frequency": 0.1022
+        },
+        {
+          "mean_score": 0.206176,
+          "model": "CBLOF",
+          "point_rank": 7,
+          "rank_hi": 23.0,
+          "rank_lo": 3.0,
+          "retention": 0.1335,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.200397,
+          "model": "KMeansAD",
+          "point_rank": 8,
+          "rank_hi": 19.0,
+          "rank_lo": 1.0,
+          "retention": 0.0446,
+          "top1_frequency": 0.0714
+        },
+        {
+          "mean_score": 0.197937,
+          "model": "LSTMAD",
+          "point_rank": 9,
+          "rank_hi": 18.0,
+          "rank_lo": 2.0,
+          "retention": 0.1245,
+          "top1_frequency": 0.0076
+        },
+        {
+          "mean_score": 0.197783,
+          "model": "AutoEncoder",
+          "point_rank": 10,
+          "rank_hi": 18.0,
+          "rank_lo": 3.0,
+          "retention": 0.0552,
+          "top1_frequency": 0.0022
+        },
+        {
+          "mean_score": 0.182101,
+          "model": "OCSVM",
+          "point_rank": 11,
+          "rank_hi": 21.0,
+          "rank_lo": 4.0,
+          "retention": 0.0747,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.174078,
+          "model": "PCA",
+          "point_rank": 12,
+          "rank_hi": 19.0,
+          "rank_lo": 5.0,
+          "retention": 0.0886,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.161424,
+          "model": "Donut",
+          "point_rank": 13,
+          "rank_hi": 21.0,
+          "rank_lo": 7.0,
+          "retention": 0.0768,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.160909,
+          "model": "EIF",
+          "point_rank": 14,
+          "rank_hi": 21.0,
+          "rank_lo": 8.0,
+          "retention": 0.0786,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.16013,
+          "model": "COPOD",
+          "point_rank": 15,
+          "rank_hi": 24.0,
+          "rank_lo": 6.0,
+          "retention": 0.0331,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.159275,
+          "model": "IForest",
+          "point_rank": 16,
+          "rank_hi": 22.0,
+          "rank_lo": 5.0,
+          "retention": 0.0617,
+          "top1_frequency": 0.0002
+        },
+        {
+          "mean_score": 0.157115,
+          "model": "FITS",
+          "point_rank": 17,
+          "rank_hi": 22.0,
+          "rank_lo": 8.0,
+          "retention": 0.12,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.155003,
+          "model": "TimesNet",
+          "point_rank": 18,
+          "rank_hi": 24.0,
+          "rank_lo": 7.0,
+          "retention": 0.0894,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.14537,
+          "model": "PatchTST",
+          "point_rank": 19,
+          "rank_hi": 23.0,
+          "rank_lo": 11.0,
+          "retention": 0.1545,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.138756,
+          "model": "TranAD",
+          "point_rank": 20,
+          "rank_hi": 22.0,
+          "rank_lo": 11.0,
+          "retention": 0.2289,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.130891,
+          "model": "KNN",
+          "point_rank": 21,
+          "rank_hi": 22.0,
+          "rank_lo": 13.0,
+          "retention": 0.279,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.123619,
+          "model": "HBOS",
+          "point_rank": 22,
+          "rank_hi": 23.0,
+          "rank_lo": 13.0,
+          "retention": 0.2338,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.112938,
+          "model": "OmniAnomaly",
+          "point_rank": 23,
+          "rank_hi": 25.0,
+          "rank_lo": 19.0,
+          "retention": 0.2198,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.109794,
+          "model": "LOF",
+          "point_rank": 24,
+          "rank_hi": 24.0,
+          "rank_lo": 13.0,
+          "retention": 0.4488,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.069939,
+          "model": "AT",
+          "point_rank": 25,
+          "rank_hi": 25.0,
+          "rank_lo": 20.0,
+          "retention": 0.7903,
+          "top1_frequency": 0.0
+        }
+      ],
+      "n_collections": 17,
+      "n_models": 25,
+      "n_series": 180,
+      "top": {
+        "model": "USAD",
+        "point_rank": 1,
+        "retention": 0.5744
+      }
+    },
+    "auc_roc": {
+      "bottom": {
+        "model": "AT",
+        "point_rank": 25,
+        "retention": 0.6077
+      },
+      "models": [
+        {
+          "mean_score": 0.774138,
+          "model": "CNN",
+          "point_rank": 1,
+          "rank_hi": 3.0,
+          "rank_lo": 1.0,
+          "retention": 0.7544,
+          "top1_frequency": 0.7544
+        },
+        {
+          "mean_score": 0.743834,
+          "model": "xLSTMAD",
+          "point_rank": 2,
+          "rank_hi": 8.0,
+          "rank_lo": 1.0,
+          "retention": 0.3478,
+          "top1_frequency": 0.0475
+        },
+        {
+          "mean_score": 0.739386,
+          "model": "USAD",
+          "point_rank": 3,
+          "rank_hi": 11.0,
+          "rank_lo": 1.0,
+          "retention": 0.2503,
+          "top1_frequency": 0.1521
+        },
+        {
+          "mean_score": 0.734285,
+          "model": "LSTMAD",
+          "point_rank": 4,
+          "rank_hi": 7.0,
+          "rank_lo": 2.0,
+          "retention": 0.3344,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.704028,
+          "model": "IForest",
+          "point_rank": 5,
+          "rank_hi": 16.0,
+          "rank_lo": 1.0,
+          "retention": 0.2076,
+          "top1_frequency": 0.0412
+        },
+        {
+          "mean_score": 0.687224,
+          "model": "KMeansAD",
+          "point_rank": 6,
+          "rank_hi": 20.0,
+          "rank_lo": 2.0,
+          "retention": 0.1566,
+          "top1_frequency": 0.0047
+        },
+        {
+          "mean_score": 0.678069,
+          "model": "TranAD",
+          "point_rank": 7,
+          "rank_hi": 16.0,
+          "rank_lo": 5.0,
+          "retention": 0.1223,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.675872,
+          "model": "PCA",
+          "point_rank": 8,
+          "rank_hi": 19.0,
+          "rank_lo": 4.0,
+          "retention": 0.1114,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.671883,
+          "model": "AutoEncoder",
+          "point_rank": 9,
+          "rank_hi": 19.0,
+          "rank_lo": 4.0,
+          "retention": 0.116,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.67023,
+          "model": "EIF",
+          "point_rank": 10,
+          "rank_hi": 18.0,
+          "rank_lo": 4.0,
+          "retention": 0.0894,
+          "top1_frequency": 0.0001
+        },
+        {
+          "mean_score": 0.6699,
+          "model": "CBLOF",
+          "point_rank": 11,
+          "rank_hi": 19.0,
+          "rank_lo": 3.0,
+          "retention": 0.0858,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.658753,
+          "model": "MCD",
+          "point_rank": 12,
+          "rank_hi": 19.0,
+          "rank_lo": 5.0,
+          "retention": 0.1108,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.651778,
+          "model": "COPOD",
+          "point_rank": 13,
+          "rank_hi": 20.0,
+          "rank_lo": 6.0,
+          "retention": 0.0853,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.642463,
+          "model": "Donut",
+          "point_rank": 14,
+          "rank_hi": 20.0,
+          "rank_lo": 8.0,
+          "retention": 0.1136,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.642446,
+          "model": "OmniAnomaly",
+          "point_rank": 15,
+          "rank_hi": 20.0,
+          "rank_lo": 6.0,
+          "retention": 0.0943,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.637961,
+          "model": "OFA",
+          "point_rank": 16,
+          "rank_hi": 21.0,
+          "rank_lo": 5.0,
+          "retention": 0.0589,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.633137,
+          "model": "HBOS",
+          "point_rank": 17,
+          "rank_hi": 21.0,
+          "rank_lo": 11.0,
+          "retention": 0.1131,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.625711,
+          "model": "TimesNet",
+          "point_rank": 18,
+          "rank_hi": 22.0,
+          "rank_lo": 8.0,
+          "retention": 0.0937,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.625322,
+          "model": "PatchTST",
+          "point_rank": 19,
+          "rank_hi": 23.0,
+          "rank_lo": 7.0,
+          "retention": 0.1056,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.608483,
+          "model": "OCSVM",
+          "point_rank": 20,
+          "rank_hi": 23.0,
+          "rank_lo": 12.0,
+          "retention": 0.087,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.603577,
+          "model": "FITS",
+          "point_rank": 21,
+          "rank_hi": 24.0,
+          "rank_lo": 11.0,
+          "retention": 0.1846,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.589922,
+          "model": "RobustPCA",
+          "point_rank": 22,
+          "rank_hi": 24.0,
+          "rank_lo": 12.0,
+          "retention": 0.3203,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.533816,
+          "model": "LOF",
+          "point_rank": 23,
+          "rank_hi": 24.0,
+          "rank_lo": 19.0,
+          "retention": 0.5825,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.498413,
+          "model": "KNN",
+          "point_rank": 24,
+          "rank_hi": 25.0,
+          "rank_lo": 22.0,
+          "retention": 0.3803,
+          "top1_frequency": 0.0
+        },
+        {
+          "mean_score": 0.478301,
+          "model": "AT",
+          "point_rank": 25,
+          "rank_hi": 25.0,
+          "rank_lo": 20.0,
+          "retention": 0.6077,
+          "top1_frequency": 0.0
+        }
+      ],
+      "n_collections": 17,
+      "n_models": 25,
+      "n_series": 180,
+      "top": {
+        "model": "CNN",
+        "point_rank": 1,
+        "retention": 0.7544
+      }
+    }
+  },
+  "n_boot": 10000,
+  "resampling_unit": "source collection",
+  "seed": 42
+}

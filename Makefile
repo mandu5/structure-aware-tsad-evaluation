@@ -21,6 +21,7 @@ all: paper
 analysis:
 	$(PYTHON) scripts/compute_structure_robustness.py
 	$(PYTHON) scripts/compute_tab_null_and_ties.py
+	$(PYTHON) scripts/compute_rank_retention.py
 
 numbers: analysis
 	$(PYTHON) scripts/export_paper_numbers.py
@@ -43,6 +44,7 @@ verify: test
 	$(PYTHON) scripts/validate_tab_rfr_counts.py
 	$(PYTHON) scripts/compute_structure_robustness.py
 	$(PYTHON) scripts/compute_tab_null_and_ties.py
+	$(PYTHON) scripts/compute_rank_retention.py
 	git diff --exit-code -- experiments/results
 	$(PYTHON) scripts/export_paper_numbers.py
 	git diff --exit-code -- paper/numbers.tex

@@ -94,6 +94,24 @@ checked for drift in CI. Full tables: [`docs/benchmarks.md`](docs/benchmarks.md)
 | 95 % interval, resampling series (treats series as independent) | [0.2979, 0.3312] |
 | 95 % interval, clustering over source collections | [0.2695, 0.3715] |
 
+**TSB-AD-M — does the leaderboard survive resampling the collections?**
+Each model is ranked on its mean score over the 180 series; 10,000 bootstrap
+resamples draw whole source collections (17) with replacement. Rank retention
+is the share of resamples in which a model keeps the rank it holds on the full
+data (`rank_retention` in `src/evaluation/robustness.py`,
+`scripts/compute_rank_retention.py`).
+
+| Metric | Rank 1 (retention) | Last place (retention) |
+|---|---|---|
+| AUC-ROC | CNN, **75.4 %** | AT, **60.8 %** |
+| Affiliation-F1 | USAD, **57.4 %** | AT, **79.0 %** |
+
+The extremes are the most stable ranks. Ranks 2–22 under AUC-ROC keep their
+place in at most 35 % of resamples, and ranks 2–24 under Affiliation-F1 in at
+most 49 %; the two metrics also disagree on who is first. Not part of the
+manuscript numbers; it ships as `rank_retention.json` next to the other
+artifacts.
+
 **TAB — 6 datasets.** Deep models only: 14 / 60 pairs flip (0.2333) against a
 null of 0.5004; deep + classical: 44 / 126 (0.3492) against 0.5021. The
 collection-clustered 95 % interval for the deep-only grid is
@@ -124,6 +142,7 @@ Reproduce (no dataset download needed):
 ```bash
 python scripts/compute_structure_robustness.py   # null, margin strata, cluster-aware intervals
 python scripts/compute_tab_null_and_ties.py      # TAB null and tie sensitivity
+python scripts/compute_rank_retention.py         # per-model rank retention, collection bootstrap
 python scripts/validate_tab_rfr_counts.py        # 14/60, 44/126
 python scripts/export_paper_numbers.py           # regenerates paper/numbers.tex from the above
 python -m pytest -q tests
