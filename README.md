@@ -171,7 +171,11 @@ automates.
 Related: TSB-AD (Liu & Paparrizos, 2024), VUS (Paparrizos et al., 2022),
 Affiliation metrics (Huet et al., 2022), TimeEval (Wenig et al., 2022) for
 large-scale execution infrastructure — `tsad-eval` is metric/analysis-side and
-composes with it.
+composes with it. A concurrent line of work,
+[sba-audit](https://github.com/moonzymoon/sba-audit), tests detector pairs
+within a series with event-segment block-level paired tests; this toolkit
+instead audits rank flips between metrics against a chance level and uses the
+source collection as the unit of inference.
 
 ## Repository layout
 
