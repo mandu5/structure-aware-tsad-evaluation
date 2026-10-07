@@ -1,0 +1,38 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.omc/
+.DS_Store
+
+build/
+dist/
+
+.ipynb_checkpoints/
+
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.h5
+*.hdf5
+논문
+
+# arXiv preprint build (regenerate with `make arxiv`; the tracked deliverable
+# is paper/main.pdf, the anonymous PDF that went to TMLR)
+paper/arxiv/
+
+# LaTeX build intermediates (paper/main.pdf is tracked as the deliverable)
+paper/*.aux
+paper/*.log
+paper/*.blg
+paper/*.bbl
+paper/*.out
+paper/*.toc
+paper/*.synctex.gz
+
+# setuptools metadata from `pip install -e .`
+*.egg-info/
+build/

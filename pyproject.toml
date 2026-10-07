@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tsad-eval"
+version = "0.1.0.dev0"
+description = "Structure-aware evaluation for time-series anomaly detection: point vs. segment metrics, rank-flip analysis, and statistical tests."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [{name = "Youngmin Ko"}]
+requires-python = ">=3.10"
+keywords = ["anomaly detection", "time series", "evaluation", "metrics", "benchmark"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "scikit-learn>=1.4",
+  "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+affiliation = ["prts>=0.3"]
+dev = ["pytest>=8.1", "prts>=0.3"]
+
+[project.urls]
+Homepage = "https://github.com/mandu5/structure-aware-tsad-evaluation"
+"Project page" = "https://tsad-eval-site.onrender.com/"
+
+[tool.setuptools]
+package-dir = {"tsad_eval" = "src/evaluation"}
+packages = ["tsad_eval"]
