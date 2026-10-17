@@ -176,6 +176,26 @@ within a series with event-segment block-level paired tests; this toolkit
 instead audits rank flips between metrics against a chance level and uses the
 source collection as the unit of inference.
 
+## Evaluation context and thresholding
+
+Two additional studies motivate reporting the evaluation conditions alongside
+scores. They do not independently reproduce this repository's metric rank-flip
+results.
+
+- [In a Streaming World, Should You Stand Still? (v1)](https://arxiv.org/html/2609.39215v1)
+  distinguishes static batch evaluation, a model fitted once and used online,
+  and models updated while streaming. Effects of moving from static to online
+  depend on the method; online methods outperform streaming methods on average
+  in its benchmark. This is not a claim that static methods always win. State
+  training access, update policy and normalization when comparing detectors.
+- [NV-Tesseract-AD (v1)](https://arxiv.org/html/2610.12754v1) studies sampler and
+  threshold calibration in a diffusion detector. Its high headline F1 values
+  use point adjustment; test-label oracle threshold sweeps are diagnostic upper
+  bounds, distinct from deployable calibration on held-out validation data.
+  Report threshold selection, label access and adjustment explicitly. Our
+  `threshold_by_rate` uses ground-truth prevalence and is likewise an evaluation
+  protocol, not an unsupervised deployment threshold.
+
 ## Repository layout
 
 ```text
