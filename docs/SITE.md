@@ -2,7 +2,8 @@
 
 The selected A rank-crossing scene is implemented directly in the existing
 static `docs/index.html`. Render still serves `docs/` with the same `true` build
-command; hosting settings were not changed. No deployment was performed.
+command; hosting settings were not changed. The public page is
+<https://tsad-eval-site.onrender.com/> and follows the repository's `main` branch.
 
 ## Preview and evidence refresh
 
